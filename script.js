@@ -1,4 +1,4 @@
-const CORRECT_PASSWORD = "123456";
+const CORRECT_PASSWORD = "cp.123";
 const QUESTIONS = [
     "Hayatınızda sizi en çok etkileyen olay nedir ve bu olayın size kattığı en önemli ders ne oldu?",
     "Gelecekte kendinizi nasıl bir yaşam sürerken hayal ediyorsunuz? Kariyeriniz, yaşadığınız yer ve sosyal hayatınız nasıl olacak?",
