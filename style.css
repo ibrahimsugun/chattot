@@ -1,0 +1,843 @@
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #1976D2;
+    --background-color: #f5f5f5;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --border-color: #e0e0e0;
+    --success-color: #4CAF50;
+    --panel-width: 280px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.container {
+    height: 80vh;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 3vh;
+    gap: 20px;
+}
+
+/* Login Form */
+.login-form {
+    max-width: 400px;
+    margin: 5vh auto 0;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(21, 133, 101, 0.437);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form h2 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background: var(--secondary-color);
+}
+
+/* Chat Interface */
+.chat-interface {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    height: 80vh;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* Side Panel */
+.side-panel {
+    width: var(--panel-width);
+    border-right: 1px solid var(--border-color);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.panel-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
+    background: #fff;
+}
+
+.panel-header h3 {
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.chat-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 8px;
+    margin: 4px 8px;
+}
+
+.chat-item:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    animation: none !important;
+}
+
+.chat-item.active {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    animation: none !important;
+}
+
+.chat-item-avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 12px;
+}
+
+.chat-item-info {
+    flex: 1;
+}
+
+.chat-item-name {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.chat-item-preview {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+/* Main Chat Area */
+.main-chat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background: #fff;
+}
+
+.chat-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border-color);
+    background: #fff;
+}
+
+.visitor-info {
+    display: flex;
+    align-items: center;
+}
+
+.visitor-name {
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.visitor-status {
+    font-size: 13px;
+    color: var(--success-color);
+}
+
+.chat-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.action-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+.end-chat:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+/* Arşiv butonu için özel stil */
+.action-button[title="Sohbeti Arşivle"]:hover {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+}
+
+/* Tooltip için stil */
+.action-button[title] {
+    position: relative;
+}
+
+.action-button[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.chat-box {
+    padding: 20px;
+    overflow-y: auto;
+    height: calc(100% - 120px);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #f8f9fa;
+}
+
+.chat-box > div {
+    margin-bottom: 15px;
+}
+
+.chat-box > div:last-child {
+    margin-bottom: 0;
+}
+
+.typing-indicator {
+    position: absolute;
+    bottom: 80px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 8px 16px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    z-index: 10;
+}
+
+.typing-content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.typing-dot {
+    width: 4px;
+    height: 4px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    animation: typingAnimation 1.4s infinite;
+    opacity: 0.6;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.typing-text {
+    margin-left: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.499);
+}
+
+@keyframes typingAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+.message:last-child {
+    margin-bottom: 0;
+}
+
+.message {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.message.bot {
+    background-color: #ffffff;
+    color: #2c3e50;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    align-self: flex-start;
+}
+
+.message.user {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    align-self: flex-end;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.user-message {
+    background: var(--primary-color);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+    background: white;
+    color: var(--text-primary);
+    border-bottom-left-radius: 4px;
+}
+
+.input-area {
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+    background: white;
+}
+
+.input-area form {
+    display: flex;
+    gap: 12px;
+}
+
+#userInput {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#userInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.input-area button {
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-area button:hover {
+    background: var(--secondary-color);
+}
+
+/* Info Panel */
+.info-panel {
+    width: var(--panel-width);
+    border-left: 1px solid var(--border-color);
+    background: #fff;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.visitor-details {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-item {
+    margin-bottom: 15px;
+}
+
+.detail-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.detail-value {
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .chat-interface {
+        height: calc(100vh - 20px);
+        border-radius: 12px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-header {
+        height: 10vh;
+        padding: 0 20px;
+    }
+
+    .main-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        height: 90vh;
+        padding: 10px;
+    }
+
+    .chat-interface {
+        width: 100%;
+        height: 70vh;
+        border-radius: 12px;
+    }
+
+    .login-form {
+        width: 90%;
+        margin: 2vh auto 0;
+        padding: 20px;
+    }
+
+    .message {
+        max-width: 90%;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+
+    .input-area {
+        padding: 0.8rem;
+    }
+
+    #userInput {
+        font-size: 16px;
+        padding: 0.6rem;
+    }
+
+    .input-area button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .chat-header {
+        padding: 0.8rem;
+    }
+
+    .profile-name {
+        font-size: 1rem;
+    }
+}
+
+/* iPhone SE gibi küçük ekranlar için ek düzenlemeler */
+@media screen and (max-width: 375px) {
+    .container {
+        padding: 5px;
+    }
+
+    .message {
+        max-width: 95%;
+        font-size: 0.85rem;
+        padding: 0.7rem;
+    }
+
+    .input-area button {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Yüksek DPI ekranlar için ek optimizasyonlar */
+@media screen and (-webkit-min-device-pixel-ratio: 2), 
+       screen and (min-resolution: 192dpi) {
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Tablet için orta boyut düzenlemeleri */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .chat-interface {
+        height: 85vh;
+    }
+}
+
+/* Dikey ekranlar için düzenleme */
+@media screen and (orientation: portrait) {
+    .chat-interface {
+        height: 65vh;
+    }
+}
+
+/* Yatay ekranlar için düzenleme */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .main-header {
+        height: 15vh;
+    }
+    
+    .container {
+        height: 85vh;
+    }
+    
+    .chat-interface {
+        height: 75vh;
+    }
+}
+
+/* Responsive tasarım için */
+@media (max-width: 480px) {
+    .login-form {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+
+/* Header stilini güncelle */
+.main-header {
+    height: 12vh;
+    background: linear-gradient(135deg, #21f3d0, #1976D2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.537);
+    position: relative;
+    z-index: 10;
+    padding: 0 40px;
+}
+
+.main-header h1 {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.659);
+}
+
+/* Modal stilleri */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+.modal-body {
+    padding: 20px;
+    color: var(--text-primary);
+}
+
+.modal-footer {
+    padding: 16px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.cancel-button {
+    background: #f0f0f0;
+    color: var(--text-primary);
+}
+
+.confirm-button {
+    background: #dc3545;
+    color: white;
+}
+
+.cancel-button:hover {
+    background: #e0e0e0;
+}
+
+.confirm-button:hover {
+    background: #c82333;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Arşiv bildirimi için stil */
+.archive-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--success-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Modal içeriğini güncelle */
+.modal-content.archive {
+    border-top: 4px solid var(--primary-color);
+}
+
+.confirm-button.archive {
+    background: var(--primary-color);
+}
+
+.confirm-button.archive:hover {
+    background: var(--secondary-color);
+}
+
+/* Yanıp sönme animasyonunu güncelle */
+@keyframes flash-animation {
+    0% { background-color: rgba(33, 150, 243, 0.1); }
+    25% { background-color: rgba(33, 150, 243, 0.2); }
+    50% { background-color: rgba(33, 150, 243, 0.1); }
+    75% { background-color: rgba(33, 150, 243, 0.2); }
+    100% { background-color: rgba(33, 150, 243, 0.1); }
+}
+
+.chat-item.unread {
+    background-color: rgba(33, 150, 243, 0.1);
+    font-weight: 500;
+}
+
+.chat-item.flash-animation {
+    animation: flash-animation 2s ease-in-out;
+}
+
+.agent-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-name {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.profile-status-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.status-indicator.online {
+    background-color: var(--success-color);
+}
+
+.status-indicator.offline {
+    background-color: #dc3545;
+}
+
+.profile-status {
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.profile-status.online {
+    color: var(--success-color);
+}
+
+.profile-status.offline {
+    color: #dc3545;
+}
+
+/* Bildirim stilleri */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease-out;
+    z-index: 1000;
+    color: white;
+}
+
+.notification.archive {
+    background: var(--success-color);
+}
+
+.notification.delete {
+    background: #dc3545;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+} 

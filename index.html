@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Canlı Destek</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome eklendi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <audio id="messageSound">
+        <source src="notification.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Header kısmı eklendi -->
+    <header class="main-header">
+        <h1>Support Service</h1>
+    </header>
+
+    <div class="container">
+        <div id="loginForm" class="login-form">
+            <h2>Canlı Destek Girişi</h2>
+            <input type="text" id="username" placeholder="Kullanıcı Adı">
+            <input type="password" id="password" placeholder="Şifre">
+            <button onclick="login()">Giriş</button>
+        </div>
+
+        <div id="chatInterface" class="chat-interface hidden">
+            <!-- Sol Panel -->
+            <div class="side-panel">
+                <div class="panel-header">
+                    <div class="agent-profile">
+                        <div class="profile-name"></div>
+                        <div class="profile-status-wrapper">
+                            <span class="status-indicator"></span>
+                            <div class="profile-status">Online</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-list">
+                    <!-- Aktif chat -->
+                    <div class="chat-item active">
+                        <div class="chat-item-avatar">T</div>
+                        <div class="chat-item-info">
+                            <div class="chat-item-name">Terry</div>
+                            <div class="chat-item-preview">Son mesaj...</div>
+                        </div>
+                    </div>
+                    <!-- Diğer chatler buraya eklenecek -->
+                </div>
+            </div>
+
+            <!-- Ana Chat Alanı -->
+            <div class="main-chat">
+                <div class="chat-header">
+                    <div class="visitor-info">
+                        <div class="visitor-name">Terry</div>
+                        <div class="visitor-status">Aktif</div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="action-button" title="Sohbeti Arşivle" onclick="archiveChat()">
+                            <i class="fas fa-archive"></i>
+                        </button>
+                        <button class="action-button end-chat" title="Sohbeti Sonlandır" onclick="endChat()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="chatBox" class="chat-box">
+                    <!-- Mesajlar buraya gelecek -->
+                </div>
+                <div id="typingIndicator" class="typing-indicator hidden">
+                    <div class="typing-content">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-text">Yazıyor...</span>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="input-area">
+                    <form onsubmit="event.preventDefault(); sendMessage();">
+                        <input type="text" id="userInput" placeholder="Mesajınızı yazın...">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sağ Panel -->
+            <div class="info-panel">
+                <div class="panel-header">
+                    <h3>Ziyaretçi Bilgileri</h3>
+                </div>
+                <div class="visitor-details">
+                    <div class="detail-item">
+                        <div class="detail-label">E-posta</div>
+                        <div class="detail-value" data-field="email"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Konum</div>
+                        <div class="detail-value" data-field="location"></div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Tarayıcı</div>
+                        <div class="detail-value" data-field="browser"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal yapısını ekle -->
+    <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Sohbeti Sonlandır</h3>
+                <button class="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-button cancel-button">Vazgeç</button>
+                <button class="modal-button confirm-button">Evet, Sonlandır</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
