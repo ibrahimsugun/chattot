@@ -44,7 +44,7 @@ Bu proje, canlı destek hizmeti sağlayan bir web uygulamasıdır. Kullanıcıla
 =====================================
 1️⃣ Proje dosyalarını bilgisayarınıza indirin.
 2️⃣ 'index.html' dosyasını bir tarayıcıda açın.
-3️⃣ Kullanıcı adı ve şifre girerek giriş yapın. **(Varsayılan şifre: 123456)**
+3️⃣ Kullanıcı adı ve şifre girerek giriş yapın. **(Varsayılan şifre: cp.123)**
 4️⃣ Sohbet başlatabilir, mesaj gönderebilir ve bot yanıtlarını görebilirsiniz.
 5️⃣ Sohbeti **arşivleyebilir** veya **sonlandırabilirsiniz**.
 
