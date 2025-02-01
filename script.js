@@ -363,6 +363,8 @@ function addChatClickListener(chatItem, user) {
     chatItem.addEventListener('click', () => {
         // Okunmamış durumunu kaldır
         chatItem.classList.remove('unread');
+        // flash animation  kaldır
+        chatItem.classList.remove('flash-animation');
         
         // Önceki aktif chat'in vurgusunu kaldır
         const previousActive = document.querySelector('.chat-item.active');
