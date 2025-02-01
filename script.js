@@ -491,6 +491,7 @@ function initializeAgentStatus() {
 function setAgentStatus(isOnline) {
     const statusIndicator = document.querySelector(".status-indicator");
     const statusText = document.querySelector(".profile-status");
+    const statusImage = document.querySelector(".status-image");
     
     if (isOnline) {
         statusIndicator.classList.add("online");
@@ -498,12 +499,14 @@ function setAgentStatus(isOnline) {
         statusText.classList.add("online");
         statusText.classList.remove("offline");
         statusText.textContent = "Online";
+        statusImage.src = "./images/online.png";
     } else {
         statusIndicator.classList.add("offline");
         statusIndicator.classList.remove("online");
         statusText.classList.add("offline");
         statusText.classList.remove("online");
         statusText.textContent = "Offline";
+        statusImage.src = "./images/offline.png";
     }
 }
 
