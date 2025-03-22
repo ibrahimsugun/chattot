@@ -1,0 +1,526 @@
+Senaryo: Ürün Stok Durumu
+Müşteri: Merhaba, sitede gördüğüm SmartFit Akıllı Saat gerçekten stokta mı? Acaba stok durumu güncel mi, yoksa eski bir bilgi mi yer alıyor? Birkaç gün önce baktığımda tükenmiş gibi görünüyordu, şimdi tekrar stokta olduğunu görünce emin olmak istedim.
+
+Destek: Merhaba, evet, SmartFit Akıllı Saat stoklarımızda mevcut.
+
+Müşteri: Sipariş verdikten sonra ne kadar sürede kargoya veriliyor? Çünkü bu ürünü bir hediye olarak almayı planlıyorum ve teslimatın hızlı olması benim için önemli. Ayrıca hafta sonu sipariş versem de aynı hızda mı gönderiliyor?
+
+Destek: Siparişiniz onaylandıktan sonra 24 saat içinde kargoya teslim edilir.
+
+Müşteri: Kargo takip numarasını nasıl alıyorum? Mesela siparişi verdikten hemen sonra mı gönderiliyor, yoksa kargo firmasına teslim edildikten sonra mı bilgim oluyor? Bir de e-posta gelmezse ne yapmalıyım?
+
+Destek: Kargo gönderiminde e-posta ve SMS yoluyla takip numarası gönderilir.
+
+Müşteri: Ürünü satın almadan önce rezerve etme imkanım var mı? Çünkü şu an bütçemi ayarlamaya çalışıyorum, ama bu saatin kaçırılmayacak bir fırsat olduğunu düşünüyorum. Belki birkaç gün bekletebilme şansım olur mu?
+
+Destek: Maalesef, rezervasyon seçeneğimiz bulunmuyor ama stoklarımız sürekli yenileniyor.
+
+Müşteri: Ürün tükenirse tekrar stoklara girmesi ne kadar sürer? Daha önce başka bir sitede benzer bir ürünü beklemek zorunda kalmıştım ve çok uzun sürmüştü, o yüzden bunu önceden bilmek istiyorum. Bir de stok yenilenince bana haber verebilir misiniz?
+
+Destek: Genellikle bir hafta içerisinde stoklarımız yenilenmektedir.
+
+Müşteri: Anladım, teşekkür ederim. Sanırım o zaman hemen sipariş vereyim, riske atmayayım. Yardımınız için sağ olun!
+
+Destek: Rica ederiz, iyi alışverişler!
+
+Senaryo: İade Süreci
+Müşteri: Aldığım EcoClean Su Arıtma Cihazı (Kod: EC-450) beklentimi karşılamadı, nasıl iade edebilirim? Ürünü denedim ama performansı benim ihtiyaçlarıma uygun değil, bir de kutusu biraz yırtıldı ama içindeki her şey sağlam. İade mümkün müdür acaba?
+
+Destek: Merhaba, ürünü orijinal ambalajı ve faturasıyla 14 gün içinde iade edebilirsiniz.
+
+Müşteri: İade kargo ücretini kim karşılıyor? Çünkü başka bir yerden alışveriş yaptığımda iade için benden kargo ücreti kesmişlerdi, bu yüzden bunu netleştirmek istiyorum. Ücretsizse nasıl gönderiyorum?
+
+Destek: Kargo ücreti firmamız tarafından karşılanır.
+
+Müşteri: İade süreci tamamlandığında ne zaman geri ödeme alırım? İş yoğunluğum yüzünden takip etmekte zorlanabilirim, o yüzden süre önemli. Bir de bankaya ne kadar sürede yansır acaba?
+
+Destek: Ürün tarafımıza ulaştıktan sonra 3 iş günü içinde geri ödemeniz yapılır.
+
+Müşteri: Geri ödeme hangi yönteme göre yapılıyor? Kredi kartıyla almıştım, direkt karta mı yatacak, yoksa başka bir hesap belirtmem gerekiyor mu? Bir de tutar tam mı iade edilecek?
+
+Destek: Ödeme yaptığınız yönteme göre otomatik olarak iadeniz gerçekleştirilir.
+
+Müşteri: Ürün açılmışsa yine de iade kabul ediliyor mu? Biraz kullandım ama temiz durumda, sadece birkaç gün test ettim. Bu durumda sorun olur mu, yoksa başka bir şart mı arıyorsunuz?
+
+Destek: Evet, ancak ürünün hasar görmemiş ve kullanılmamış olması gerekiyor.
+
+Müşteri: Çok teşekkürler, hemen hazırlayıp göndereyim o zaman. Bilgi verdiğiniz için sağ olun!
+
+Destek: Yardımcı olabildiysek ne mutlu, sağlıklı günler.
+
+Senaryo: Kampanya ve İndirimler
+Müşteri: Güncel kampanyalarınızı öğrenebilir miyim? Sitede birkaç indirim gördüm ama hepsini kapsayan bir liste var mı, yoksa sadece belirli kategorilerde mi geçerli? Bir de yeni kampanya gelecek mi yakın zamanda?
+
+Destek: Merhaba, aktif kampanyalarımızı ana sayfamızdaki “Kampanyalar” bölümünden görebilirsiniz.
+
+Müşteri: E-posta bülteninize abone olursam bildirim alıyor muyum? Çünkü daha önce başka bir sitede abone olmama rağmen haber gelmemişti, o yüzden emin olmak istiyorum. Bildirimler sık sık mı geliyor, yoksa sadece önemli kampanyalarda mı?
+
+Destek: Evet, abone olduğunuzda tüm kampanya ve indirim bildirimleri e-posta ile gönderilir.
+
+Müşteri: Abonelik nasıl sağlanıyor? Sitede dolaşırken bir form gördüm ama doldurması zor mu, yoksa sadece e-posta adresimi yazsam yeterli mi? Bir de telefon numarası zorunlu mu?
+
+Destek: Ana sayfanın altındaki formu doldurmanız yeterlidir.
+
+Müşteri: Kampanyalarınız belirli ürünlerle mi sınırlı oluyor yoksa genel mi? Mesela geçen hafta baktığım bir ayakkabıda indirim yoktu, ama şimdi kampanyaya dahil mi, nasıl anlarım?
+
+Destek: Hem belirli ürünlere özel hem de genel kampanyalarımız mevcuttur.
+
+Müşteri: Kampanya sürelerini nereden takip edebilirim? Çünkü bir indirimi kaçırmıştım ve üzülmüştüm, o yüzden süresini önceden bilmek istiyorum. Sitede net bir şekilde yazıyor mu?
+
+Destek: Web sitemizde kampanyaların yanında süreleri belirtilmektedir.
+
+Müşteri: Harika, hemen abone olacağım. Bu kadar detaylı anlattığınız için teşekkür ederim!
+
+Destek: Teşekkürler, keyifli alışverişler!
+
+Senaryo: Ödeme Sorunları
+Müşteri: Ödeme yaparken hata alıyorum, ne yapmalıyım? Sepete UltraSlim Blender (Kod: UB-300) ekledim, kart bilgilerimi girdim ama sürekli “işlem başarısız” diyor. İnternetim de stabil, sorun bende mi acaba?
+
+Destek: Merhaba, lütfen kart bilgilerinizi kontrol edin veya farklı bir ödeme yöntemi deneyin.
+
+Müşteri: Kartım onaylı ama sorun devam ediyor. Limitim de yeterli, başka bir alışverişte sorunsuz kullandım. Acaba kart tipiyle mi ilgili, yoksa sitedeki bir teknik arıza mı var?
+
+Destek: Sistemimizde geçici bir sorun olabilir, biraz sonra tekrar deneyin.
+
+Müşteri: Sorun hala çözülmediyse? Ürünü çok beğendim ve hemen almak istiyorum, bu yüzden alternatif bir çözüm bulabilir miyiz? Birkaç saat beklemek zorunda kalır mıyım?
+
+Destek: O halde size alternatif ödeme yöntemleri sunacağız veya destek hattımızı arayabilirsiniz.
+
+Müşteri: Başka ödeme yöntemleriniz nelerdir? Mesela kapıda ödeme var mı, yoksa sadece online seçenekler mi geçerli? Bir de bunların limiti farklı mı oluyor?
+
+Destek: Havale/EFT, mobil ödeme gibi seçeneklerimiz mevcuttur.
+
+Müşteri: Mobil ödeme için ekstra ücret alınıyor mu? Çünkü başka bir yerde mobil ödeme seçince ek ücret çıkmıştı, o yüzden sormak istedim. Ücretsizse hemen onu deneyeceğim.
+
+Destek: Hayır, ekstra ücret alınmamaktadır.
+
+Müşteri: Anladım, teşekkür ederim. O zaman mobil ödemeyle tekrar deniyorum, yardımınız için sağ olun!
+
+Destek: Yardımcı olabildiysek sevindik.
+
+Senaryo: Kargo Gecikmesi
+Müşteri: Siparişimin kargosu gecikti, bilgi verebilir misiniz? PowerBoost Şarj Aleti (Kod: PB-120) için 3 gün önce sipariş verdim, ama hala elime ulaşmadı. Normalde ne kadar sürmesi gerekiyordu?
+
+Destek: Merhaba, kargonuzda geçici bir gecikme yaşanıyor olabilir, kontrol ediyorum…
+
+Müşteri: Güncel kargo durumu nedir? Çünkü takip numarasını girdim ama en son iki gün önce güncellenmiş, o zamandan beri bir hareket yok. Acaba kargo firmasında mı bir sorun var?
+
+Destek: Kargonuz şu an dağıtım merkezinde, en kısa sürede adresinize ulaşacak.
+
+Müşteri: Tahmini teslimat süresi nedir? İş yerime göndertmiştim ve hafta sonu orada olamayacağım, o yüzden tam bir tarih verebilir misiniz? Erken gelirse ne yapmalıyım?
+
+Destek: 1-2 iş günü içerisinde teslimat bekleyebilirsiniz.
+
+Müşteri: Kargo gelmezse nasıl bir yol izlemeliyim? Daha önce başka bir siparişim kaybolmuştu, o yüzden biraz endişeliyim. Siz mi takip edeceksiniz, yoksa benim tekrar size yazmam mı gerekiyor?
+
+Destek: Böyle bir durumda tekrar bizimle iletişime geçebilirsiniz, durumu çözeriz.
+
+Müşteri: Kargoyu teslim almazsam ne olur? Diyelim ki iş yerinde kimse olmazsa, geri mi gidecek? O durumda paramı nasıl geri alırım, süreç nasıl işler?
+
+Destek: Kargo bize geri döner, sipariş iptali yapılıp ödeme iadeniz gerçekleştirilir.
+
+Müşteri: Teşekkürler, takipte kalacağım. Bilgi verdiğiniz için sağ olun, umarım kısa sürede ulaşır!
+
+Destek: Rica ederiz, iyi günler dileriz.
+
+Senaryo: Ürün Özellikleri
+Müşteri: Merhaba, VitaGlow Cilt Bakım Seti (Kod: VG-500) hakkında bilgi alabilir miyim? Sitede bazı özellikler yazıyor ama tam olarak ne işe yaradığını anlamadım. Mesela hangi cilt tipleri için uygun, günlük mü kullanılıyor? Bir de etkisi ne kadar sürede belli olur?
+
+Destek: Merhaba, VitaGlow Cilt Bakım Seti tüm cilt tiplerine uygun olup günlük kullanıma yöneliktir.
+
+Müşteri: İçinde hangi ürünler var? Çünkü setin tamamını mı alıyorum, yoksa tek tek seçebiliyor muyum? Bir de alerjik bir cildim var, içeriğinde parfüm ya da alkol gibi şeyler var mı?
+
+Destek: Set içinde temizleyici, nemlendirici ve serum bulunmaktadır, parfüm içermez.
+
+Müşteri: Kullanımı kolay mı? Daha önce benzer bir ürün aldım ama talimatları karışıktı, o yüzden sormak istedim. Her gün mü uygulamam lazım, yoksa haftada birkaç kez mi yeterli?
+
+Destek: Kullanımı oldukça basittir, talimatlar kutu içinde yer alıyor ve günlük kullanım önerilir.
+
+Müşteri: Teşekkür ederim, sanırım alacağım. Bir sorum daha olsa yine yazabilir miyim?
+
+Destek: Elbette, her zaman yardımcı olmaktan mutluluk duyarız!
+
+Senaryo: Sipariş İptali
+Müşteri: Dün verdiğim siparişi iptal etmek istiyorum, nasıl yaparım? FlexRun Koşu Ayakkabısı (Kod: FR-200) almıştım ama beden konusunda kararsız kaldım. Henüz kargoya verilmediyse iptal edebilir miyim acaba? Bir de para iadesi hemen mi olur?
+
+Destek: Merhaba, siparişiniz kargoya verilmediyse iptal edebilirsiniz, kontrol ediyorum…
+
+Müşteri: Sipariş numaram FS-123456, durumu nedir? Çünkü sitede “hazırlanıyor” yazıyor ama emin olamadım. Eğer kargoya verildiyse ne yapmam lazım, geri mi göndereceğim?
+
+Destek: Siparişiniz henüz hazırlanma aşamasında, iptal işleminizi gerçekleştiriyoruz.
+
+Müşteri: İptalden sonra param ne zaman iade edilir? Çünkü acil bir ödeme için o paraya ihtiyacım olabilir. Kredi kartına mı yatacak, yoksa başka bir yöntem mi seçmem gerekiyor?
+
+Destek: İade tutarı 3 iş günü içinde ödeme yaptığınız yönteme geri yatırılır.
+
+Müşteri: Teşekkürler, hızlıca çözdüğünüz için memnun oldum. İleride tekrar alışveriş yaparsam sorun olmaz herhalde?
+
+Destek: Tabii ki, her zaman bekleriz. İyi günler!
+
+Senaryo: Teknik Destek
+Müşteri: Aldığım TechPro Kablosuz Kulaklık (Kod: TP-750) bağlanmıyor, ne yapmalıyım? Telefonuma eşleştirmeye çalıştım ama sürekli hata veriyor. Acaba kulaklıkta mı sorun var, yoksa benim telefonumla mı ilgili? Daha önce böyle bir şey yaşamamıştım.
+
+Destek: Merhaba, öncelikle kulaklığın şarjını ve telefonunuzun Bluetooth ayarlarını kontrol edebilirsiniz.
+
+Müşteri: Şarj dolu, Bluetooth da açık ama hala olmuyor. Başka bir telefonda denedim, onda da aynı sorun var. Kullanım kılavuzunda yazanları da yaptım ama bir türlü bağlanmadı. Ne önerirsiniz?
+
+Destek: O halde kulaklığı sıfırlamayı deneyebilir veya bizimle iletişime geçerek değişim talebinde bulunabilirsiniz.
+
+Müşteri: Sıfırlama nasıl yapılır? Kılavuzda bunu göremedim, adım adım anlatabilir misiniz? Eğer olmazsa değişim süreci ne kadar sürer, yeni ürün mü gönderiyorsunuz?
+
+Destek: Sıfırlama için güç düğmesine 10 saniye basılı tutun; değişim süreci 5 iş günü sürebilir.
+
+Müşteri: Anladım, deneyeceğim. Yardımınız için teşekkür ederim, umarım çözülür!
+
+Destek: Rica ederiz, sonucu bizimle paylaşabilirsiniz.
+
+Senaryo: Hediye Paketi Seçeneği
+Müşteri: Siparişimi hediye olarak göndermek istiyorum, böyle bir seçeneğiniz var mı? PureSilk Yastık Kılıfı (Kod: PS-300) alacağım ama direkt hediye paketiyle gönderilirse süper olur. Alıcıya fiyat görünmesin istiyorum, mümkün mü?
+
+Destek: Merhaba, evet, hediye paketi seçeneğimiz mevcut, sipariş sırasında belirtebilirsiniz.
+
+Müşteri: Nasıl belirtiyorum? Sepete eklerken bir kutucuk mu işaretleyeceğim, yoksa not mu yazmam gerekiyor? Bir de paket ekstra ücrete tabi mi, yoksa ücretsiz mi yapıyorsunuz?
+
+Destek: Ödeme sayfasında “Hediye Paketi” seçeneğini işaretlemeniz yeterli, ücretsizdir.
+
+Müşteri: Harika, bir de kutuya küçük bir not ekleyebilir misiniz? Mesela “İyi ki doğdun” gibi bir şey yazsak, o da pakete dahil olur mu?
+
+Destek: Tabii, notunuzu sipariş notu kısmına yazarsanız ekleriz.
+
+Müşteri: Çok teşekkür ederim, hemen siparişi tamamlayayım o zaman!
+
+Destek: Keyifli alışverişler dileriz!
+
+Senaryo: Fatura Sorunu
+Müşteri: Siparişimle birlikte fatura gelmedi, ne yapmalıyım? MaxFit Spor Çantası (Kod: MF-600) aldım, kargo dün ulaştı ama içinde fatura yoktu. İş yerim için lazım, o yüzden acil gerekiyor. Niye gelmemiş olabilir?
+
+Destek: Merhaba, faturanız e-posta ile gönderilmiş olabilir, kontrol edebilir misiniz?
+
+Müşteri: E-postama baktım ama bir şey yok. Spam klasörünü de kontrol ettim, yine bulamadım. Fiziksel fatura olması gerekmez miydi? Daha önce başka yerden aldığımda kutunun içindeydi.
+
+Destek: Sistemimizde e-fatura kullanıyoruz, tekrar gönderim yapabiliriz.
+
+Müşteri: Tekrar gönderirseniz ne zaman ulaşır? Çünkü muhasebeye teslim etmem lazım, geç kalırsa sorun olur. Bir de isim ve adres bilgilerim doğru mu, onu da kontrol edebilir misiniz?
+
+Destek: Hemen e-posta adresinize gönderiyoruz, bilgilerinizi de teyit ettik, doğru görünüyor.
+
+Müşteri: Teşekkürler, hızlıca çözdünüz. Gelen maili kontrol edip dönerim!
+
+Destek: Rica ederiz, her zaman yardımcı oluruz.
+
+
+Senaryo: Ürün Teslimat Süresi
+Müşteri: Merhaba, AirFlow Sessiz Vantilatör (Kod: AF-200) siparişi vermek istiyorum ama teslimat süresi hakkında bilgi alabilir miyim? Yazın sıcağında kullanmak için acilen ihtiyacım var, bu hafta içinde elimde olur mu?
+
+Destek: Merhaba, siparişiniz onaylandıktan sonra 1-2 iş günü içinde kargoya verilir.
+
+Müşteri: Bölgeme göre teslimat süresi değişiyor mu? İstanbul’da yaşıyorum ama bazen kargo firmaları gecikebiliyor. Tahmini bir gün verebilir misiniz?
+
+Destek: İstanbul için genelde kargoya verildikten sonra 1 iş günü içinde teslimat yapılıyor.
+
+Müşteri: Siparişi bugün öğleden önce versem, yarın kargoya yetişir mi? Çünkü iş yerinde teslim alacağım ve yarın son günüm, sonrasında ofiste olamayacağım.
+
+Destek: Evet, öğleden önce verirseniz bugün kargoya yetişir ve büyük ihtimalle yarın elinizde olur.
+
+Müşteri: Kargo firmasını seçme şansım var mı? Daha önce bir firmayla sorun yaşadım, o yüzden güvenilir bir şirketle gönderilmesini tercih ederim.
+
+Destek: Maalesef kargo firmasını siz seçemiyorsunuz, ancak anlaşmalı firmalarımız oldukça hızlı ve güvenilirdir.
+
+Müşteri: Anladım, o zaman riske atmayayım, hemen sipariş vereyim. Teşekkür ederim!
+
+Destek: Rica ederiz, serin günler dileriz!
+
+Senaryo: Ürün Garanti Süreci
+Müşteri: Merhaba, geçen ay aldığım HeatMaster Elektrikli Isıtıcı (Kod: HM-150) çalışmayı durdurdu. Garanti süreci nasıl işliyor? Bir tamir mi yapılıyor, yoksa yenisiyle mi değişiyor?
+
+Destek: Merhaba, ürünü garanti belgesi ve faturasıyla birlikte yetkili servise gönderebilirsiniz.
+
+Müşteri: Servise göndermek için kargo ücreti benden mi alınıyor? Çünkü ürünü sıfır aldım ve bu kadar kısa sürede bozulması normal değil, masraf çıkmasını istemem.
+
+Destek: Garanti kapsamında olduğu için kargo ücreti firmamız tarafından karşılanıyor.
+
+Müşteri: Tamir ne kadar sürer? Kış ortasındayım ve ısıtıcı olmadan zorlanıyorum, o yüzden hızlı bir çözüm bulabilir miyiz?
+
+Destek: Servis incelemesi genellikle 5-7 iş günü sürüyor, ancak duruma göre hızlandırabiliyoruz.
+
+Müşteri: Eğer tamir edilemezse ne oluyor? Yenisi mi gönderiliyor, yoksa paramı mı iade alıyorum? Daha önce başka bir yerde tamir beklerken çok uğraşmıştım.
+
+Destek: Ürün tamir edilemezse yenisiyle değişim yapılır veya isteğinize bağlı olarak iade edilir.
+
+Müşteri: Teşekkürler, o zaman hemen servise gönderiyorum. Bilgi için sağ olun!
+
+Destek: Rica ederiz, umarız kısa sürede çözülür.
+
+Senaryo: Üyelik Sorunları
+Müşteri: Merhaba, sitedeki hesabıma giriş yapamıyorum. Şifremi unuttum dedim, e-posta geldi ama link çalışmıyor. Ne yapmalıyım? Alışveriş yapmam lazım ama bu sorunu çözemiyorum.
+
+Destek: Merhaba, e-posta adresinizi paylaşabilir misiniz? Size yeni bir sıfırlama linki gönderebiliriz.
+
+Müşteri: Tabii, adresim ayse.yilmaz@email.com. Bir de bu link neden çalışmadı ki? Daha önce de böyle bir sorun yaşamıştım, acaba sistemde mi bir hata var?
+
+Destek: Teknik bir aksaklık olmuş olabilir, yeni linki hemen gönderiyorum, lütfen kontrol edin.
+
+Müşteri: Link geldi, ama bu sefer de “hatalı işlem” diyor. Telefonla giriş yapma şansım var mı? Çünkü acilen sipariş vermem gerekiyor.
+
+Destek: Evet, telefon numaranızla da giriş yapabilirsiniz, numarayı sisteme eklememiz yeterli.
+
+Müşteri: Numaram 555-123-4567. Ekledikten sonra bana haber verebilir misiniz? Bir de bu sorun tekrarlanırsa ne yapayım?
+
+Destek: Numaranız eklendi, giriş yapabilirsiniz. Tekrarlanırsa bizimle iletişime geçmeniz yeterli.
+
+Müşteri: Harika, teşekkür ederim, hemen giriş yapıyorum!
+
+Destek: Rica ederiz, iyi alışverişler!
+
+Senaryo: Yanlış Ürün Teslimatı
+Müşteri: Merhaba, sipariş ettiğim CoolBreeze Klima Filtresi (Kod: CF-100) yerine yanlış bir ürün geldi. Kutuda başka bir marka filtre var, bu nasıl oluyor? Acilen doğru ürüne ihtiyacım var.
+
+Destek: Merhaba, özür dileriz. Sipariş numaranızı paylaşabilir misiniz? Hemen kontrol edelim.
+
+Müşteri: Numara CB-987654. Paketi açtım, ama yanlış ürünü kullanmadım. İade mi etmem lazım, yoksa direkt değişim mi yapıyorsunuz?
+
+Destek: Yanlış ürünü bize geri gönderirseniz, doğru ürünü ücretsiz olarak size ulaştıracağız.
+
+Müşteri: Geri gönderme için kargo ücreti ödeyecek miyim? Bir de doğru ürün ne zaman gelir, çünkü klimam şu an çalışmıyor.
+
+Destek: Kargo ücreti bize ait, ürün elimize ulaşır ulaşmaz yenisini 1-2 gün içinde göndeririz.
+
+Müşteri: Hızlı gönderirseniz çok iyi olur. Bir de bu hatayı nasıl önlersiniz? Tekrar yanlış ürün gelmesin diye endişeleniyorum.
+
+Destek: Depo ekibimizi bilgilendirdik, tekrarlanmaması için dikkat edeceğiz.
+
+Müşteri: Teşekkürler, hemen kargoya veriyorum o zaman.
+
+Destek: Biz teşekkür ederiz, iyi günler!
+
+Senaryo: Ürün Kurulum Yardımı
+Müşteri: Merhaba, aldığım SmartCook Mikrodalga Fırın (Kod: SC-400) için kurulum talimatlarını anlamadım. Kılavuzda bazı adımlar eksik gibi, nasıl kuracağım? Teknik bir şey mi yapmam gerekiyor?
+
+Destek: Merhaba, temel kurulum için ürünü prize takmanız ve saat ayarını yapmanız yeterli.
+
+Müşteri: Saat ayarı yaptım ama ekran sürekli yanıp sönüyor, normal mi? Bir de kapak tam kapanmıyor gibi, acaba montajda bir hata mı var?
+
+Destek: Yanıp sönme normal değil, kapağı kontrol edin ve tekrar başlatmayı deneyin.
+
+Müşteri: Denedim ama hala aynı. Video ya da detaylı bir rehber gönderebilir misiniz? Yoksa servise mi göndermem lazım?
+
+Destek: Size kurulum videosu linki gönderiyoruz, sorun devam ederse servis talebi oluşturabilirsiniz.
+
+Müşteri: Teşekkür ederim, videoyu izleyip dönerim. Yardımınız için sağ olun!
+
+Destek: Rica ederiz, kolay gelsin!
+
+Senaryo: Promosyon Kodu Sorunu
+Müşteri: Merhaba, sitedeki %20 indirim kodunu kullanamıyorum. “SUMMER20” kodunu girdim ama “geçersiz” diyor. Kampanya bitmediyse neden böyle oluyor?
+
+Destek: Merhaba, kodun geçerlilik süresini ve kullanım koşullarını kontrol edebilir misiniz?
+
+Müşteri: Sitede “31 Mart’a kadar geçerli” yazıyor, bugün 22 Mart. Bir de minimum sepet tutarı var mı, onu mu kaçırdım acaba?
+
+Destek: Evet, minimum 500 TL alışveriş gerekiyor, sepet tutarınız buna uyuyor mu?
+
+Müşteri: Sepetim 450 TL, o yüzdenmiş. Bir şey daha eklesem kod çalışır mı? Mesela küçük bir ürün bulsam yeterli mi?
+
+Destek: Evet, 500 TL’yi geçerse kod aktif olur.
+
+Müşteri: Anladım, hemen ekleyip deniyorum. Teşekkürler!
+
+Destek: Rica ederiz, iyi alışverişler!
+
+Senaryo: Ürün Karşılaştırması
+Müşteri: Merhaba, ShineBright LED Lamba (Kod: SB-300) ile GlowEasy LED Lamba (Kod: GE-250) arasında kaldım. Hangisi daha tasarruflu? Evde çok lamba kullanıyorum, o yüzden bu önemli.
+
+Destek: Merhaba, ShineBright 10W, GlowEasy ise 12W güç tüketiyor, dolayısıyla ShineBright daha tasarruflu.
+
+Müşteri: Aydınlatma gücü nasıl peki? Tasarruflu olsun ama karanlık kalmasın istiyorum. Bir de ömrü ne kadar?
+
+Destek: ShineBright 1000 lümen, GlowEasy 900 lümen. İkisinin de ömrü yaklaşık 20.000 saat.
+
+Müşteri: Anladım, ShineBright daha iyi gibi. Kablolu mu geliyor, yoksa pilli mi? Kurulum kolay mı?
+
+Destek: Kablolu bir model, kurulumu oldukça basit, sadece prize takmanız yeterli.
+
+Müşteri: Teşekkür ederim, o zaman ShineBright alıyorum!
+
+Destek: İyi bir seçim, keyifli kullanımlar!
+
+Senaryo: Sipariş Durumu
+Müşteri: Merhaba, siparişim nerede kaldı? FreshAir Hava Temizleyici (Kod: FA-500) için 4 gün önce sipariş verdim ama hala “hazırlanıyor” yazıyor. Ne zaman kargoya verilecek?
+
+Destek: Merhaba, sipariş numaranızı paylaşabilir misiniz? Durumu hemen kontrol edelim.
+
+Müşteri: Numaram FA-456789. Normalde ne kadar sürmesi lazımdı? Çünkü sitede 2 gün yazıyordu.
+
+Destek: Haklısınız, bir gecikme yaşanmış. Siparişiniz bugün kargoya verilecek.
+
+Müşteri: Neden gecikti ki? Stokta yok muydu, yoksa başka bir sorun mu oldu? Bir daha olmaz değil mi?
+
+Destek: Depoda kısa süreli bir yoğunluk oldu, özür dileriz. Tekrarlanmaması için çalışıyoruz.
+
+Müşteri: Tamam, teşekkürler. Kargoya verilince haber verin lütfen.
+
+Destek: Tabii, bilgilendireceğiz. İyi günler!
+
+Senaryo: Ürün Değişimi
+Müşteri: Merhaba, aldığım FitStep Spor Bilekliği (Kod: FS-150) küçük geldi, nasıl değiştirebilirim? Medium sipariş etmiştim ama Large’a ihtiyacım var gibi. Kullanmadım, kutusu da duruyor.
+
+Destek: Merhaba, ürünü 14 gün içinde faturasıyla bize gönderirseniz değişim yapabiliriz.
+
+Müşteri: Large beden stokta var mı? Bir de değişim için kargo masrafı çıkıyor mu, yoksa ücretsiz mi?
+
+Destek: Large beden mevcut, kargo ücreti firmamıza ait.
+
+Müşteri: Değişim ne kadar sürer? Çünkü haftaya bir yarışa katılacağım, o zamana yetişir mi?
+
+Destek: Ürün bize ulaştıktan sonra 2-3 iş günü içinde yeni beden gönderilir.
+
+Müşteri: Harika, hemen gönderiyorum. Teşekkürler!
+
+Destek: Rica ederiz, iyi yarışlar!
+
+Senaryo: Ödeme Onayı Gecikmesi
+Müşteri: Merhaba, WarmTouch Battaniye (Kod: WT-700) için ödeme yaptım ama sipariş hala “onay bekliyor” görünüyor. 2 saat oldu, neden gecikti? Param çekildi ama endişeleniyorum.
+
+Destek: Merhaba, ödeme yönteminizi ve sipariş numaranızı paylaşabilir misiniz? Kontrol edelim.
+
+Müşteri: Kredi kartıyla ödedim, numaram WT-321654. Bankamdan mesaj geldi, para çekilmiş ama sizde niye görünmüyor?
+
+Destek: Sistemde kısa bir gecikme olmuş, ödemeniz onaylandı, siparişiniz hazırlanıyor.
+
+Müşteri: Ne zaman kargoya verilir? Bir de bu gecikme için bir şey yapılıyor mu, mesela indirim gibi?
+
+Destek: Bugün kargoya verilir. Yaşanan aksaklık için özür dileriz, bir sonraki alışverişinizde %10 indirim tanımlayabiliriz.
+
+Müşteri: Teşekkür ederim, o zaman takipte kalacağım!
+
+
+Senaryo: Ürün Kullanım Sorunu
+Müşteri: Merhaba, geçen hafta sizden aldığım TurboMix El Blenderı (Kod: TM-250) ile ilgili bir sorun yaşıyorum. Aslında ürün güzel görünüyor, beklentilerimi de karşılıyordu ama bir türlü düzgün çalıştıramadım. Düğmeye basıyorum, ilk başta çalışıyor gibi oluyor ama sonra birden duruyor. Acaba ben mi yanlış bir şey yapıyorum, yoksa cihazda mı bir arıza var? Kullanım kılavuzunu da okudum ama orada çok detaylı bir şey yazmıyor, sadece temel şeyler var. Ne yapmam gerektiğini söyler misiniz?
+
+Destek: Merhaba, öncelikle cihazın şarjının dolu olduğundan ve bıçaklarının doğru takıldığından emin olabilirsiniz.
+
+Müşteri: Şarjı kontrol ettim, tamamen dolu, çünkü ışığı yeşil yanıyor. Bıçakları da takarken dikkat ettim, kılavuzda gösterildiği gibi oturttum, hatta birkaç kez çıkarıp tekrar taktım emin olmak için. Ama yine de aynı sorun oluyor, mesela çorba karıştırırken bir anda duruyor ve yeniden başlatmak için fişi çıkarıp takmam gerekiyor. Bu normal mi, yoksa teknik bir sorun mu var?
+
+Destek: Bu durum normal değil, cihazda bir teknik sorun olabilir.
+
+Müşteri: Teknik sorun olması biraz can sıkıcı, çünkü ürünü alalı daha bir hafta oldu. Peki, şimdi ne yapmam lazım? Servise mi göndereyim, yoksa siz mi ilgileniyorsunuz? Daha önce başka bir yerden aldığım bir ürünü servise yollamıştım, çok uğraşmıştım, o yüzden süreci net bilmek istiyorum.
+
+Destek: Servise gönderebilirsiniz, garanti kapsamında incelenecek.
+
+Müşteri: Anladım, servise göndermek için ne yapmam gerekiyor? Kargoya verirken kutusunu mu kullanayım, faturayı da eklemem lazım mı? Bir de kargo ücreti benden mi alınacak, çünkü bu benim hatam değil, sıfır ürün böyle geldiyse masraf çıkmasını istemem.
+
+Destek: Kargo ücreti bize ait, ürünü faturayla birlikte orijinal kutusunda gönderirseniz yeterli.
+
+Müşteri: Harika, kargo ücreti sizdeyse içim rahatladı. Peki, süreç ne kadar sürer? Mutfakta bu blendera gerçekten ihtiyacım var, sabahları smoothie yapıyorum ve şu an elim kolum bağlı gibi hissediyorum. Tamir mi olacak, yoksa yenisi mi gelecek, onu da merak ediyorum.
+
+Destek: İnceleme 5-7 iş günü sürer, duruma göre tamir ya da değişim yapılır.
+
+Müşteri: 5-7 gün biraz uzun ama beklerim sanırım. Bir şey daha sorayım, umarım tamir edilir ya da yenisi gelir, çünkü ürünü çok beğenmiştim, sadece bu sorun olmasa harika olurdu. Gönderdikten sonra takip edebilecek miyim?
+
+Destek: Evet, size bir takip numarası vereceğiz.
+
+Müşteri: Süper, o zaman hemen hazırlayıp kargoya vereyim. Yardımlarınız için çok teşekkür ederim, gerçekten hızlı cevap verdiniz, çok memnun oldum!
+
+Destek: Rica ederiz, sorununuz kısa sürede çözülür umarım. İyi günler!
+
+Senaryo: Sipariş Takip Sorunu
+Müşteri: Merhaba, geçen hafta verdiğim siparişle ilgili bir problemim var. PureWater Su Şişesi (Kod: PW-900) sipariş etmiştim, sipariş numaram da PW-654321. Sitede kargo takip numarası verilmiş ama o numarayı kargo firmasının sitesine girince “bilgi bulunamadı” diyor. Üç gün önce kargoya verildi yazıyordu, normalde bu kadar sürede elime ulaşması lazımdı ama hala bir hareket yok. Acaba siparişim nerede, kaybolmuş olabilir mi? Daha önce başka bir siteden alışverişte kargom kaybolmuştu, o yüzden biraz tedirginim.
+
+Destek: Merhaba, sipariş numaranızı kontrol ediyorum, bir dakikanız var mı?
+
+Müşteri: Tabii, bekliyorum. Ama şunu da ekleyeyim, bu su şişesini özellikle spor salonunda kullanmak için almıştım, şimdi onsuz idare ediyorum ama gerçekten ihtiyacım var. Eğer kaybolduysa ya da gecikme olacaksa bana net bir bilgi verirseniz çok sevinirim, çünkü belirsizlik beni biraz strese sokuyor.
+
+Destek: Anladım, siparişiniz kargo firmasının dağıtım merkezinde görünüyor.
+
+Müşteri: Dağıtım merkezinde olması iyi mi, kötü mü? Yani buradan sonra ne kadar sürede bana ulaşır? İş yerime göndertmiştim, ama yarın son günüm, sonrasında evde olacağım, adres mi değiştirsem acaba? Bir de neden böyle bir gecikme oldu ki?
+
+Destek: Gecikme kargo firmasının yoğunluğundan, yarın size ulaşması bekleniyor.
+
+Müşteri: Yarın ulaşacaksa adres değiştirmeme gerek yok, ofiste olurum. Peki, bu yoğunluk her zaman oluyor mu, yoksa sadece bu dönemde mi? Daha önce sitede 2-3 gün yazıyordu, ama şimdi 5 gün geçti, biraz hayal kırıklığı oldu açıkçası.
+
+Destek: Bu dönemsel bir durum, normalde 2-3 gün sürüyor.
+
+Müşteri: Anladım, o zaman bu seferlik böyleymiş. Bir şey daha, yarın gelmezse ne yapmam lazım? Takip numarası hala çalışmıyor gibi, yenisini mi isteyeyim, yoksa siz mi takip edeceksiniz?
+
+Destek: Gelmezse bize yazabilirsiniz, yeni bir takip numarası sağlayacağız.
+
+Müşteri: Tamam, o zaman yarını bekleyip takipte kalacağım. Yardımlarınız için çok teşekkür ederim, içim biraz rahatladı, sağ olun!
+
+Destek: Rica ederiz, iyi günler dileriz!
+
+Senaryo: Kampanya Koşulları
+Müşteri: Merhaba, sitenizde bir kampanya gördüm, “2 al 1 öde” diye bir şey yazıyor ama tam olarak nasıl işlediğini anlayamadım. Mesela ben SoftFeel Polar Battaniye (Kod: SF-600) almak istiyorum, iki tane alsam birini bedava mı vereceksiniz, yoksa indirim mi uygulanıyor? Bir de bu kampanya bütün ürünler için mi geçerli, yoksa sadece belirli kategoriler mi var? Daha önce başka bir yerden kampanyalı ürün aldığımda sonradan stokta yok dediler, o yüzden emin olmak istiyorum.
+
+Destek: Merhaba, “2 al 1 öde” kampanyası belirli kategorilerde geçerli, battaniyeler buna dahil.
+
+Müşteri: Battaniyelerin dahil olması güzel, sevindim. Peki, bu sepete eklerken nasıl oluyor, otomatik mi uygulanıyor, yoksa bir kod mu girmem gerekiyor? Bazen kampanyalar sepette görünmüyor, ödeme sırasında fark ediyorsunuz ki indirim uygulanmamış, böyle bir sürpriz yaşamak istemem.
+
+Destek: Sepete iki ürün eklediğinizde indirim otomatik uygulanır.
+
+Müşteri: Harika, otomatik olması pratikmiş. Kampanya ne zamana kadar geçerli peki? Çünkü bütçemi ayarlamam lazım, hemen alamazsam kaçırırım diye korkuyorum. Bir de stoklar bitmeden almak istiyorum, acele etmeli miyim?
+
+Destek: Kampanya 31 Mart’a kadar geçerli, stoklar şu an yeterli.
+
+Müşteri: 31 Mart’a kadar vakit var, iyiymiş. Farklı renkler seçsem de kampanya geçerli olur mu? Birini kendime, diğerini anneme hediye almayı düşünüyorum ama zevklerimiz farklı, aynı renk olmasın istiyorum, sorun çıkar mı?
+
+Destek: Hayır, farklı renkler de kampanyaya dahildir.
+
+Müşteri: Süper, o zaman mor ve gri alayım. Bir şey daha, bu battaniyeler makinede yıkanıyor mu? Annem çok titiz, hediye ederken sorar diye önceden bilmek istiyorum.
+
+Destek: Evet, 30 derecede makinede yıkanabilir.
+
+Müşteri: Her şey tamam o zaman, hemen sipariş vereyim. Yardımlarınız için çok teşekkür ederim, çok aydınlatıcı oldu!
+
+Destek: Keyifli alışverişler dileriz!
+
+Senaryo: Ödeme Alternatifleri
+Müşteri: Merhaba, ödeme yaparken bir sorunla karşılaştım. Siteden EcoDry Kurutma Makinesi (Kod: ED-800) almaya çalışıyorum, kredi kartımla ödeme yapmayı denedim ama sürekli “hata” veriyor. Kartımda limit var, başka yerlerde kullanıyorum, internetim de stabil, sorun bende değil gibi görünüyor. Acaba sizin sistemde mi bir problem var, yoksa başka bir ödeme yöntemi mi denemeliyim? Makineyi bugün almak istiyorum, o yüzden hızlı bir çözüm bulsak süper olur.
+
+Destek: Merhaba, farklı bir kart veya ödeme yöntemiyle tekrar deneyebilirsiniz.
+
+Müşteri: Başka bir kartım yok maalesef, ama bu kartla dün başka bir siteden alışveriş yaptım, sorun çıkmamıştı. Tekrar denedim, yine aynı hata. Acaba kart tipiyle mi ilgili, mesela bazı siteler sadece Visa’yı kabul ediyor, sizin öyle bir kısıtınız var mı? Teknik bir arıza olabilir mi?
+
+Destek: Tüm kart tiplerini kabul ediyoruz, sistemde geçici bir sorun olabilir.
+
+Müşteri: Geçici sorun olması mantıklı, peki ne kadar sürede düzelir? Birkaç saat beklesem mi, yoksa başka bir çözüm mü bulalım? Makineyi gerçekten bugün sipariş etmek istiyorum, çamaşırlarım birikti, bu sorunu çözmezsem daha da birikecek.
+
+Destek: Kapıda ödeme seçeneğimiz var, isterseniz öyle sipariş verebilirsiniz.
+
+Müşteri: Kapıda ödeme çok iyiymiş! Nakit mi yoksa kartla mı ödeyebiliyorum? Bir de bunun için ekstra ücret alıyor musunuz, çünkü başka bir yerden kapıda ödeme seçince 10 TL eklemişlerdi, sürpriz olmasın istiyorum.
+
+Destek: Nakit veya kartla ödeyebilirsiniz, ekstra ücret almıyoruz.
+
+Müşteri: Harika, o zaman kapıda kartla ödeyeyim. Sipariş şimdi geçsem ne zaman gelir? Tahmini bir süre verir misiniz, çünkü hafta sonu evde kullanmak istiyorum.
+
+Destek: 2-3 iş gününde teslim edilir.
+
+Müşteri: Tamam, hemen siparişimi geçiyorum. Yardımlarınız için çok teşekkür ederim, gerçekten kurtarıcı oldunuz, çok memnun kaldım!
+
+Destek: Rica ederiz, iyi günler!
+
+Senaryo: Kargo Adres Değişikliği
+Müşteri: Merhaba, dün verdiğim siparişin kargo adresini değiştirmem gerekiyor. BreezeCool Mini Fan (Kod: BC-300) sipariş etmiştim, sipariş numaram BC-789123. Normalde iş yerime gelecekti ama bu hafta ofiste olamayacağım, ev adresime yönlendirsem olur mu? Henüz kargoya verilmediğini umuyorum, çünkü takip numarası aktif değil gibi görünüyor. Eğer kargoya verildiyse ne yapabilirim, bu konuda biraz panik oldum açıkçası.
+
+Destek: Merhaba, siparişiniz henüz kargoya verilmediyse adresi değiştirebiliriz.
+
+Müşteri: Oh, ne güzel, umarım yetişir! Siparişi dün gece verdim, sitede “hazırlanıyor” yazıyor, bu durumda değiştirme şansımız var mı? Yeni adresimi hemen vereyim mi, yoksa siz önce kontrol edip bana döner misiniz? Bir de bu değişiklik kargo süresini uzatır mı acaba?
+
+Destek: Kontrol ettim, adres değişikliği mümkün, yeni adresinizi paylaşabilirsiniz.
+
+Müşteri: Süper, yeni adresim şu: “Karanfil Sokak, No: 15, Daire: 3, Kadıköy, İstanbul”. Doğru mu yazdım, kontrol eder misiniz? Daha önce adres yanlış girilince kargo geri dönmüştü, o yüzden emin olmak istiyorum. Bir de kargoya ne zaman verilir?
+
+Destek: Adres doğru, siparişiniz bugün kargoya verilecek.
+
+Müşteri: Harika, bugün kargoya verilmesi çok iyi. Takip numarası ne zaman gelir peki? SMS mi e-posta mı olacak, çünkü takip etmeyi seviyorum, elimde olsun istiyorum. Bir de evde değilsem ne olur?
+
+Destek: Takip numarası SMS ve e-posta ile gönderilir, evde olmazsanız kargo şubeye bırakılır.
+
+Müşteri: Şubeye bırakılması iyiymiş, gerekirse gider alırım. Bir şey daha, kargo firması hangisi? Güvenilir bir firmaysa içim rahat eder.
+
+Destek: Anlaşmalı firmalarımız güvenilirdir, genellikle X Kargo ile gönderiyoruz.
+
+Müşteri: Tamam, o zaman içim rahatladı. Hızlıca çözdünüz, çok teşekkür ederim, sağ olun!
+
+Destek: Rica ederiz, serin günler dileriz!
+
+Destek: Biz teşekkür ederiz, iyi günler!

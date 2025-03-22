@@ -2,16 +2,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 :root {
+    /* Ana Renkler */
     --primary-color: #1976D2;
     --secondary-color: #1565C0;
-    --background-color: #f8f9fa;
-    --text-primary: #212529;
-    --text-secondary: #495057;
-    --border-color: #dee2e6;
     --success-color: #2E7D32;
     --error-color: #C62828;
+    
+    /* Metin Renkleri */
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    
+    /* Arka Plan ve Kenarlık */
+    --background-color: #f8f9fa;
+    --border-color: #dee2e6;
+    
+    /* Boyutlar */
     --panel-width: 17.5rem;
     --header-height: 4rem;
+    
+    /* Geçiş Süreleri */
+    --transition-fast: 0.2s;
+    --transition-normal: 0.3s;
+    
+    /* Z-index Katmanları */
+    --z-modal: 1000;
+    --z-notification: 1000;
+    --z-typing: 10;
 }
 
 * {
@@ -19,6 +35,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -98,6 +116,9 @@ body {
     border-radius: 1rem;
     box-shadow: 0 0.25rem 1.25rem rgba(0,0,0,0.05);
     overflow: hidden;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 /* Side Panel */
@@ -194,11 +215,16 @@ body {
     padding: 24px;
     border-bottom: 1px solid var(--border-color);
     background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .visitor-info {
     display: flex;
     align-items: center;
+    min-width: 150px;
 }
 
 .visitor-name {
@@ -211,9 +237,28 @@ body {
     color: var(--success-color);
 }
 
+.chat-reason {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.reason-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.reason-text {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
 .chat-actions {
     display: flex;
     gap: 10px;
+    margin-left: auto;
 }
 
 .action-button {
@@ -292,6 +337,9 @@ body {
     font-size: 0.9rem;
     color: var(--text-secondary);
     z-index: 10;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .typing-content {
@@ -319,7 +367,7 @@ body {
 
 .typing-text {
     margin-left: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.499);
+    
 }
 
 @keyframes typingAnimation {
@@ -522,10 +570,7 @@ body {
 
 /* Yatay mod için düzenlemeler */
 @media screen and (max-height: 500px) {
-    .container {
-        height: 400px;
-    }
-
+    .container,
     .chat-interface {
         height: 400px;
     }
@@ -618,6 +663,9 @@ body {
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 1000;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .modal.show {
@@ -719,11 +767,11 @@ body {
 
 @keyframes slideIn {
     from {
-        transform: translateX(100%);
+        transform: translate3d(100%, 0, 0);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }
@@ -744,9 +792,7 @@ body {
 /* Yanıp sönme animasyonunu güncelle */
 @keyframes flash-animation {
     0% { background-color: rgba(33, 150, 243, 0.1); }
-    25% { background-color: rgba(33, 149, 243, 0.323); }
-    50% { background-color: rgba(33, 149, 243, 0.147); }
-    75% { background-color: rgba(33, 149, 243, 0.359); }
+    50% { background-color: rgba(33, 150, 243, 0.2); }
     100% { background-color: rgba(33, 150, 243, 0.1); }
 }
 
@@ -854,11 +900,11 @@ body {
 
 @keyframes slideIn {
     from {
-        transform: translateX(100%);
+        transform: translate3d(100%, 0, 0);
         opacity: 0;
     }
     to {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
         opacity: 1;
     }
 }

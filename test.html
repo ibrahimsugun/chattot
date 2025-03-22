@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canlı Destek Sistemi - Test Senaryoları</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        h1 {
+            color: #1976D2;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .test-group {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #ddd;
+        }
+        
+        .test-item.success {
+            border-left-color: #4CAF50;
+            background: #E8F5E9;
+        }
+        
+        .test-item.fail {
+            border-left-color: #F44336;
+            background: #FFEBEE;
+        }
+        
+        .test-item h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .test-result {
+            font-weight: bold;
+        }
+        
+        .success .test-result {
+            color: #2E7D32;
+        }
+        
+        .fail .test-result {
+            color: #C62828;
+        }
+        
+        .test-description {
+            margin: 5px 0;
+            color: #666;
+        }
+        
+        button {
+            background: #1976D2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background: #1565C0;
+        }
+        
+        #test-results {
+            margin-top: 20px;
+        }
+        
+        .test-summary {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: #E3F2FD;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Canlı Destek Sistemi - Test Senaryoları</h1>
+    
+    <div class="test-container">
+        <div class="test-summary">
+            <h2>Test Özeti</h2>
+            <p>Toplam Test: <span id="total-tests">0</span></p>
+            <p>Başarılı: <span id="passed-tests">0</span></p>
+            <p>Başarısız: <span id="failed-tests">0</span></p>
+        </div>
+        
+        <button onclick="runAllTests()">Tüm Testleri Çalıştır</button>
+        <button onclick="clearResults()">Sonuçları Temizle</button>
+        
+        <div id="test-results"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Test yardımcı fonksiyonları
+        function assert(condition, message) {
+            if (!condition) {
+                throw new Error(message);
+            }
+            return true;
+        }
+
+        function displayTestResult(testName, description, success, error = '') {
+            const resultsDiv = document.getElementById('test-results');
+            const testItem = document.createElement('div');
+            testItem.className = `test-item ${success ? 'success' : 'fail'}`;
+            
+            testItem.innerHTML = `
+                <h3>${testName}</h3>
+                <p class="test-description">${description}</p>
+                <p class="test-result">${success ? 'BAŞARILI ✓' : 'BAŞARISIZ ✗'}</p>
+                ${error ? `<p class="test-error">Hata: ${error}</p>` : ''}
+            `;
+            
+            resultsDiv.appendChild(testItem);
+            
+            // Test sayılarını güncelle
+            updateTestCounts();
+        }
+
+        function updateTestCounts() {
+            const totalTests = document.querySelectorAll('.test-item').length;
+            const passedTests = document.querySelectorAll('.test-item.success').length;
+            const failedTests = document.querySelectorAll('.test-item.fail').length;
+            
+            document.getElementById('total-tests').textContent = totalTests;
+            document.getElementById('passed-tests').textContent = passedTests;
+            document.getElementById('failed-tests').textContent = failedTests;
+        }
+
+        function clearResults() {
+            document.getElementById('test-results').innerHTML = '';
+            updateTestCounts();
+        }
+
+        // Test senaryoları
+        const tests = {
+            // Kullanıcı Girişi Testleri
+            testLogin() {
+                try {
+                    // Boş kullanıcı adı kontrolü
+                    const emptyUsername = document.getElementById('username');
+                    const emptyPassword = document.getElementById('password');
+                    if (emptyUsername && emptyPassword) {
+                        emptyUsername.value = '';
+                        emptyPassword.value = CONFIG.PASSWORD;
+                        login();
+                        assert(document.getElementById('chatInterface').classList.contains('hidden'), 
+                            'Boş kullanıcı adı ile giriş yapılamamalı');
+                    }
+                    
+                    // Yanlış şifre kontrolü
+                    if (emptyUsername && emptyPassword) {
+                        emptyUsername.value = 'TestUser';
+                        emptyPassword.value = 'wrong_password';
+                        login();
+                        assert(document.getElementById('chatInterface').classList.contains('hidden'), 
+                            'Yanlış şifre ile giriş yapılamamalı');
+                    }
+                    
+                    // Doğru giriş kontrolü
+                    if (emptyUsername && emptyPassword) {
+                        emptyUsername.value = 'TestUser';
+                        emptyPassword.value = CONFIG.PASSWORD;
+                        login();
+                        assert(!document.getElementById('chatInterface').classList.contains('hidden'), 
+                            'Doğru bilgilerle giriş yapılabilmeli');
+                    }
+                    
+                    displayTestResult('Kullanıcı Girişi Testi', 
+                        'Giriş işlemlerinin doğru çalıştığını kontrol eder', true);
+                } catch (error) {
+                    displayTestResult('Kullanıcı Girişi Testi', 
+                        'Giriş işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                }
+            },
+
+            // SessionStorage Testleri
+            testSessionStorage() {
+                try {
+                    // Storage temizleme kontrolü
+                    sessionStorage.clear();
+                    assert(Object.keys(ChatStorage.getAllChats()).length === 0, 
+                        'SessionStorage başlangıçta boş olmalı');
+                    
+                    // Mesaj ekleme kontrolü
+                    const testUser = 'Test User';
+                    const testMessage = { type: 'user', text: 'Test message' };
+                    ChatStorage.addMessage(testUser, testMessage);
+                    
+                    const messages = ChatStorage.getChatMessages(testUser);
+                    assert(messages.length === 1, 'Mesaj başarıyla eklenmiş olmalı');
+                    assert(messages[0].text === testMessage.text, 'Eklenen mesaj doğru olmalı');
+                    
+                    // Chat silme kontrolü
+                    ChatStorage.deleteChat(testUser);
+                    assert(ChatStorage.getChatMessages(testUser).length === 0, 
+                        'Chat başarıyla silinmiş olmalı');
+                    
+                    displayTestResult('SessionStorage Testi', 
+                        'SessionStorage işlemlerinin doğru çalıştığını kontrol eder', true);
+                } catch (error) {
+                    displayTestResult('SessionStorage Testi', 
+                        'SessionStorage işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                }
+            },
+
+            // Mesaj Yönetimi Testleri
+            testMessageManagement() {
+                try {
+                    // Mesaj oluşturma kontrolü
+                    const messageElement = MessageManager.createMessageElement('Test message', 'user');
+                    assert(messageElement.classList.contains('user-message'), 
+                        'Mesaj elementi doğru sınıfa sahip olmalı');
+                    assert(messageElement.textContent === 'Test message', 
+                        'Mesaj elementi doğru metne sahip olmalı');
+                    
+                    displayTestResult('Mesaj Yönetimi Testi', 
+                        'Mesaj yönetimi işlemlerinin doğru çalıştığını kontrol eder', true);
+                } catch (error) {
+                    displayTestResult('Mesaj Yönetimi Testi', 
+                        'Mesaj yönetimi işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                }
+            },
+
+            // Chat Yönetimi Testleri
+            testChatManagement() {
+                try {
+                    // Yazıyor göstergesi kontrolü
+                    ChatManager.showTypingIndicator();
+                    const indicator = document.getElementById('typingIndicator');
+                    assert(!indicator.classList.contains('hidden'), 
+                        'Yazıyor göstergesi görünür olmalı');
+                    
+                    ChatManager.hideTypingIndicator();
+                    assert(indicator.classList.contains('hidden'), 
+                        'Yazıyor göstergesi gizli olmalı');
+                    
+                    // Chat önizleme kontrolü
+                    const testMessage = 'Test message for preview';
+                    ChatManager.updateChatPreview('Test User', testMessage);
+                    
+                    displayTestResult('Chat Yönetimi Testi', 
+                        'Chat yönetimi işlemlerinin doğru çalıştığını kontrol eder', true);
+                } catch (error) {
+                    displayTestResult('Chat Yönetimi Testi', 
+                        'Chat yönetimi işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                }
+            },
+
+            // UI Yönetimi Testleri
+            testUIManagement() {
+                try {
+                    // Bildirim kontrolü
+                    UIManager.showNotification('Test notification', 'success');
+                    const notification = document.querySelector('.notification');
+                    assert(notification, 'Bildirim elementi oluşturulmalı');
+                    
+                    // Modal kontrolü
+                    UIManager.showModal('Test modal', () => {});
+                    const modal = document.getElementById('confirmModal');
+                    assert(!modal.classList.contains('hidden'), 'Modal görünür olmalı');
+                    
+                    displayTestResult('UI Yönetimi Testi', 
+                        'UI yönetimi işlemlerinin doğru çalıştığını kontrol eder', true);
+                } catch (error) {
+                    displayTestResult('UI Yönetimi Testi', 
+                        'UI yönetimi işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                }
+            },
+
+            // Soru Yönetimi Testleri
+            testQuestionManagement() {
+                try {
+                    // Soru karıştırma kontrolü
+                    const originalQuestions = [...QuestionManager.QUESTIONS];
+                    QuestionManager.shuffleArray(QuestionManager.QUESTIONS);
+                    
+                    let isDifferent = false;
+                    for (let i = 0; i < originalQuestions.length; i++) {
+                        if (originalQuestions[i] !== QuestionManager.QUESTIONS[i]) {
+                            isDifferent = true;
+                            break;
+                        }
+                    }
+                    
+                    assert(isDifferent, 'Sorular karıştırılmış olmalı');
+                    assert(QuestionManager.QUESTIONS.length === originalQuestions.length, 
+                        'Soru sayısı değişmemeli');
+                    
+                    displayTestResult('Soru Yönetimi Testi', 
+                        'Soru yönetimi işlemlerinin doğru çalıştığını kontrol eder', true);
+                } catch (error) {
+                    displayTestResult('Soru Yönetimi Testi', 
+                        'Soru yönetimi işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                }
+            },
+
+            // Kullanıcı Arayüzü Testleri
+            testUserInterface() {
+                try {
+                    // Kullanıcı bilgileri güncelleme kontrolü
+                    const testUser = generateRandomUser();
+                    updateUserInterface(testUser);
+                    
+                    const nameElement = document.querySelector('.visitor-name');
+                    const emailElement = document.querySelector('.detail-value[data-field="email"]');
+                    const locationElement = document.querySelector('.detail-value[data-field="location"]');
+                    
+                    assert(nameElement.textContent === testUser.fullName, 
+                        'Kullanıcı adı doğru görüntülenmeli');
+                    assert(emailElement.textContent === testUser.email, 
+                        'E-posta doğru görüntülenmeli');
+                    assert(locationElement.textContent === testUser.location, 
+                        'Konum doğru görüntülenmeli');
+                    
+                    displayTestResult('Kullanıcı Arayüzü Testi', 
+                        'Kullanıcı arayüzü işlemlerinin doğru çalıştığını kontrol eder', true);
+                } catch (error) {
+                    displayTestResult('Kullanıcı Arayüzü Testi', 
+                        'Kullanıcı arayüzü işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                }
+            }
+        };
+
+        // Tüm testleri çalıştır
+        function runAllTests() {
+            clearResults();
+            Object.values(tests).forEach(test => test());
+        }
+    </script>
+</body>
+</html> 

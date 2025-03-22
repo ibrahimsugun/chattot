@@ -1,73 +1,442 @@
-const CORRECT_PASSWORD = "cp.123";
-const QUESTIONS = [
-    "Hayatınızda sizi en çok etkileyen olay nedir ve bu olayın size kattığı en önemli ders ne oldu?",
-    "Gelecekte kendinizi nasıl bir yaşam sürerken hayal ediyorsunuz? Kariyeriniz, yaşadığınız yer ve sosyal hayatınız nasıl olacak?",
-    "En unutulmaz tatil anınızı anlatır mısınız? O anın sizin için özel olmasının nedeni nedir?",
-    "Size göre başarının tanımı nedir ve başarılı bir insan olmak için hangi adımları atıyorsunuz?",
-    "Hayatta en çok değer verdiğiniz şey nedir ve bunun sizin yaşamınıza nasıl bir etkisi var?",
-    "Şimdiye kadar ziyaret ettiğiniz en etkileyici yer neresiydi ve orada yaşadığınız en özel anı nedir?",
-    "En sevdiğiniz çocukluk anınız nedir ve o an size ne hissettirdi?",
-    "Hayatınızda değiştirmek istediğiniz bir şey olsaydı, bu ne olurdu ve neden?",
-    "Size ilham veren kişi kimdir ve bu kişinin hangi özellikleri sizi etkiliyor?",
-    "En büyük hayaliniz nedir? Gerçekleştirmek için ne gibi adımlar atıyorsunuz?",
-    "Kendinizi üç kelime ile nasıl tanımlarsınız ve neden bu kelimeleri seçtiniz?",
-    "Şu ana kadar aldığınız en iyi tavsiye nedir ve bu tavsiyeyi hangi durumlarda uyguluyorsunuz?",
-    "Bir süper gücünüz olsaydı, bu ne olurdu ve bu gücü nasıl kullanırdınız?",
-    "Sizce mutluluğun sırrı nedir? İnsanlar neden bazen mutluluğu bulmakta zorlanır?",
-    "En son okuduğunuz ve sizi derinden etkileyen kitap hangisi? Kitabın size kazandırdığı en önemli şey neydi?",
-    "Gelecek nesillere nasıl bir dünya bırakmak istersiniz ve bu konuda hangi adımları atmalıyız?",
-    "Hayatta öğrendiğiniz en önemli ders nedir ve bu dersi hangi olaydan çıkardınız?",
-    "Sizi en çok motive eden şey nedir ve kendinizi motive etmek için hangi yöntemleri kullanıyorsunuz?",
-    "Başkalarına nasıl ilham vermeye çalışıyorsunuz ve insanların sizden ilham almasını sağlayacak en güçlü yanınız nedir?",
-    "Yaşamınızda iz bırakan en önemli karar neydi ve bu kararın hayatınıza etkisi nasıl oldu?",
-    "Kendinizle ilgili değiştirmek istediğiniz en büyük özellik nedir ve bunu değiştirmek için ne yapıyorsunuz?",
-    "Hayatta en çok gurur duyduğunuz başarınız nedir ve bu başarıyı elde ederken hangi zorluklarla karşılaştınız?",
-    "Hayatınızda sizi en çok zorlayan an neydi ve bu anın üstesinden nasıl geldiniz?",
-    "Eğer geçmişe dönüp kendinize bir tavsiye verebilseydiniz, ne söylerdiniz?",
-    "Şu an sahip olduğunuz bilgi ve tecrübeyle 10 yıl önceki halinize ne öğretmek isterdiniz?",
-    "İnsan ilişkilerinde en çok dikkat ettiğiniz şey nedir ve sizi en çok rahatsız eden davranışlar nelerdir?",
-    "Bir gün boyunca herhangi bir tarihi figürle vakit geçirebilseydiniz, kimi seçerdiniz ve neden?",
-    "Hayatta risk almak hakkında ne düşünüyorsunuz? En büyük riskiniz neydi ve sonucunda ne öğrendiniz?",
-    "Eğer dünyanın herhangi bir yerinde yaşayabilseydiniz, nerede yaşamak isterdiniz ve neden?",
-    "Günlük hayatınızdaki en büyük alışkanlığınız nedir ve bu alışkanlık sizi nasıl etkiliyor?",
-    "Kendi hayatınızı bir film olarak düşünecek olsanız, türü ne olurdu ve başrolü kim oynardı?",
-    "Hayatınızdaki en değerli insan kim ve onun sizin üzerinizde nasıl bir etkisi var?",
-    "Hayatınızın geri kalanında sadece bir hobiyle uğraşmak zorunda kalsaydınız, hangi hobiyi seçerdiniz?",
-    "Bir insanın karakterini belirleyen en önemli özellikler nelerdir sizce?",
-    "Bugüne kadar karşılaştığınız en büyük zorluk neydi ve bu zorluktan nasıl dersler çıkardınız?",
-    "Geriye dönüp baktığınızda, keşke daha önce yapsaydım dediğiniz bir şey var mı?",
-    "Hayatınızdaki en büyük şans olarak gördüğünüz olay nedir ve bu olayın hayatınıza etkisi ne oldu?",
-    "Eğer bir konuda tamamen uzmanlaşma şansınız olsaydı, hangi konuda uzman olmak isterdiniz?",
-    "Hangi alışkanlıklarınızı bırakmak veya değiştirmek isterdiniz ve bunun için bir adım attınız mı?",
-    "Eğer bir ay boyunca hiçbir sorumluluğunuz olmasaydı, bu zamanı nasıl değerlendirirdiniz?",
-    "En sevdiğiniz sanat dalı nedir ve sizi bu alana çeken şey ne oldu?",
-    "Bugüne kadar aldığınız en anlamlı hediye neydi ve sizin için neden özeldi?",
-    "Hayatınız boyunca karşılaştığınız en ilginç insan kimdi ve onunla yaşadığınız en unutulmaz an nedir?",
-    "Eğer bir gün boyunca istediğiniz herhangi bir mesleği yapabilseydiniz, ne yapardınız?",
-    "Sizi en çok rahatlatan aktivite nedir ve bunu ne sıklıkla yapıyorsunuz?",
-    "Eğer bir saat boyunca dünyanın herhangi bir yerine ışınlanabilseydiniz, nereye giderdiniz ve neden?",
-    "Zamanı geri alma şansınız olsaydı, hayatınızdaki hangi anı yeniden yaşamak isterdiniz?",
-    "Eğer kendinize ait bir felsefeniz veya hayat mottosu olsaydı, ne olurdu?",
-    "Hayatta en çok hayranlık duyduğunuz insan kim ve onun hangi özellikleri sizi etkiliyor?",
-    "Sonsuz bir kaynağınız olsaydı, hangi hayır işini yapmak isterdiniz?",
-    "İnsanların sizin hakkınızda en çok neyi hatırlamasını isterdiniz?"
-];
-
-let currentQuestionIndex = 0;
-
-// Soruları karıştırmak için yardımcı fonksiyon
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+// Sabit değişkenler ve yapılandırma
+const CONFIG = {
+    PASSWORD: "cp.123",
+    TYPING_DELAY: {
+        MIN: 2000,
+        MAX: 3000
+    },
+    TYPING_DURATION: {
+        MIN: 3000,
+        MAX: 5000
     }
-    return array;
-}
+};
 
-// Karıştırılmış sorular için yeni bir dizi
-let shuffledQuestions = [];
+// Mesaj yönetimi modülü
+const MessageManager = {
+    playSound() {
+        const sound = document.getElementById('messageSound');
+        if (sound) {
+            sound.currentTime = 0;
+            sound.play().catch(error => {
+                console.log("Ses çalma hatası:", error);
+            });
+        }
+    },
 
-// Aktif kullanıcı bilgilerini tutacak nesne
+    createMessageElement(message, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}-message`;
+        messageDiv.textContent = message;
+        return messageDiv;
+    },
+
+    updateChatBox(userId) {
+        console.log(`Chat kutusu güncelleniyor: ${userId}`);
+        const chatBox = document.getElementById('chatBox');
+        if (!chatBox) return;
+
+        chatBox.innerHTML = '';
+        
+        const messages = ChatStorage.getChatMessages(userId);
+        messages.forEach(msg => {
+            const messageElement = this.createMessageElement(msg.text, msg.type);
+            chatBox.appendChild(messageElement);
+        });
+        
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+};
+
+// Kullanıcı arayüzü modülü
+const UIManager = {
+    showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => notification.remove(), 3000);
+    },
+
+    showModal(message, onConfirm) {
+        const modal = document.getElementById('confirmModal');
+        if (!modal) return;
+
+        const modalMessage = document.getElementById('modalMessage');
+        modalMessage.textContent = message;
+        
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.add('show'), 10);
+
+        this.setupModalListeners(modal, onConfirm);
+    },
+
+    setupModalListeners(modal, onConfirm) {
+        const confirmButton = modal.querySelector('.confirm-button');
+        const cancelButton = modal.querySelector('.cancel-button');
+        const closeButton = modal.querySelector('.close-modal');
+
+        const closeModal = () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+            this.removeModalListeners();
+        };
+
+        const handleConfirm = () => {
+            onConfirm();
+            closeModal();
+        };
+
+        confirmButton.addEventListener('click', handleConfirm);
+        cancelButton.addEventListener('click', closeModal);
+        closeButton.addEventListener('click', closeModal);
+
+        // Listener referanslarını sakla
+        this.modalListeners = { handleConfirm, closeModal };
+    },
+
+    removeModalListeners() {
+        if (this.modalListeners) {
+            const modal = document.getElementById('confirmModal');
+            const confirmButton = modal.querySelector('.confirm-button');
+            const cancelButton = modal.querySelector('.cancel-button');
+            const closeButton = modal.querySelector('.close-modal');
+
+            confirmButton.removeEventListener('click', this.modalListeners.handleConfirm);
+            cancelButton.removeEventListener('click', this.modalListeners.closeModal);
+            closeButton.removeEventListener('click', this.modalListeners.closeModal);
+        }
+    }
+};
+
+// Senaryo yönetimi modülü
+const ScenarioManager = {
+    scenarios: [],
+    userScenarios: new Map(),
+    totalScenarioCount: 0,
+    usedScenarioIndexes: new Set(),
+
+    // Senaryoları yükle ve parse et
+    loadScenarios(scenariosText) {
+        try {
+            // Senaryoları ayır
+            const scenarioBlocks = scenariosText.split('Senaryo:').filter(block => block.trim());
+            this.totalScenarioCount = scenarioBlocks.length;
+            console.log('Toplam senaryo sayısı:', this.totalScenarioCount);
+
+            // Her bir senaryoyu işle
+            this.scenarios = scenarioBlocks.map(block => {
+                const lines = block.trim().split('\n');
+                const title = 'Senaryo: ' + lines[0].trim();
+                const messages = lines
+                    .filter(line => line.includes('Müşteri:'))
+                    .map(line => line.split('Müşteri:')[1].trim());
+                return { title, messages };
+            });
+
+            // Storage'a kaydet
+            sessionStorage.setItem('scenarios', JSON.stringify(this.scenarios));
+            sessionStorage.setItem('totalScenarioCount', this.totalScenarioCount.toString());
+            console.log('Senaryolar başarıyla yüklendi ve kaydedildi');
+            return true;
+        } catch (error) {
+            console.error('Senaryo yükleme hatası:', error);
+            return false;
+        }
+    },
+
+    // Storage'dan senaryoları yükle
+    loadFromStorage() {
+        try {
+            const storedScenarios = sessionStorage.getItem('scenarios');
+            const storedCount = sessionStorage.getItem('totalScenarioCount');
+            
+            if (storedScenarios && storedCount) {
+                this.scenarios = JSON.parse(storedScenarios);
+                this.totalScenarioCount = parseInt(storedCount);
+                console.log('Senaryolar storage\'dan yüklendi');
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.error('Storage\'dan yükleme hatası:', error);
+            return false;
+        }
+    },
+
+    // Kullanılmamış rastgele senaryo seç
+    getUnusedRandomScenarioIndex() {
+        if (this.usedScenarioIndexes.size >= this.totalScenarioCount) {
+            this.usedScenarioIndexes.clear();
+        }
+
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * this.totalScenarioCount);
+        } while (this.usedScenarioIndexes.has(randomIndex));
+
+        this.usedScenarioIndexes.add(randomIndex);
+        return randomIndex;
+    },
+
+    // Kullanıcı için senaryo seç veya var olanı getir
+    getOrCreateScenario(userId) {
+        if (!this.userScenarios.has(userId)) {
+            // Senaryolar yüklü değilse storage'dan yükle
+            if (this.scenarios.length === 0) {
+                this.loadFromStorage();
+            }
+
+            // Hala senaryo yoksa hata döndür
+            if (this.scenarios.length === 0) {
+                console.error('Senaryo bulunamadı');
+                return null;
+            }
+
+            const randomIndex = this.getUnusedRandomScenarioIndex();
+            const scenario = this.scenarios[randomIndex];
+            
+            if (!scenario) {
+                console.error('Seçilen senaryo geçersiz:', randomIndex);
+                return null;
+            }
+
+            const userScenario = {
+                index: randomIndex,
+                title: scenario.title,
+                messages: scenario.messages,
+                currentLineIndex: 0
+            };
+
+            this.userScenarios.set(userId, userScenario);
+            console.log(`Yeni senaryo atandı (${userId}):`, scenario.title);
+            return userScenario;
+        }
+        return this.userScenarios.get(userId);
+    },
+
+    // Chat sebebini güncelle
+    updateChatReason(userId) {
+        const reasonText = document.querySelector('.reason-text');
+        const scenario = this.userScenarios.get(userId);
+        if (reasonText && scenario && scenario.title) {
+            // "Senaryo:" kelimesini kaldır ve başlığı düzenle
+            const cleanTitle = scenario.title.replace('Senaryo: ', '');
+            reasonText.textContent = cleanTitle;
+        }
+    },
+
+    // Sıradaki müşteri mesajını al
+    getNextCustomerMessage(userId) {
+        const scenario = this.userScenarios.get(userId);
+        if (!scenario || !scenario.messages) return null;
+        
+        if (scenario.currentLineIndex < scenario.messages.length) {
+            const message = scenario.messages[scenario.currentLineIndex];
+            scenario.currentLineIndex++;
+            return message;
+        }
+        return null;
+    },
+
+    // Senaryo durumunu kontrol et
+    isScenarioComplete(userId) {
+        const scenario = this.userScenarios.get(userId);
+        if (!scenario || !scenario.messages) return true;
+        return scenario.currentLineIndex >= scenario.messages.length;
+    },
+
+    // Kullanıcının senaryosunu sıfırla
+    resetUserScenario(userId) {
+        this.userScenarios.delete(userId);
+    }
+};
+
+// Chat yönetimi modülü
+const ChatManager = {
+    typingTimeouts: {},
+
+    sendMessage() {
+        const userInput = document.getElementById('userInput');
+        const message = userInput.value.trim();
+        const currentUser = document.querySelector('.visitor-name').textContent;
+
+        if (!message) return;
+
+        this.addUserMessage(message);
+        userInput.value = '';
+        
+        // Müşteri yanıtını gecikmeyle gönder
+        this.simulateCustomerResponse(currentUser);
+    },
+
+    simulateCustomerResponse(userId) {
+        if (this.typingTimeouts[userId]) {
+            clearTimeout(this.typingTimeouts[userId].initial);
+            clearTimeout(this.typingTimeouts[userId].typing);
+        }
+
+        const initialDelay = Math.floor(Math.random() * 
+            (CONFIG.TYPING_DELAY.MAX - CONFIG.TYPING_DELAY.MIN)) + CONFIG.TYPING_DELAY.MIN;
+        
+        const typingDuration = Math.floor(Math.random() * 
+            (CONFIG.TYPING_DURATION.MAX - CONFIG.TYPING_DURATION.MIN)) + CONFIG.TYPING_DURATION.MIN;
+
+        this.typingTimeouts[userId] = {
+            initial: setTimeout(() => {
+                if (document.querySelector('.visitor-name').textContent === userId) {
+                    this.showTypingIndicator();
+                }
+                
+                this.typingTimeouts[userId].typing = setTimeout(() => {
+                    this.hideTypingIndicator();
+                    this.sendCustomerResponse(userId);
+                    delete this.typingTimeouts[userId];
+                }, typingDuration);
+            }, initialDelay)
+        };
+    },
+
+    sendCustomerResponse(userId) {
+        const nextCustomerMessage = ScenarioManager.getNextCustomerMessage(userId);
+        if (nextCustomerMessage) {
+            ChatStorage.addMessage(userId, {
+                type: 'bot',
+                text: nextCustomerMessage
+            });
+            
+            const activeUser = document.querySelector('.visitor-name').textContent;
+            if (activeUser === userId) {
+                MessageManager.updateChatBox(userId);
+            }
+            
+            MessageManager.playSound();
+            this.flashChatItem(userId);
+            this.updateChatPreview(userId, nextCustomerMessage);
+        }
+    },
+
+    addUserMessage(message) {
+        const currentUser = document.querySelector('.visitor-name').textContent;
+        ChatStorage.addMessage(currentUser, {
+            type: 'user',
+            text: message
+        });
+        MessageManager.updateChatBox(currentUser);
+    },
+
+    showTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) indicator.classList.remove('hidden');
+    },
+
+    hideTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) indicator.classList.add('hidden');
+    },
+
+    flashChatItem(userId) {
+        const chatItems = document.querySelectorAll('.chat-item');
+        chatItems.forEach(item => {
+            const nameElement = item.querySelector('.chat-item-name');
+            if (nameElement && nameElement.textContent === userId) {
+                // Aktif chat değilse okunmamış olarak işaretle
+                const activeUser = document.querySelector('.visitor-name').textContent;
+                if (activeUser !== userId) {
+                    item.classList.add('unread');
+                }
+                
+                // Yanıp sönme animasyonunu uygula
+                item.classList.remove('flash-animation');
+                void item.offsetWidth; // Reflow
+                item.classList.add('flash-animation');
+            }
+        });
+    },
+
+    updateChatPreview(userId, message) {
+        const chatItems = document.querySelectorAll('.chat-item');
+        chatItems.forEach(item => {
+            const nameElement = item.querySelector('.chat-item-name');
+            if (nameElement && nameElement.textContent === userId) {
+                const previewElement = item.querySelector('.chat-item-preview');
+                if (previewElement) {
+                    const previewText = typeof message === 'string' ? message : message.text;
+                    previewElement.textContent = previewText.substring(0, 30) + 
+                        (previewText.length > 30 ? '...' : '');
+                }
+            }
+        });
+    }
+};
+
+// Soru yönetimi modülü
+const QuestionManager = {
+    QUESTIONS: [
+        "Hayatınızda sizi en çok etkileyen olay nedir ve bu olayın size kattığı en önemli ders ne oldu?",
+        "Gelecekte kendinizi nasıl bir yaşam sürerken hayal ediyorsunuz? Kariyeriniz, yaşadığınız yer ve sosyal hayatınız nasıl olacak?",
+        "En unutulmaz tatil anınızı anlatır mısınız? O anın sizin için özel olmasının nedeni nedir?",
+        "Size göre başarının tanımı nedir ve başarılı bir insan olmak için hangi adımları atıyorsunuz?",
+        "Hayatta en çok değer verdiğiniz şey nedir ve bunun sizin yaşamınıza nasıl bir etkisi var?",
+        "Şimdiye kadar ziyaret ettiğiniz en etkileyici yer neresiydi ve orada yaşadığınız en özel anı nedir?",
+        "En sevdiğiniz çocukluk anınız nedir ve o an size ne hissettirdi?",
+        "Hayatınızda değiştirmek istediğiniz bir şey olsaydı, bu ne olurdu ve neden?",
+        "Size ilham veren kişi kimdir ve bu kişinin hangi özellikleri sizi etkiliyor?",
+        "En büyük hayaliniz nedir? Gerçekleştirmek için ne gibi adımlar atıyorsunuz?",
+        "Kendinizi üç kelime ile nasıl tanımlarsınız ve neden bu kelimeleri seçtiniz?",
+        "Şu ana kadar aldığınız en iyi tavsiye nedir ve bu tavsiyeyi hangi durumlarda uyguluyorsunuz?",
+        "Bir süper gücünüz olsaydı, bu ne olurdu ve bu gücü nasıl kullanırdınız?",
+        "Sizce mutluluğun sırrı nedir? İnsanlar neden bazen mutluluğu bulmakta zorlanır?",
+        "En son okuduğunuz ve sizi derinden etkileyen kitap hangisi? Kitabın size kazandırdığı en önemli şey neydi?",
+        "Gelecek nesillere nasıl bir dünya bırakmak istersiniz ve bu konuda hangi adımları atmalıyız?",
+        "Hayatta öğrendiğiniz en önemli ders nedir ve bu dersi hangi olaydan çıkardınız?",
+        "Sizi en çok motive eden şey nedir ve kendinizi motive etmek için hangi yöntemleri kullanıyorsunuz?",
+        "Başkalarına nasıl ilham vermeye çalışıyorsunuz ve insanların sizden ilham almasını sağlayacak en güçlü yanınız nedir?",
+        "Yaşamınızda iz bırakan en önemli karar neydi ve bu kararın hayatınıza etkisi nasıl oldu?",
+        "Kendinizle ilgili değiştirmek istediğiniz en büyük özellik nedir ve bunu değiştirmek için ne yapıyorsunuz?",
+        "Hayatta en çok gurur duyduğunuz başarınız nedir ve bu başarıyı elde ederken hangi zorluklarla karşılaştınız?",
+        "Hayatınızda sizi en çok zorlayan an neydi ve bu anın üstesinden nasıl geldiniz?",
+        "Eğer geçmişe dönüp kendinize bir tavsiye verebilseydiniz, ne söylerdiniz?",
+        "Şu an sahip olduğunuz bilgi ve tecrübeyle 10 yıl önceki halinize ne öğretmek isterdiniz?",
+        "İnsan ilişkilerinde en çok dikkat ettiğiniz şey nedir ve sizi en çok rahatsız eden davranışlar nelerdir?",
+        "Bir gün boyunca herhangi bir tarihi figürle vakit geçirebilseydiniz, kimi seçerdiniz ve neden?",
+        "Hayatta risk almak hakkında ne düşünüyorsunuz? En büyük riskiniz neydi ve sonucunda ne öğrendiniz?",
+        "Eğer dünyanın herhangi bir yerinde yaşayabilseydiniz, nerede yaşamak isterdiniz ve neden?",
+        "Günlük hayatınızdaki en büyük alışkanlığınız nedir ve bu alışkanlık sizi nasıl etkiliyor?",
+        "Kendi hayatınızı bir film olarak düşünecek olsanız, türü ne olurdu ve başrolü kim oynardı?",
+        "Hayatınızdaki en değerli insan kim ve onun sizin üzerinizde nasıl bir etkisi var?",
+        "Hayatınızın geri kalanında sadece bir hobiyle uğraşmak zorunda kalsaydınız, hangi hobiyi seçerdiniz?",
+        "Bir insanın karakterini belirleyen en önemli özellikler nelerdir sizce?",
+        "Bugüne kadar karşılaştığınız en büyük zorluk neydi ve bu zorluktan nasıl dersler çıkardınız?",
+        "Geriye dönüp baktığınızda, keşke daha önce yapsaydım dediğiniz bir şey var mı?",
+        "Hayatınızdaki en büyük şans olarak gördüğünüz olay nedir ve bu olayın hayatınıza etkisi ne oldu?",
+        "Eğer bir konuda tamamen uzmanlaşma şansınız olsaydı, hangi konuda uzman olmak isterdiniz?",
+        "Hangi alışkanlıklarınızı bırakmak veya değiştirmek isterdiniz ve bunun için bir adım attınız mı?",
+        "Eğer bir ay boyunca hiçbir sorumluluğunuz olmasaydı, bu zamanı nasıl değerlendirirdiniz?",
+        "En sevdiğiniz sanat dalı nedir ve sizi bu alana çeken şey ne oldu?",
+        "Bugüne kadar aldığınız en anlamlı hediye neydi ve sizin için neden özeldi?",
+        "Hayatınız boyunca karşılaştığınız en ilginç insan kimdi ve onunla yaşadığınız en unutulmaz an nedir?",
+        "Eğer bir gün boyunca istediğiniz herhangi bir mesleği yapabilseydiniz, ne yapardınız?",
+        "Sizi en çok rahatlatan aktivite nedir ve bunu ne sıklıkla yapıyorsunuz?",
+        "Eğer bir saat boyunca dünyanın herhangi bir yerine ışınlanabilseydiniz, nereye giderdiniz ve neden?",
+        "Zamanı geri alma şansınız olsaydı, hayatınızdaki hangi anı yeniden yaşamak isterdiniz?",
+        "Eğer kendinize ait bir felsefeniz veya hayat mottosu olsaydı, ne olurdu?",
+        "Hayatta en çok hayranlık duyduğunuz insan kim ve onun hangi özellikleri sizi etkiliyor?",
+        "Sonsuz bir kaynağınız olsaydı, hangi hayır işini yapmak isterdiniz?",
+        "İnsanların sizin hakkınızda en çok neyi hatırlamasını isterdiniz?"
+    ],
+    shuffledQuestions: [],
+
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+};
+
+// Kullanıcı bilgilerini tutacak nesne
 let activeUser = {
     fullName: '',
     initials: '',
@@ -120,7 +489,6 @@ function generateRandomUser() {
     };
 }
 
-
 // Kullanıcı bilgilerini güncelleme fonksiyonu
 function updateUserInterface(user) {
     // Orta panel başlık - ziyaretçi bilgileri
@@ -161,15 +529,6 @@ const ChatStorage = {
         }
         chats[userId].push(message);
         sessionStorage.setItem('chatMessages', JSON.stringify(chats));
-        
-        // Son mesajı preview olarak güncelle
-        this.updatePreview(userId);
-        
-        // Eğer bot mesajıysa ses çal ve chat öğesini yanıp söndür
-        if (message.type === 'bot') {
-            playMessageSound();
-            this.flashChatItem(userId);
-        }
     },
     
     // Chat'i başlat veya sıfırla
@@ -178,44 +537,6 @@ const ChatStorage = {
         if (!chats[userId]) {
             chats[userId] = [];
             sessionStorage.setItem('chatMessages', JSON.stringify(chats));
-        }
-    },
-
-    // Chat öğesini yanıp söndürme fonksiyonunu güncelle
-    flashChatItem(userId) {
-        const chatItems = document.querySelectorAll('.chat-item');
-        chatItems.forEach(item => {
-            const nameElement = item.querySelector('.chat-item-name');
-            if (nameElement && nameElement.textContent === userId) {
-                // Aktif chat değilse okunmamış olarak işaretle
-                const activeUser = document.querySelector('.visitor-name').textContent;
-                if (activeUser !== userId) {
-                    item.classList.add('unread');
-                }
-                
-                // Yanıp sönme animasyonunu uygula
-                item.classList.remove('flash-animation');
-                void item.offsetWidth; // Reflow
-                item.classList.add('flash-animation');
-            }
-        });
-    },
-    
-    // Preview'ı güncelle
-    updatePreview(userId) {
-        const lastMessage = this.getLastMessage(userId);
-        if (lastMessage) {
-            const chatItems = document.querySelectorAll('.chat-item');
-            chatItems.forEach(item => {
-                const nameElement = item.querySelector('.chat-item-name');
-                if (nameElement && nameElement.textContent === userId) {
-                    const previewElement = item.querySelector('.chat-item-preview');
-                    if (previewElement) {
-                        previewElement.textContent = lastMessage.text.substring(0, 30) + 
-                            (lastMessage.text.length > 30 ? '...' : '');
-                    }
-                }
-            });
         }
     },
     
@@ -227,224 +548,8 @@ const ChatStorage = {
     }
 };
 
-// Chat kutusunu güncelleme fonksiyonu
-function updateChatBox(userId) {
-    const chatBox = document.getElementById('chatBox');
-    chatBox.innerHTML = ''; // Chat kutusunu temizle
-    
-    // Yazıyor göstergesini yeniden ekle
-    const typingIndicator = document.createElement('div');
-    typingIndicator.id = 'typingIndicator';
-    typingIndicator.className = 'typing-indicator hidden';
-    typingIndicator.textContent = 'Yazıyor...';
-    chatBox.appendChild(typingIndicator);
-    
-    // SessionStorage'dan mesajları getir ve göster
-    const messages = ChatStorage.getChatMessages(userId);
-    messages.forEach(msg => {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${msg.type}-message`;
-        messageDiv.textContent = msg.text;
-        chatBox.appendChild(messageDiv);
-    });
-    
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-// Mesaj ekleme fonksiyonlarını güncelle
-function addUserMessage(message) {
-    const currentUser = document.querySelector('.visitor-name').textContent;
-    ChatStorage.addMessage(currentUser, {
-        type: 'user',
-        text: message
-    });
-    updateChatBox(currentUser);
-}
-
-// Yazıyor göstergesi için global değişken yerine chat bazlı obje
-let typingTimeouts = {};
-
-// Yazıyor göstergesini kontrol eden fonksiyonlar
-function showTypingIndicator(userId) {
-    const typingIndicator = document.getElementById('typingIndicator');
-    if (typingIndicator) {
-        typingIndicator.classList.remove('hidden');
-        typingIndicator.dataset.userId = userId; // Hangi chat için yazıyor gösteriliyor
-    }
-}
-
-function hideTypingIndicator() {
-    const typingIndicator = document.getElementById('typingIndicator');
-    if (typingIndicator) {
-        typingIndicator.classList.add('hidden');
-        typingIndicator.dataset.userId = '';
-    }
-}
-
-// Mesaj gönderme fonksiyonunu güncelle
-function sendMessage() {
-    const userInput = document.getElementById('userInput');
-    const message = userInput.value.trim();
-    const currentUser = document.querySelector('.visitor-name').textContent;
-
-    if (message) {
-        // Kullanıcı mesajını göster ve input'u temizle
-        addUserMessage(message);
-        userInput.value = '';
-        
-        // Soruları kontrol et ve karıştır
-        if (shuffledQuestions.length === 0) {
-            shuffledQuestions = [...QUESTIONS];
-            shuffleArray(shuffledQuestions);
-        }
-        const randomQuestion = shuffledQuestions.pop();
-        
-        // Önceki yazıyor göstergesini temizle
-        if (typingTimeouts[currentUser]) {
-            clearTimeout(typingTimeouts[currentUser].initial);
-            clearTimeout(typingTimeouts[currentUser].typing);
-            hideTypingIndicator();
-        }
-
-        // Bot yanıtı için zamanlayıcıları ayarla
-        const initialDelay = Math.floor(Math.random() * 1000) + 2000;
-        const typingDuration = Math.floor(Math.random() * 2000) + 3000;
-
-        // Her chat için ayrı timeout'ları sakla
-        typingTimeouts[currentUser] = {
-            initial: setTimeout(() => {
-                // Eğer hala aynı chat aktifse yazıyor göster
-                const activeUser = document.querySelector('.visitor-name').textContent;
-                if (activeUser === currentUser) {
-                    showTypingIndicator(currentUser);
-                }
-                
-                typingTimeouts[currentUser].typing = setTimeout(() => {
-                    // Eğer hala aynı chat aktifse mesajı gönder
-                    if (document.querySelector('.visitor-name').textContent === currentUser) {
-                        hideTypingIndicator();
-                        addBotMessage(randomQuestion, currentUser);
-                    } else {
-                        // Farklı chat aktifse, mesajı sessizce ekle
-                        ChatStorage.addMessage(currentUser, {
-                            type: 'bot',
-                            text: randomQuestion
-                        });
-                    }
-                    delete typingTimeouts[currentUser];
-                }, typingDuration);
-            }, initialDelay)
-        };
-    }
-}
-
-// Bot mesajı ekleme fonksiyonunu güncelle
-function addBotMessage(message, userId) {
-    ChatStorage.addMessage(userId, {
-        type: 'bot',
-        text: message
-    });
-    
-    // Eğer mesaj aktif chat içinse, görüntüle
-    const currentUser = document.querySelector('.visitor-name').textContent;
-    if (currentUser === userId) {
-        updateChatBox(userId);
-    } else {
-        // Aktif chat değilse yanıp sönme ve okunmamış işaretlemesi yap
-        flashChatItem(userId);
-    }
-    
-    // Son mesajı preview olarak güncelle
-    updateChatPreview(userId, { text: message });
-}
-
-// Chat öğesine tıklama işlevini güncelle
-function addChatClickListener(chatItem, user) {
-    chatItem.addEventListener('click', () => {
-        // Okunmamış durumunu kaldır
-        chatItem.classList.remove('unread');
-        // flash animation  kaldır
-        chatItem.classList.remove('flash-animation');
-        
-        // Önceki aktif chat'in vurgusunu kaldır
-        const previousActive = document.querySelector('.chat-item.active');
-        if (previousActive) {
-            previousActive.classList.remove('active');
-        }
-        
-        // Yeni chat'i aktif yap
-        chatItem.classList.add('active');
-        
-        // Kullanıcı arayüzünü güncelle
-        updateUserInterface(user);
-        
-        // Önceki yazıyor göstergesini temizle
-        hideTypingIndicator();
-        
-        // Chat'i başlat veya var olan mesajları göster
-        ChatStorage.initializeChat(user.fullName);
-        updateChatBox(user.fullName);
-    });
-}
-
-// Preview mesajını güncelleme fonksiyonunu düzelt
-function updateChatPreview(userId, lastMessage) {
-    const chatItems = document.querySelectorAll('.chat-item');
-    chatItems.forEach(item => {
-        const nameElement = item.querySelector('.chat-item-name');
-        if (nameElement && nameElement.textContent === userId) {
-            const previewElement = item.querySelector('.chat-item-preview');
-            if (previewElement) {
-                previewElement.textContent = lastMessage.text.substring(0, 30) + (lastMessage.text.length > 30 ? '...' : '');
-            }
-        }
-    });
-}
-
-// Chat listesini oluşturma fonksiyonunu güncelle
-function createChatList() {
-    const chatList = document.querySelector(".chat-list");
-    chatList.innerHTML = '';
-    
-    // İlk kullanıcı olarak aktif kullanıcıyı ekle
-    const chatItem = document.createElement('div');
-    chatItem.className = 'chat-item active';
-    const lastMessage = ChatStorage.getLastMessage(activeUser.fullName);
-    
-    chatItem.innerHTML = `
-        <div class="chat-item-avatar">${activeUser.initials}</div>
-        <div class="chat-item-info">
-            <div class="chat-item-name">${activeUser.fullName}</div>
-            <div class="chat-item-preview">${lastMessage ? lastMessage.text.substring(0, 30) + 
-                (lastMessage.text.length > 30 ? '...' : '') : 'Son mesaj yok'}</div>
-        </div>
-    `;
-    addChatClickListener(chatItem, activeUser);
-    chatList.appendChild(chatItem);
-    
-    // Diğer rastgele kullanıcılar için de aynı işlem
-    for (let i = 0; i < 4; i++) {
-        const user = generateRandomUser();
-        const chatItem = document.createElement('div');
-        chatItem.className = 'chat-item';
-        const lastMessage = ChatStorage.getLastMessage(user.fullName);
-        
-        chatItem.innerHTML = `
-            <div class="chat-item-avatar">${user.initials}</div>
-            <div class="chat-item-info">
-                <div class="chat-item-name">${user.fullName}</div>
-                <div class="chat-item-preview">${lastMessage ? lastMessage.text.substring(0, 30) + 
-                    (lastMessage.text.length > 30 ? '...' : '') : 'Son mesaj yok'}</div>
-            </div>
-        `;
-        
-        addChatClickListener(chatItem, user);
-        chatList.appendChild(chatItem);
-    }
-}
-
 // Login fonksiyonunu güncelle
-function login() {
+async function login() {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
@@ -453,23 +558,51 @@ function login() {
         return;
     }
 
-    if (password === CORRECT_PASSWORD) {
-        // Agent profile'ı güncelle
-        document.querySelector(".profile-name").textContent = username;
-        
-        // Status'u başlat
-        initializeAgentStatus();
-        
-        // Ziyaretçi bilgilerini güncelle
-        activeUser = generateRandomUser();
-        updateUserInterface(activeUser);
-        
-        ChatStorage.initializeChat(activeUser.fullName);
-        createChatList();
-        
-        // Login formunu gizle, chat arayüzünü göster
-        document.getElementById("loginForm").classList.add("hidden");
-        document.getElementById("chatInterface").classList.remove("hidden");
+    if (password === CONFIG.PASSWORD) {
+        try {
+            let scenariosLoaded = ScenarioManager.loadFromStorage();
+
+            if (!scenariosLoaded) {
+                const response = await fetch('scenarios.txt');
+                if (!response.ok) throw new Error('Senaryo dosyası yüklenemedi');
+                
+                const scenariosText = await response.text();
+                scenariosLoaded = ScenarioManager.loadScenarios(scenariosText);
+                
+                if (!scenariosLoaded) {
+                    throw new Error('Senaryolar yüklenemedi');
+                }
+            }
+
+            // Agent profile'ı güncelle
+            document.querySelector(".profile-name").textContent = username;
+            
+            // Status'u başlat
+            initializeAgentStatus();
+            
+            // Ziyaretçi bilgilerini güncelle
+            activeUser = generateRandomUser();
+            updateUserInterface(activeUser);
+            
+            // Chat'i başlat
+            ChatStorage.initializeChat(activeUser.fullName);
+            
+            // Senaryo seç ve başlat
+            const scenario = ScenarioManager.getOrCreateScenario(activeUser.fullName);
+            if (scenario) {
+                ScenarioManager.updateChatReason(activeUser.fullName);
+                createChatList();
+                
+                // Login formunu gizle, chat arayüzünü göster
+                document.getElementById("loginForm").classList.add("hidden");
+                document.getElementById("chatInterface").classList.remove("hidden");
+            } else {
+                throw new Error('Senaryo atanamadı');
+            }
+        } catch (error) {
+            console.error('Login hatası:', error);
+            alert('Sistem başlatılırken bir hata oluştu. Lütfen tekrar deneyin.');
+        }
     } else {
         alert("Hatalı şifre!");
     }
@@ -545,7 +678,7 @@ document.addEventListener('DOMContentLoaded', function() {
     userInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            sendMessage();
+            ChatManager.sendMessage();
         }
     });
 
@@ -557,50 +690,88 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Chat listesini oluşturma fonksiyonunu güncelle
+function createChatList() {
+    const chatList = document.querySelector(".chat-list");
+    chatList.innerHTML = '';
+    
+    // İlk kullanıcı olarak aktif kullanıcıyı ekle
+    const chatItem = document.createElement('div');
+    chatItem.className = 'chat-item active';
+    const lastMessage = ChatStorage.getLastMessage(activeUser.fullName);
+    
+    chatItem.innerHTML = `
+        <div class="chat-item-avatar">${activeUser.initials}</div>
+        <div class="chat-item-info">
+            <div class="chat-item-name">${activeUser.fullName}</div>
+            <div class="chat-item-preview">${lastMessage ? lastMessage.text.substring(0, 30) + 
+                (lastMessage.text.length > 30 ? '...' : '') : 'Son mesaj yok'}</div>
+        </div>
+    `;
+    addChatClickListener(chatItem, activeUser);
+    chatList.appendChild(chatItem);
+    
+    // Diğer rastgele kullanıcılar için de aynı işlem
+    for (let i = 0; i < 4; i++) {
+        const user = generateRandomUser();
+        const chatItem = document.createElement('div');
+        chatItem.className = 'chat-item';
+        const lastMessage = ChatStorage.getLastMessage(user.fullName);
+        
+        chatItem.innerHTML = `
+            <div class="chat-item-avatar">${user.initials}</div>
+            <div class="chat-item-info">
+                <div class="chat-item-name">${user.fullName}</div>
+                <div class="chat-item-preview">${lastMessage ? lastMessage.text.substring(0, 30) + 
+                    (lastMessage.text.length > 30 ? '...' : '') : 'Son mesaj yok'}</div>
+            </div>
+        `;
+        
+        addChatClickListener(chatItem, user);
+        chatList.appendChild(chatItem);
+    }
+}
+
+// Chat öğesine tıklama işlevini güncelle
+function addChatClickListener(chatItem, user) {
+    chatItem.addEventListener('click', () => {
+        // Okunmamış durumunu kaldır
+        chatItem.classList.remove('unread');
+        chatItem.classList.remove('flash-animation');
+        
+        // Önceki aktif chat'in vurgusunu kaldır
+        const previousActive = document.querySelector('.chat-item.active');
+        if (previousActive) {
+            previousActive.classList.remove('active');
+        }
+        
+        // Yeni chat'i aktif yap
+        chatItem.classList.add('active');
+        
+        // Kullanıcı arayüzünü güncelle
+        updateUserInterface(user);
+        
+        // Senaryo başlığını güncelle
+        const scenario = ScenarioManager.getOrCreateScenario(user.fullName);
+        ScenarioManager.updateChatReason(user.fullName);
+        
+        // Önceki yazıyor göstergesini temizle
+        ChatManager.hideTypingIndicator();
+        
+        // Chat'i başlat veya var olan mesajları göster
+        ChatStorage.initializeChat(user.fullName);
+        MessageManager.updateChatBox(user.fullName);
+    });
+}
+
 // Modal gösterme fonksiyonu
 function showModal(message, onConfirm) {
-    const modal = document.getElementById('confirmModal');
-    const modalMessage = document.getElementById('modalMessage');
-    
-    modalMessage.textContent = message;
-    modal.classList.remove('hidden');
-    setTimeout(() => modal.classList.add('show'), 10);
-
-    // Modal butonlarına event listener'ları ekle
-    const confirmButton = modal.querySelector('.confirm-button');
-    const cancelButton = modal.querySelector('.cancel-button');
-    const closeButton = modal.querySelector('.close-modal');
-
-    const closeModal = () => {
-        modal.classList.remove('show');
-        setTimeout(() => modal.classList.add('hidden'), 300);
-        
-        // Event listener'ları temizle
-        confirmButton.removeEventListener('click', handleConfirm);
-        cancelButton.removeEventListener('click', closeModal);
-        closeButton.removeEventListener('click', closeModal);
-    };
-
-    const handleConfirm = () => {
-        onConfirm();
-        closeModal();
-    };
-
-    confirmButton.addEventListener('click', handleConfirm);
-    cancelButton.addEventListener('click', closeModal);
-    closeButton.addEventListener('click', closeModal);
+    UIManager.showModal(message, onConfirm);
 }
 
 // Bildirim gösterme fonksiyonu
 function showNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.remove();
-    }, 3000);
+    UIManager.showNotification(message, type);
 }
 
 // Arşivleme fonksiyonunu güncelle
@@ -609,6 +780,7 @@ function archiveChat() {
     
     showModal(`${currentUser} ile olan sohbeti arşivlemek istediğinize emin misiniz?`, () => {
         ChatStorage.deleteChat(currentUser);
+        ScenarioManager.resetUserScenario(currentUser);
         
         const chatItems = document.querySelectorAll('.chat-item');
         chatItems.forEach(item => {
@@ -639,6 +811,7 @@ function endChat() {
     
     showModal(`${currentUser} ile olan sohbeti sonlandırmak istediğinize emin misiniz?`, () => {
         ChatStorage.deleteChat(currentUser);
+        ScenarioManager.resetUserScenario(currentUser);
         
         const chatItems = document.querySelectorAll('.chat-item');
         chatItems.forEach(item => {
@@ -662,4 +835,60 @@ function endChat() {
         }
     });
 }
+
+// Ziyaretçi bilgilerini güncelleme fonksiyonu
+function updateVisitorInfo(name, status) {
+    const visitorName = document.querySelector('.visitor-name');
+    const visitorStatus = document.querySelector('.visitor-status');
+    
+    if (visitorName && visitorStatus) {
+        visitorName.textContent = name;
+        visitorStatus.textContent = status;
+        console.log('Ziyaretçi bilgileri güncellendi:', { name, status });
+    }
+}
+
+// Chat sebebini güncelleme fonksiyonu
+function updateChatReason(reason) {
+    const reasonText = document.querySelector('.reason-text');
+    if (reasonText) {
+        reasonText.textContent = reason;
+        console.log('Chat sebebi güncellendi:', reason);
+    }
+}
+
+// Chat aksiyonlarını yönetme
+function initializeChatActions() {
+    const archiveButton = document.querySelector('[data-action="archive"]');
+    const endButton = document.querySelector('[data-action="end"]');
+
+    if (archiveButton) {
+        archiveButton.addEventListener('click', () => {
+            console.log('Chat arşivleniyor...');
+            // Arşivleme işlemi burada gerçekleştirilecek
+        });
+    }
+
+    if (endButton) {
+        endButton.addEventListener('click', () => {
+            console.log('Chat sonlandırılıyor...');
+            // Sonlandırma işlemi burada gerçekleştirilecek
+        });
+    }
+}
+
+// Chat header'ı başlatma
+function initializeChatHeader() {
+    try {
+        updateVisitorInfo('Ziyaretçi', 'Çevrimiçi');
+        updateChatReason('Teknik Destek');
+        initializeChatActions();
+        console.log('Chat header başarıyla başlatıldı');
+    } catch (error) {
+        console.error('Chat header başlatılırken hata oluştu:', error);
+    }
+}
+
+// Sayfa yüklendiğinde chat header'ı başlat
+document.addEventListener('DOMContentLoaded', initializeChatHeader);
  

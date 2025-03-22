@@ -18,31 +18,40 @@
     
     <!-- Stil dosyaları -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
+          integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Önbellek kontrolü -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    
+    <!-- Performans optimizasyonları -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
-    <audio id="messageSound">
+    <!-- Ses bildirimi için preload -->
+    <audio id="messageSound" preload="auto">
         <source src="notification.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Header kısmı eklendi -->
+    <!-- Header -->
     <header class="main-header">
         <h1>Support Service</h1>
     </header>
 
     <div class="container">
+        <!-- Login Formu -->
         <div id="loginForm" class="login-form">
             <h2>Canlı Destek Girişi</h2>
-            <input type="text" id="username" placeholder="Kullanıcı Adı">
-            <input type="password" id="password" placeholder="Şifre">
-            <button onclick="login()">Giriş</button>
+            <input type="text" id="username" placeholder="Kullanıcı Adı" autocomplete="username">
+            <input type="password" id="password" placeholder="Şifre" autocomplete="current-password">
+            <button type="button" onclick="login()">Giriş</button>
         </div>
 
+        <!-- Chat Arayüzü -->
         <div id="chatInterface" class="chat-interface hidden">
             <!-- Sol Panel -->
             <div class="side-panel">
@@ -56,20 +65,12 @@
                             </div>
                         </div>
                         <div class="status-image-container">
-                            <img class="status-image" src="./images/online.png" alt="status">
+                            <img class="status-image" src="./images/online.png" alt="status" loading="lazy">
                         </div>
                     </div>
                 </div>
-                <div class="chat-list">
-                    <!-- Aktif chat -->
-                    <div class="chat-item active">
-                        <div class="chat-item-avatar">T</div>
-                        <div class="chat-item-info">
-                            <div class="chat-item-name">Terry</div>
-                            <div class="chat-item-preview">Son mesaj...</div>
-                        </div>
-                    </div>
-                    <!-- Diğer chatler buraya eklenecek -->
+                <div class="chat-list" role="list">
+                    <!-- Chat öğeleri dinamik olarak eklenecek -->
                 </div>
             </div>
 
@@ -77,37 +78,43 @@
             <div class="main-chat">
                 <div class="chat-header">
                     <div class="visitor-info">
-                        <div class="visitor-name">Terry</div>
+                        <div class="visitor-name"></div>
                         <div class="visitor-status">Aktif</div>
                     </div>
+                    <div class="chat-reason">
+                        <span class="reason-label">Görüşme Sebebi:</span>
+                        <span class="reason-text"></span>
+                    </div>
                     <div class="chat-actions">
-                        <button class="action-button" title="Sohbeti Arşivle" onclick="archiveChat()">
-                            <i class="fas fa-archive"></i>
+                        <button class="action-button" title="Sohbeti Arşivle" onclick="archiveChat()" aria-label="Sohbeti Arşivle">
+                            <i class="fas fa-archive" aria-hidden="true"></i>
                         </button>
-                        <button class="action-button end-chat" title="Sohbeti Sonlandır" onclick="endChat()">
-                            <i class="fas fa-times"></i>
+                        <button class="action-button end-chat" title="Sohbeti Sonlandır" onclick="endChat()" aria-label="Sohbeti Sonlandır">
+                            <i class="fas fa-times" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
 
-                <div id="chatBox" class="chat-box">
-                    <!-- Mesajlar buraya gelecek -->
+                <div id="chatBox" class="chat-box" role="log" aria-live="polite">
+                    <!-- Mesajlar dinamik olarak eklenecek -->
                 </div>
-                <div id="typingIndicator" class="typing-indicator hidden">
+                
+                <div id="typingIndicator" class="typing-indicator hidden" aria-hidden="true">
                     <div class="typing-content">
+                        <span class="typing-text">Yazıyor</span>
                         <span class="typing-dot"></span>
                         <span class="typing-dot"></span>
                         <span class="typing-dot"></span>
-                        <span class="typing-text">Yazıyor...</span>
                     </div>
                 </div>
                 
-                
-                
                 <div class="input-area">
-                    <form onsubmit="event.preventDefault(); sendMessage();">
-                        <input type="text" id="userInput" placeholder="Mesajınızı yazın...">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    <form onsubmit="event.preventDefault(); ChatManager.sendMessage();">
+                        <input type="text" id="userInput" placeholder="Mesajınızı yazın..." 
+                               aria-label="Mesaj giriş alanı">
+                        <button type="submit" aria-label="Mesaj gönder">
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -135,13 +142,13 @@
         </div>
     </div>
 
-    <!-- Modal yapısını ekle -->
-    <div id="confirmModal" class="modal hidden">
+    <!-- Modal -->
+    <div id="confirmModal" class="modal hidden" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Sohbeti Sonlandır</h3>
-                <button class="close-modal">
-                    <i class="fas fa-times"></i>
+                <h3 id="modalTitle">Sohbeti Sonlandır</h3>
+                <button class="close-modal" aria-label="Modalı kapat">
+                    <i class="fas fa-times" aria-hidden="true"></i>
                 </button>
             </div>
             <div class="modal-body">
@@ -154,6 +161,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Script -->
+    <script src="script.js" defer></script>
 </body>
 </html> 
