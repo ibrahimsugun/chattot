@@ -553,8 +553,8 @@ async function login() {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
-    if (!username) {
-        alert("Kullanıcı adı boş bırakılamaz!");
+    if (!username || username.length < 5) {
+        alert("Kullanıcı adı en az 5 karakter olmalıdır!");
         return;
     }
 
@@ -613,12 +613,14 @@ function initializeAgentStatus() {
     const statusWrapper = document.querySelector(".profile-status-wrapper");
     const statusIndicator = document.querySelector(".status-indicator");
     const statusText = document.querySelector(".profile-status");
+    const statusImage = document.querySelector(".status-image");
     
     // Başlangıç durumu
     setAgentStatus(true);
     
-    // Click event listener ekle
+    // Click event listener'ları ekle
     statusWrapper.addEventListener("click", toggleAgentStatus);
+    statusImage.addEventListener("click", toggleAgentStatus);
 }
 
 function setAgentStatus(isOnline) {
