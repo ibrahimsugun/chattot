@@ -66,6 +66,58 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    transition: all 0.5s ease;
+}
+
+.login-form.error {
+    background-color: rgba(89, 0, 0, 0.527);
+}
+
+.login-form.error input {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+@keyframes bounceError {
+    0%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+    80% { transform: translateY(-5px); }
+}
+
+@keyframes pulseError {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes rotateError {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.login-form.error-shake {
+    animation: shakeError 0.5s ease-in-out;
+}
+
+.login-form.error-bounce {
+    animation: bounceError 0.8s cubic-bezier(0.36, 0, 0.66, -0.56);
+}
+
+.login-form.error-pulse {
+    animation: pulseError 0.5s ease-in-out;
+}
+
+.login-form.error-rotate {
+    animation: rotateError 0.6s ease-in-out;
 }
 
 .login-form h2 {
@@ -880,22 +932,39 @@ body {
 /* Bildirim stilleri */
 .notification {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
     padding: 12px 24px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     animation: slideIn 0.3s ease-out;
-    z-index: 1000;
+    z-index: var(--z-notification);
     color: white;
+    font-weight: 500;
+    min-width: 300px;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
-.notification.archive {
+.notification.info {
+    background: var(--primary-color);
+}
+
+.notification.success {
     background: var(--success-color);
 }
 
-.notification.delete {
+.notification.error {
     background: var(--error-color);
+}
+
+.notification.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
 }
 
 @keyframes slideIn {
@@ -906,6 +975,31 @@ body {
     to {
         transform: translate3d(0, 0, 0);
         opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate3d(100%, 0, 0);
+        opacity: 0;
+    }
+}
+
+/* Mobil için bildirim düzenlemesi */
+@media screen and (max-width: 576px) {
+    .notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        min-width: auto;
+        max-width: none;
+        width: auto;
+        padding: 10px 16px;
+        font-size: 0.875rem;
     }
 }
 
@@ -967,4 +1061,94 @@ button:hover, a:hover {
 
 .notification.error {
     background-color: var(--error-color);
+}
+
+/* Responsive Tasarım */
+@media screen and (max-width: 1200px) {
+    .chat-interface {
+        gap: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .info-panel {
+        display: none;
+    }
+    
+    .main-chat {
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .chat-interface {
+        height: calc(100vh - 5rem);
+        border-radius: 0.5rem;
+    }
+    
+    .chat-item {
+        padding: 8px;
+    }
+    
+    .chat-item-avatar {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.875rem;
+    }
+    
+    .chat-item-info {
+        font-size: 0.875rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        padding: 0;
+    }
+    
+    .chat-interface {
+        border-radius: 0;
+        height: calc(100vh - 4rem);
+    }
+    
+    .main-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .chat-box {
+        padding: 0.5rem;
+    }
+    
+    .message {
+        max-width: 85%;
+        margin: 0.25rem 0;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    .input-area {
+        padding: 0.5rem;
+    }
+    
+    .input-area input {
+        font-size: 0.875rem;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .chat-interface {
+        height: calc(100vh - 3rem);
+    }
+    
+    .main-header {
+        height: 3rem;
+    }
+    
+    .main-header h1 {
+        font-size: 1.25rem;
+    }
 } 

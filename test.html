@@ -20,55 +20,240 @@
         }
         
         .test-container {
-            background: white;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .test-summary {
+            background: #E3F2FD;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-        
-        .test-group {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
+
+        .test-summary h2 {
+            width: 100%;
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            text-align: center;
         }
-        
+
+        .test-summary p {
+            margin: 0;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .button-container {
+            width: 100%;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #test-results {
+            display: grid;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Ekran boyutlarına göre grid yapısı */
+        @media screen and (min-width: 1600px) {
+            #test-results {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        @media screen and (min-width: 1200px) and (max-width: 1599px) {
+            #test-results {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media screen and (min-width: 900px) and (max-width: 1199px) {
+            #test-results {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 899px) {
+            #test-results {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .test-item {
-            margin: 10px 0;
-            padding: 10px;
-            border-left: 4px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            padding: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 3px solid #ddd;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .test-item.active {
+            border-left-color: #2196F3;
+            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+        }
+
+        .test-item.active .step-list {
+            max-height: 500px !important;
+        }
+
+        .test-item.active .step-details {
+            display: block !important;
+        }
+
+        .test-item h3 {
+            font-size: 0.9rem;
+            margin: 0;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .test-description {
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .test-details {
+            font-size: 0.75rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+            padding: 8px;
+            margin-top: 4px;
+        }
+
+        .test-item:hover .test-details {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .test-details::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .test-details::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .test-details::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 2px;
+        }
+
+        .detail-item {
+            padding: 4px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #666;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .detail-value {
+            color: #333;
+        }
+
+        .detail-value.success {
+            color: #2E7D32;
+        }
+
+        .detail-value.fail {
+            color: #C62828;
+        }
+
+        .test-result {
+            font-size: 0.8rem;
+            padding: 3px 6px;
+            border-radius: 3px;
+            display: inline-block;
+            position: absolute;
+            top: 12px;
+            right: 12px;
+        }
+
+        /* Test adımlarını gizle ama önemli bilgileri göster */
+        .test-steps {
+            display: none;
+        }
+
+        .test-visualization {
+            display: none;
+        }
+
+        .test-error {
+            font-size: 0.75rem;
+            color: #C62828;
+            margin-top: 4px;
+            padding: 4px;
+            background: #FFEBEE;
+            border-radius: 3px;
+        }
+
+        .test-active {
+            border: 2px solid #2196F3;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(33,150,243,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(33,150,243,0); }
+            100% { box-shadow: 0 0 0 0 rgba(33,150,243,0); }
         }
         
         .test-item.success {
             border-left-color: #4CAF50;
-            background: #E8F5E9;
         }
         
         .test-item.fail {
             border-left-color: #F44336;
-            background: #FFEBEE;
         }
         
-        .test-item h3 {
-            margin: 0 0 10px 0;
-            color: #333;
+        .test-item.loading {
+            border-left-color: #FFC107;
+            background: #FFF8E1;
         }
         
-        .test-result {
-            font-weight: bold;
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            right: 10px;
+            top: 10px;
         }
         
-        .success .test-result {
-            color: #2E7D32;
-        }
-        
-        .fail .test-result {
-            color: #C62828;
-        }
-        
-        .test-description {
-            margin: 5px 0;
-            color: #666;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         button {
@@ -85,16 +270,122 @@
             background: #1565C0;
         }
         
-        #test-results {
-            margin-top: 20px;
+        .test-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: #2196F3;
+            width: 0;
+            transition: width 0.1s linear;
         }
-        
-        .test-summary {
-            text-align: center;
-            margin: 20px 0;
-            padding: 10px;
-            background: #E3F2FD;
+
+        .test-progress-bar {
+            height: 100%;
+            background: #4CAF50;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .test-step {
+            padding: 5px;
+            margin: 3px 0;
             border-radius: 4px;
+        }
+
+        .test-step.success {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .test-step.fail {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .test-step.pending {
+            background: #FFF8E1;
+            color: #F57F17;
+        }
+
+        .step-summary {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #eee;
+        }
+
+        .step-list {
+            margin-left: 12px;
+            font-size: 0.7rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .test-item:hover .step-list:not(.active),
+        .test-item.completed:hover .step-list {
+            max-height: 500px;
+        }
+
+        .step-item {
+            margin: 2px 0;
+            padding: 4px;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .step-item .step-details {
+            display: none;
+            font-size: 0.65rem;
+            padding: 4px;
+            margin-top: 2px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 2px;
+        }
+
+        .step-item:hover .step-details {
+            display: block;
+        }
+
+        .step-message {
+            display: block;
+            padding-right: 20px;
+        }
+
+        .success-steps .step-item {
+            background: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .fail-steps .step-item {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+
+        .pending-steps .step-item {
+            background: #FFF8E1;
+            color: #F57F17;
+        }
+
+        /* Test yönetimi için yeni stiller */
+        .test-timeout-warning {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.7rem;
+            color: #F57F17;
+            display: none;
+        }
+
+        .test-item.warning .test-timeout-warning {
+            display: block;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
         }
     </style>
 </head>
@@ -107,10 +398,15 @@
             <p>Toplam Test: <span id="total-tests">0</span></p>
             <p>Başarılı: <span id="passed-tests">0</span></p>
             <p>Başarısız: <span id="failed-tests">0</span></p>
+            <div class="test-progress">
+                <div class="test-progress-bar" id="test-progress"></div>
+            </div>
         </div>
         
-        <button onclick="runAllTests()">Tüm Testleri Çalıştır</button>
-        <button onclick="clearResults()">Sonuçları Temizle</button>
+        <div class="button-container">
+            <button onclick="runAllTests()">Tüm Testleri Çalıştır</button>
+            <button onclick="clearResults()">Sonuçları Temizle</button>
+        </div>
         
         <div id="test-results"></div>
     </div>
@@ -125,21 +421,78 @@
             return true;
         }
 
-        function displayTestResult(testName, description, success, error = '') {
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function displayTestResult(testName, description, steps = [], success, error = '') {
             const resultsDiv = document.getElementById('test-results');
             const testItem = document.createElement('div');
             testItem.className = `test-item ${success ? 'success' : 'fail'}`;
             
+            // Test detaylarını hazırla
+            const successSteps = steps.filter(step => step.status === 'success');
+            const failSteps = steps.filter(step => step.status === 'fail');
+            const pendingSteps = steps.filter(step => step.status === 'pending');
+
             testItem.innerHTML = `
                 <h3>${testName}</h3>
                 <p class="test-description">${description}</p>
+                <div class="test-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Toplam Adım:</span>
+                        <span class="detail-value">${steps.length}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Başarılı (${successSteps.length}):</span>
+                        <div class="step-list success-steps">
+                            ${successSteps.map(step => `
+                                <div class="step-item success">
+                                    <span class="step-message">${step.message}</span>
+                                    ${step.details ? `
+                                        <div class="step-details">
+                                            <strong>Girdi:</strong> ${JSON.stringify(step.details.input || {})}
+                                            <strong>Sonuç:</strong> ${JSON.stringify(step.details.actual || {})}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Başarısız (${failSteps.length}):</span>
+                        <div class="step-list fail-steps">
+                            ${failSteps.map(step => `
+                                <div class="step-item fail">
+                                    <span class="step-message">${step.message}</span>
+                                    ${step.details ? `
+                                        <div class="step-details">
+                                            <strong>Girdi:</strong> ${JSON.stringify(step.details.input || {})}
+                                            <strong>Sonuç:</strong> ${JSON.stringify(step.details.actual || {})}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ${pendingSteps.length > 0 ? `
+                        <div class="detail-item">
+                            <span class="detail-label">Bekleyen (${pendingSteps.length}):</span>
+                            <div class="step-list pending-steps">
+                                ${pendingSteps.map(step => `
+                                    <div class="step-item pending">
+                                        <span class="step-message">${step.message}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
                 <p class="test-result">${success ? 'BAŞARILI ✓' : 'BAŞARISIZ ✗'}</p>
-                ${error ? `<p class="test-error">Hata: ${error}</p>` : ''}
+                ${error ? `<p class="test-error">${error}</p>` : ''}
             `;
             
             resultsDiv.appendChild(testItem);
-            
-            // Test sayılarını güncelle
             updateTestCounts();
         }
 
@@ -151,6 +504,11 @@
             document.getElementById('total-tests').textContent = totalTests;
             document.getElementById('passed-tests').textContent = passedTests;
             document.getElementById('failed-tests').textContent = failedTests;
+            
+            // İlerleme çubuğunu güncelle
+            const progressBar = document.getElementById('test-progress');
+            const progress = (passedTests / totalTests) * 100;
+            progressBar.style.width = `${progress}%`;
         }
 
         function clearResults() {
@@ -160,144 +518,241 @@
 
         // Test senaryoları
         const tests = {
-            // Kullanıcı Girişi Testleri
-            testLogin() {
+            async testLogin() {
+                const steps = [];
                 try {
-                    // Boş kullanıcı adı kontrolü
-                    const emptyUsername = document.getElementById('username');
-                    const emptyPassword = document.getElementById('password');
-                    if (emptyUsername && emptyPassword) {
-                        emptyUsername.value = '';
-                        emptyPassword.value = CONFIG.PASSWORD;
-                        login();
-                        assert(document.getElementById('chatInterface').classList.contains('hidden'), 
-                            'Boş kullanıcı adı ile giriş yapılamamalı');
-                    }
+                    // Test ortamını hazırla
+                    const username = document.getElementById('username');
+                    const password = document.getElementById('password');
+                    const loginForm = document.getElementById('loginForm');
+                    const chatInterface = document.getElementById('chatInterface');
+
+                    // Boş kullanıcı adı testi
+                    steps.push({
+                        status: 'pending',
+                        message: 'Boş kullanıcı adı kontrolü yapılıyor...',
+                        details: {
+                            input: { username: '', password: CONFIG.PASSWORD },
+                            expected: { result: 'error', message: 'Kullanıcı adı boş olamaz' },
+                            actual: { result: 'pending' }
+                        }
+                    });
                     
-                    // Yanlış şifre kontrolü
-                    if (emptyUsername && emptyPassword) {
-                        emptyUsername.value = 'TestUser';
-                        emptyPassword.value = 'wrong_password';
-                        login();
-                        assert(document.getElementById('chatInterface').classList.contains('hidden'), 
-                            'Yanlış şifre ile giriş yapılamamalı');
-                    }
+                    username.value = '';
+                    password.value = CONFIG.PASSWORD;
+                    login();
+                    await sleep(500);
                     
-                    // Doğru giriş kontrolü
-                    if (emptyUsername && emptyPassword) {
-                        emptyUsername.value = 'TestUser';
-                        emptyPassword.value = CONFIG.PASSWORD;
-                        login();
-                        assert(!document.getElementById('chatInterface').classList.contains('hidden'), 
-                            'Doğru bilgilerle giriş yapılabilmeli');
-                    }
+                    const isHidden = chatInterface.classList.contains('hidden');
+                    steps[steps.length - 1].details.actual = {
+                        result: isHidden ? 'success' : 'error',
+                        message: isHidden ? 'Giriş engellendi' : 'Giriş yapıldı'
+                    };
+                    steps[steps.length - 1].status = isHidden ? 'success' : 'fail';
+
+                    // Yanlış şifre testi
+                    steps.push({
+                        status: 'pending',
+                        message: 'Yanlış şifre kontrolü yapılıyor...',
+                        details: {
+                            input: { username: 'TestUser', password: 'wrong_password' },
+                            expected: { result: 'error', message: 'Şifre yanlış' },
+                            actual: { result: 'pending' }
+                        }
+                    });
                     
-                    displayTestResult('Kullanıcı Girişi Testi', 
-                        'Giriş işlemlerinin doğru çalıştığını kontrol eder', true);
+                    username.value = 'TestUser';
+                    password.value = 'wrong_password';
+                    login();
+                    await sleep(500);
+                    
+                    const isStillHidden = chatInterface.classList.contains('hidden');
+                    steps[steps.length - 1].details.actual = {
+                        result: isStillHidden ? 'success' : 'error',
+                        message: isStillHidden ? 'Giriş engellendi' : 'Giriş yapıldı'
+                    };
+                    steps[steps.length - 1].status = isStillHidden ? 'success' : 'fail';
+
+                    // Doğru giriş testi
+                    steps.push({
+                        status: 'pending',
+                        message: 'Doğru giriş kontrolü yapılıyor...',
+                        details: {
+                            input: { username: 'TestUser', password: CONFIG.PASSWORD },
+                            expected: { result: 'success', message: 'Giriş başarılı' },
+                            actual: { result: 'pending' }
+                        }
+                    });
+                    
+                    username.value = 'TestUser';
+                    password.value = CONFIG.PASSWORD;
+                    login();
+                    await sleep(500);
+                    
+                    const isVisible = !chatInterface.classList.contains('hidden');
+                    steps[steps.length - 1].details.actual = {
+                        result: isVisible ? 'success' : 'error',
+                        message: isVisible ? 'Giriş başarılı' : 'Giriş başarısız'
+                    };
+                    steps[steps.length - 1].status = isVisible ? 'success' : 'fail';
+
+                    await displayTestResult('Kullanıcı Girişi Testi', 
+                        'Giriş işlemlerinin doğru çalıştığını kontrol eder', steps, true);
                 } catch (error) {
-                    displayTestResult('Kullanıcı Girişi Testi', 
-                        'Giriş işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                    steps.push({
+                        status: 'fail',
+                        message: `Hata: ${error.message}`,
+                        details: {
+                            error: error.message,
+                            stack: error.stack
+                        }
+                    });
+                    await displayTestResult('Kullanıcı Girişi Testi', 
+                        'Giriş işlemlerinin doğru çalıştığını kontrol eder', steps, false, error.message);
                 }
             },
 
             // SessionStorage Testleri
-            testSessionStorage() {
+            async testSessionStorage() {
+                const steps = [];
                 try {
-                    // Storage temizleme kontrolü
-                    sessionStorage.clear();
-                    assert(Object.keys(ChatStorage.getAllChats()).length === 0, 
-                        'SessionStorage başlangıçta boş olmalı');
+                    steps.push({
+                        status: 'pending',
+                        message: 'Storage temizleniyor...',
+                        details: {
+                            input: { action: 'clear' },
+                            expected: { storageSize: 0 },
+                            actual: { result: 'pending' }
+                        }
+                    });
                     
-                    // Mesaj ekleme kontrolü
+                    sessionStorage.clear();
+                    const initialSize = Object.keys(ChatStorage.getAllChats()).length;
+                    
+                    steps[steps.length - 1].details.actual = {
+                        storageSize: initialSize,
+                        result: initialSize === 0 ? 'success' : 'fail'
+                    };
+                    steps[steps.length - 1].status = initialSize === 0 ? 'success' : 'fail';
+
                     const testUser = 'Test User';
                     const testMessage = { type: 'user', text: 'Test message' };
+                    
+                    steps.push({
+                        status: 'pending',
+                        message: 'Test mesajı ekleniyor...',
+                        details: {
+                            input: { user: testUser, message: testMessage },
+                            expected: { messageCount: 1, messageText: testMessage.text },
+                            actual: { result: 'pending' }
+                        }
+                    });
+                    
                     ChatStorage.addMessage(testUser, testMessage);
-                    
                     const messages = ChatStorage.getChatMessages(testUser);
-                    assert(messages.length === 1, 'Mesaj başarıyla eklenmiş olmalı');
-                    assert(messages[0].text === testMessage.text, 'Eklenen mesaj doğru olmalı');
                     
-                    // Chat silme kontrolü
-                    ChatStorage.deleteChat(testUser);
-                    assert(ChatStorage.getChatMessages(testUser).length === 0, 
-                        'Chat başarıyla silinmiş olmalı');
-                    
-                    displayTestResult('SessionStorage Testi', 
-                        'SessionStorage işlemlerinin doğru çalıştığını kontrol eder', true);
+                    steps[steps.length - 1].details.actual = {
+                        messageCount: messages.length,
+                        messageText: messages[0]?.text,
+                        result: messages.length === 1 && messages[0].text === testMessage.text ? 'success' : 'fail'
+                    };
+                    steps[steps.length - 1].status = messages.length === 1 ? 'success' : 'fail';
+
+                    await displayTestResult('SessionStorage Testi', 
+                        'SessionStorage işlemlerinin doğru çalıştığını kontrol eder', steps, true);
                 } catch (error) {
-                    displayTestResult('SessionStorage Testi', 
-                        'SessionStorage işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                    steps.push({
+                        status: 'fail',
+                        message: `Hata: ${error.message}`,
+                        details: {
+                            error: error.message,
+                            stack: error.stack
+                        }
+                    });
+                    await displayTestResult('SessionStorage Testi', 
+                        'SessionStorage işlemlerinin doğru çalıştığını kontrol eder', steps, false, error.message);
                 }
             },
 
             // Mesaj Yönetimi Testleri
-            testMessageManagement() {
+            async testMessageManagement() {
+                const steps = [];
                 try {
-                    // Mesaj oluşturma kontrolü
+                    steps.push({ status: 'pending', message: 'Mesaj elementi oluşturuluyor...' });
                     const messageElement = MessageManager.createMessageElement('Test message', 'user');
-                    assert(messageElement.classList.contains('user-message'), 
-                        'Mesaj elementi doğru sınıfa sahip olmalı');
-                    assert(messageElement.textContent === 'Test message', 
-                        'Mesaj elementi doğru metne sahip olmalı');
+                    assert(messageElement.classList.contains('user-message'), 'Mesaj elementi doğru sınıfa sahip olmalı');
+                    assert(messageElement.textContent === 'Test message', 'Mesaj elementi doğru metne sahip olmalı');
+                    steps.push({ status: 'success', message: 'Mesaj elementi başarıyla oluşturuldu' });
                     
-                    displayTestResult('Mesaj Yönetimi Testi', 
-                        'Mesaj yönetimi işlemlerinin doğru çalıştığını kontrol eder', true);
+                    await displayTestResult('Mesaj Yönetimi Testi', 
+                        'Mesaj yönetimi işlemlerinin doğru çalıştığını kontrol eder', steps, true);
                 } catch (error) {
-                    displayTestResult('Mesaj Yönetimi Testi', 
-                        'Mesaj yönetimi işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                    steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                    await displayTestResult('Mesaj Yönetimi Testi', 
+                        'Mesaj yönetimi işlemlerinin doğru çalıştığını kontrol eder', steps, false, error.message);
                 }
             },
 
             // Chat Yönetimi Testleri
-            testChatManagement() {
+            async testChatManagement() {
+                const steps = [];
                 try {
-                    // Yazıyor göstergesi kontrolü
+                    steps.push({ status: 'pending', message: 'Yazıyor göstergesi test ediliyor...' });
                     ChatManager.showTypingIndicator();
                     const indicator = document.getElementById('typingIndicator');
-                    assert(!indicator.classList.contains('hidden'), 
-                        'Yazıyor göstergesi görünür olmalı');
+                    assert(!indicator.classList.contains('hidden'), 'Yazıyor göstergesi görünür olmalı');
+                    steps.push({ status: 'success', message: 'Yazıyor göstergesi görünür' });
                     
+                    steps.push({ status: 'pending', message: 'Yazıyor göstergesi gizleniyor...' });
                     ChatManager.hideTypingIndicator();
-                    assert(indicator.classList.contains('hidden'), 
-                        'Yazıyor göstergesi gizli olmalı');
+                    assert(indicator.classList.contains('hidden'), 'Yazıyor göstergesi gizli olmalı');
+                    steps.push({ status: 'success', message: 'Yazıyor göstergesi gizlendi' });
                     
-                    // Chat önizleme kontrolü
+                    steps.push({ status: 'pending', message: 'Chat önizlemesi test ediliyor...' });
                     const testMessage = 'Test message for preview';
                     ChatManager.updateChatPreview('Test User', testMessage);
+                    steps.push({ status: 'success', message: 'Chat önizlemesi güncellendi' });
                     
-                    displayTestResult('Chat Yönetimi Testi', 
-                        'Chat yönetimi işlemlerinin doğru çalıştığını kontrol eder', true);
+                    await displayTestResult('Chat Yönetimi Testi', 
+                        'Chat yönetimi işlemlerinin doğru çalıştığını kontrol eder', steps, true);
                 } catch (error) {
-                    displayTestResult('Chat Yönetimi Testi', 
-                        'Chat yönetimi işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                    steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                    await displayTestResult('Chat Yönetimi Testi', 
+                        'Chat yönetimi işlemlerinin doğru çalıştığını kontrol eder', steps, false, error.message);
                 }
             },
 
             // UI Yönetimi Testleri
-            testUIManagement() {
+            async testUIManagement() {
+                const steps = [];
                 try {
-                    // Bildirim kontrolü
+                    steps.push({ status: 'pending', message: 'Bildirim testi yapılıyor...' });
                     UIManager.showNotification('Test notification', 'success');
                     const notification = document.querySelector('.notification');
                     assert(notification, 'Bildirim elementi oluşturulmalı');
+                    steps.push({ status: 'success', message: 'Bildirim başarıyla gösterildi' });
                     
-                    // Modal kontrolü
+                    steps.push({ status: 'pending', message: 'Modal testi yapılıyor...' });
                     UIManager.showModal('Test modal', () => {});
                     const modal = document.getElementById('confirmModal');
                     assert(!modal.classList.contains('hidden'), 'Modal görünür olmalı');
+                    steps.push({ status: 'success', message: 'Modal başarıyla gösterildi' });
                     
-                    displayTestResult('UI Yönetimi Testi', 
-                        'UI yönetimi işlemlerinin doğru çalıştığını kontrol eder', true);
+                    await displayTestResult('UI Yönetimi Testi', 
+                        'UI yönetimi işlemlerinin doğru çalıştığını kontrol eder', steps, true);
                 } catch (error) {
-                    displayTestResult('UI Yönetimi Testi', 
-                        'UI yönetimi işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                    steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                    await displayTestResult('UI Yönetimi Testi', 
+                        'UI yönetimi işlemlerinin doğru çalıştığını kontrol eder', steps, false, error.message);
                 }
             },
 
             // Soru Yönetimi Testleri
-            testQuestionManagement() {
+            async testQuestionManagement() {
+                const steps = [];
                 try {
-                    // Soru karıştırma kontrolü
+                    steps.push({ status: 'pending', message: 'Soru karıştırma testi yapılıyor...' });
+                    await sleep(500);
                     const originalQuestions = [...QuestionManager.QUESTIONS];
                     QuestionManager.shuffleArray(QuestionManager.QUESTIONS);
                     
@@ -312,19 +767,23 @@
                     assert(isDifferent, 'Sorular karıştırılmış olmalı');
                     assert(QuestionManager.QUESTIONS.length === originalQuestions.length, 
                         'Soru sayısı değişmemeli');
+                    steps.push({ status: 'success', message: 'Sorular başarıyla karıştırıldı' });
                     
-                    displayTestResult('Soru Yönetimi Testi', 
-                        'Soru yönetimi işlemlerinin doğru çalıştığını kontrol eder', true);
+                    await displayTestResult('Soru Yönetimi Testi', 
+                        'Soru yönetimi işlemlerinin doğru çalıştığını kontrol eder', steps, true);
                 } catch (error) {
-                    displayTestResult('Soru Yönetimi Testi', 
-                        'Soru yönetimi işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                    steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                    await displayTestResult('Soru Yönetimi Testi', 
+                        'Soru yönetimi işlemlerinin doğru çalıştığını kontrol eder', steps, false, error.message);
                 }
             },
 
             // Kullanıcı Arayüzü Testleri
-            testUserInterface() {
+            async testUserInterface() {
+                const steps = [];
                 try {
-                    // Kullanıcı bilgileri güncelleme kontrolü
+                    steps.push({ status: 'pending', message: 'Kullanıcı bilgileri güncelleniyor...' });
+                    await sleep(500);
                     const testUser = generateRandomUser();
                     updateUserInterface(testUser);
                     
@@ -338,21 +797,180 @@
                         'E-posta doğru görüntülenmeli');
                     assert(locationElement.textContent === testUser.location, 
                         'Konum doğru görüntülenmeli');
+                    steps.push({ status: 'success', message: 'Kullanıcı bilgileri başarıyla güncellendi' });
                     
-                    displayTestResult('Kullanıcı Arayüzü Testi', 
-                        'Kullanıcı arayüzü işlemlerinin doğru çalıştığını kontrol eder', true);
+                    await displayTestResult('Kullanıcı Arayüzü Testi', 
+                        'Kullanıcı arayüzü işlemlerinin doğru çalıştığını kontrol eder', steps, true);
                 } catch (error) {
-                    displayTestResult('Kullanıcı Arayüzü Testi', 
-                        'Kullanıcı arayüzü işlemlerinin doğru çalıştığını kontrol eder', false, error.message);
+                    steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                    await displayTestResult('Kullanıcı Arayüzü Testi', 
+                        'Kullanıcı arayüzü işlemlerinin doğru çalıştığını kontrol eder', steps, false, error.message);
                 }
             }
         };
 
-        // Tüm testleri çalıştır
-        function runAllTests() {
-            clearResults();
-            Object.values(tests).forEach(test => test());
+        // Test yönetimi için yeni fonksiyonlar
+        let currentTest = null;
+        let testTimeout = null;
+
+        async function runTest(testName) {
+            if (currentTest) {
+                console.warn('Başka bir test devam ediyor:', currentTest);
+                return false;
+            }
+
+            currentTest = testName;
+            const testElement = document.createElement('div');
+            testElement.className = 'test-item active';
+            testElement.innerHTML = `
+                <h3>${testName}</h3>
+                <p class="test-description">Test çalıştırılıyor...</p>
+                <div class="test-progress"></div>
+                <div class="test-timeout-warning">Test zaman aşımına yaklaşıyor!</div>
+            `;
+            document.getElementById('test-results').appendChild(testElement);
+
+            // Zaman aşımı kontrolü
+            let timeElapsed = 0;
+            const progressBar = testElement.querySelector('.test-progress');
+            
+            const progressInterval = setInterval(() => {
+                timeElapsed += 100;
+                const progress = (timeElapsed / 10000) * 100;
+                progressBar.style.width = `${Math.min(progress, 100)}%`;
+                
+                if (timeElapsed >= 8000) {
+                    testElement.classList.add('warning');
+                }
+            }, 100);
+
+            testTimeout = setTimeout(() => {
+                clearInterval(progressInterval);
+                testElement.classList.remove('active', 'warning');
+                testElement.classList.add('fail');
+                currentTest = null;
+                console.error(`${testName} zaman aşımına uğradı (10 saniye)`);
+                runNextTest();
+            }, 10000);
+
+            try {
+                await tests[testName]();
+                clearTimeout(testTimeout);
+                clearInterval(progressInterval);
+                testElement.classList.remove('active', 'warning');
+                testElement.classList.add('completed');
+                currentTest = null;
+                return true;
+            } catch (error) {
+                clearTimeout(testTimeout);
+                clearInterval(progressInterval);
+                testElement.classList.remove('active', 'warning');
+                testElement.classList.add('fail');
+                currentTest = null;
+                console.error(`${testName} başarısız oldu:`, error);
+                return false;
+            }
         }
+
+        async function runNextTest() {
+            const remainingTests = Object.keys(tests).filter(testName => {
+                const testElements = document.querySelectorAll('.test-item');
+                return !Array.from(testElements).some(el => el.querySelector('h3').textContent === testName);
+            });
+
+            if (remainingTests.length > 0) {
+                await runTest(remainingTests[0]);
+            }
+        }
+
+        async function runAllTests() {
+            clearResults();
+            const testNames = Object.keys(tests);
+            
+            for (const testName of testNames) {
+                const success = await runTest(testName);
+                if (!success) break;
+                await sleep(500); // Testler arası kısa bekleme
+            }
+        }
+
+        // Test ortamını hazırlama fonksiyonu
+        function prepareTestEnvironment() {
+            const testEnv = document.getElementById('testEnvironment') || document.createElement('div');
+            testEnv.id = 'testEnvironment';
+            testEnv.style.display = 'none';
+            
+            // Ana HTML yapısını oluştur
+            testEnv.innerHTML = `
+                <div id="loginForm" class="login-form">
+                    <h2>Canlı Destek Girişi</h2>
+                    <input type="text" id="username" placeholder="Kullanıcı Adı">
+                    <input type="password" id="password" placeholder="Şifre">
+                    <button type="button" onclick="login()">Giriş</button>
+                </div>
+
+                <div id="chatInterface" class="chat-interface hidden">
+                    <div id="typingIndicator" class="typing-indicator hidden">
+                        <div class="typing-content">
+                            <span class="typing-text">Yazıyor</span>
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                            <span class="typing-dot"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="visitor-info">
+                        <div class="visitor-name"></div>
+                        <div class="visitor-status">Aktif</div>
+                    </div>
+                    
+                    <div class="visitor-details">
+                        <div class="detail-value" data-field="email"></div>
+                        <div class="detail-value" data-field="location"></div>
+                        <div class="detail-value" data-field="browser"></div>
+                    </div>
+                </div>
+
+                <div id="confirmModal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Onay</h3>
+                            <button class="close-modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="modalMessage"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="modal-button cancel-button">Vazgeç</button>
+                            <button class="modal-button confirm-button">Onayla</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="chatBox" class="chat-box"></div>
+            `;
+            
+            document.body.appendChild(testEnv);
+
+            // Gerekli script ve stil dosyalarını yükle
+            if (!document.querySelector('link[href="style.css"]')) {
+                const styleLink = document.createElement('link');
+                styleLink.rel = 'stylesheet';
+                styleLink.href = 'style.css';
+                document.head.appendChild(styleLink);
+            }
+
+            if (!document.querySelector('script[src="script.js"]')) {
+                const scriptElement = document.createElement('script');
+                scriptElement.src = 'script.js';
+                document.body.appendChild(scriptElement);
+            }
+        }
+
+        // Sayfa yüklendiğinde test ortamını hazırla
+        document.addEventListener('DOMContentLoaded', () => {
+            prepareTestEnvironment();
+        });
     </script>
 </body>
 </html> 

@@ -1,11 +1,11 @@
-Canlı Destek Web Uygulaması
+# Canlı Destek Web Uygulaması
 
-Bu proje, canlı destek hizmeti sağlayan bir web uygulamasıdır. Kullanıcılar giriş yaparak müşteri temsilcisi gibi sohbet edebilir.
+Bu proje, canlı destek hizmeti sağlayan modern ve kullanıcı dostu bir web uygulamasıdır. Kullanıcılar giriş yaparak müşteri temsilcisi gibi sohbet edebilir.
 
-=====================================
-🔹 Proje Özellikleri:
-=====================================
-- Kullanıcı girişi ve doğrulama
+## 🔹 Proje Özellikleri
+
+### Temel Özellikler
+- Kullanıcı girişi ve doğrulama sistemi
 - Canlı sohbet arayüzü
 - Rastgele kullanıcı simülasyonu
 - Gerçek zamanlı mesajlaşma ve bot yanıtları
@@ -14,47 +14,109 @@ Bu proje, canlı destek hizmeti sağlayan bir web uygulamasıdır. Kullanıcıla
 - Sohbet arşivleme ve sonlandırma
 - Kullanıcı çevrim içi/çevrim dışı durumu yönetimi
 
-=====================================
-📁 Dosya Açıklamaları:
-=====================================
+### Gelişmiş Özellikler
+- Animasyonlu hata bildirimleri (4 farklı animasyon)
+- Otomatik mesaj sistemi (60 saniye yanıt yok)
+- Yazıyor göstergesi
+- Sohbet önizlemeleri
+- Okunmamış mesaj bildirimleri
+- Sesli bildirimler
+- Responsive tasarım
 
-📌 index.html:
-- Web uygulamasının ana HTML yapısını içerir.
-- Sohbet arayüzü burada tanımlanır.
-- FontAwesome ikonları ve CSS bağlantıları içerir.
+### Güvenlik Özellikleri
+- XSS koruması
+- Input validasyonu
+- Yasaklı kullanıcı adı kontrolü
+- Güvenli oturum yönetimi
 
-📌 script.js:
-- Kullanıcı girişi ve doğrulama işlevlerini yönetir.
-- Sohbet mesajlarını sessionStorage üzerinde saklar.
-- Rastgele kullanıcı simülasyonu oluşturur.
-- Bot yanıtlarını ve yazıyor göstergesini yönetir.
-- Sohbet arşivleme ve silme işlemlerini sağlar.
+## 📁 Dosya Yapısı ve Açıklamalar
 
-📌 style.css:
-- Tüm stil yapılandırmasını içerir.
-- Responsive tasarım ve mobil uyumluluk içerir.
-- Mesaj kutuları, butonlar ve panel tasarımlarını kapsar.
-- Kullanıcı çevrim içi/çevrim dışı durum simgelerini içerir.
+### 📌 index.html
+- Web uygulamasının ana HTML yapısı
+- Responsive tasarım için meta etiketleri
+- SEO optimizasyonları
+- PWA desteği için meta etiketleri
+- FontAwesome ikonları ve CSS bağlantıları
 
-📌 notification.mp3:
-- Yeni mesaj geldiğinde çalan bildirim sesidir.
+### 📌 script.js
+- Modüler JavaScript yapısı
+- Kullanıcı girişi ve doğrulama
+- SessionStorage veri yönetimi
+- Bot yanıtları ve yazıyor göstergesi
+- Sohbet arşivleme ve silme işlemleri
+- Hata yönetimi ve bildirimler
 
-=====================================
-💻 Kurulum ve Kullanım:
-=====================================
-1️⃣ Proje dosyalarını bilgisayarınıza indirin.
-2️⃣ 'index.html' dosyasını bir tarayıcıda açın.
-3️⃣ Kullanıcı adı ve şifre girerek giriş yapın. **(Varsayılan şifre: cp.123)**
-4️⃣ Sohbet başlatabilir, mesaj gönderebilir ve bot yanıtlarını görebilirsiniz.
-5️⃣ Sohbeti **arşivleyebilir** veya **sonlandırabilirsiniz**.
+### 📌 style.css
+- Modern ve responsive tasarım
+- CSS3 animasyonları
+- Flexbox ve Grid kullanımı
+- Mobil uyumluluk
+- Dark/Light tema desteği
+- Özelleştirilebilir renk şeması
 
-=====================================
-📌 Teknik Detaylar:
-=====================================
-- HTML5, CSS3 ve JavaScript kullanılarak geliştirilmiştir.
-- `sessionStorage` kullanılarak geçici veri saklama sağlanmıştır.
-- Bot, rastgele sorular seçerek yanıt vermektedir.
-- Yazıyor göstergesi ve sohbet listesi dinamik olarak güncellenmektedir.
+### 📌 test.html
+- Kapsamlı test senaryoları
+- Görsel test sonuçları
+- Adım adım test izleme
+- İlerleme çubuğu
+- Detaylı hata raporlama
 
-=====================================
-© 2025 - Canlı Destek Uygulaması
+### 📌 notification.mp3
+- Yeni mesaj bildirim sesi
+
+## 💻 Kurulum ve Kullanım
+
+1. Proje dosyalarını indirin
+2. 'index.html' dosyasını bir tarayıcıda açın
+3. Kullanıcı adı ve şifre ile giriş yapın (Varsayılan şifre: xx.123)
+4. Sohbet başlatın ve bot yanıtlarını görün
+5. Sohbeti arşivleyin veya sonlandırın
+
+## 🔧 Test Etme
+
+1. test.html dosyasını tarayıcıda açın
+2. "Tüm Testleri Çalıştır" butonuna tıklayın
+3. Test sonuçlarını ve görsel raporları inceleyin
+4. Her test adımını detaylı olarak görün
+5. Başarılı/başarısız testleri analiz edin
+
+## 📌 Teknik Detaylar
+
+### Kullanılan Teknolojiler
+- HTML5
+- CSS3 (Flexbox, Grid, Animations)
+- JavaScript (ES6+)
+- SessionStorage
+- Web Audio API
+
+### Performans Optimizasyonları
+- Lazy loading görüntüler
+- Minify edilmiş kaynaklar
+- Önbellek yönetimi
+- Asenkron script yükleme
+
+### Tarayıcı Desteği
+- Chrome (son 2 versiyon)
+- Firefox (son 2 versiyon)
+- Safari (son 2 versiyon)
+- Edge (son 2 versiyon)
+
+### Mobil Uyumluluk
+- Responsive tasarım
+- Touch olayları desteği
+- Mobil bildirimler
+- PWA özellikleri
+
+## 🔄 Güncellemeler
+
+### v1.1.0
+- Animasyonlu hata bildirimleri eklendi
+- Test sistemi geliştirildi
+- Performans iyileştirmeleri yapıldı
+- Hata düzeltmeleri
+
+### v1.0.0
+- İlk sürüm yayınlandı
+
+## 📝 Lisans
+MIT License - 2025

@@ -1,14 +1,23 @@
 // Sabit değişkenler ve yapılandırma
 const CONFIG = {
-    PASSWORD: "cp.123",
+    PASSWORD: "xx.123",
     TYPING_DELAY: {
-        MIN: 2000,
-        MAX: 3000
+        MIN: 6000,  // 15 saniye
+        MAX: 10000   // 30 saniye
     },
     TYPING_DURATION: {
-        MIN: 3000,
-        MAX: 5000
+        MIN: 12000,  // 15 saniye
+        MAX: 20000   // 30 saniye
     }
+};
+
+// Otomatik mesaj için sabitler
+const AUTO_MESSAGE = {
+    TIMEOUT: 60000, // 60 saniye
+    MESSAGES: [
+        "Orada mısınız? Biraz acelem var da.",
+        "Biraz fazla beklemedik mi?"
+    ]
 };
 
 // Mesaj yönetimi modülü
@@ -31,7 +40,6 @@ const MessageManager = {
     },
 
     updateChatBox(userId) {
-        console.log(`Chat kutusu güncelleniyor: ${userId}`);
         const chatBox = document.getElementById('chatBox');
         if (!chatBox) return;
 
@@ -49,13 +57,17 @@ const MessageManager = {
 
 // Kullanıcı arayüzü modülü
 const UIManager = {
-    showNotification(message, type) {
+    showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
         notification.textContent = message;
         document.body.appendChild(notification);
         
-        setTimeout(() => notification.remove(), 3000);
+        // 3 saniye sonra bildirimi kaldır
+        setTimeout(() => {
+            notification.classList.add('fade-out');
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
     },
 
     showModal(message, onConfirm) {
@@ -255,6 +267,7 @@ const ScenarioManager = {
 // Chat yönetimi modülü
 const ChatManager = {
     typingTimeouts: {},
+    autoMessageTimeouts: {},
 
     sendMessage() {
         const userInput = document.getElementById('userInput');
@@ -322,6 +335,15 @@ const ChatManager = {
             type: 'user',
             text: message
         });
+        
+        // Son mesaj zamanını güncelle
+        ChatStorage.setLastMessageTime(currentUser, Date.now());
+        
+        // Otomatik mesaj zamanlayıcısını başlat
+        if (this.isAutoMessageUser(currentUser)) {
+            this.startAutoMessageTimer(currentUser);
+        }
+        
         MessageManager.updateChatBox(currentUser);
     },
 
@@ -367,6 +389,48 @@ const ChatManager = {
                 }
             }
         });
+    },
+
+    startAutoMessageTimer(userId) {
+        // Önceki zamanlayıcıyı temizle
+        if (this.autoMessageTimeouts[userId]) {
+            clearTimeout(this.autoMessageTimeouts[userId]);
+        }
+
+        // Yeni zamanlayıcı başlat
+        this.autoMessageTimeouts[userId] = setTimeout(() => {
+            const currentTime = Date.now();
+            const lastMessageTime = ChatStorage.getLastMessageTime(userId);
+            const timeDiff = currentTime - lastMessageTime;
+
+            // 60 saniye geçti mi ve daha önce otomatik mesaj gönderilmemiş mi kontrol et
+            if (timeDiff >= AUTO_MESSAGE.TIMEOUT && !ChatStorage.getAutoMessageStatus(userId)) {
+                const randomMessage = AUTO_MESSAGE.MESSAGES[Math.floor(Math.random() * AUTO_MESSAGE.MESSAGES.length)];
+                
+                ChatStorage.addMessage(userId, {
+                    type: 'bot',
+                    text: randomMessage
+                });
+
+                // Otomatik mesaj durumunu güncelle
+                ChatStorage.setAutoMessageStatus(userId, true);
+
+                // UI'ı güncelle
+                const activeUser = document.querySelector('.visitor-name').textContent;
+                if (activeUser === userId) {
+                    MessageManager.updateChatBox(userId);
+                }
+                
+                this.flashChatItem(userId);
+                this.updateChatPreview(userId, randomMessage);
+                MessageManager.playSound();
+            }
+        }, AUTO_MESSAGE.TIMEOUT);
+    },
+
+    isAutoMessageUser(userId) {
+        const autoMessageUser = sessionStorage.getItem('autoMessageUser');
+        return autoMessageUser === userId;
     }
 };
 
@@ -469,7 +533,32 @@ const LOCATIONS = [
 ];
 // E-posta domainleri
 const EMAIL_DOMAINS = [
-    "@gmail.com", "@hotmail.com", "@windowslive.com", "@gmail.de", "@outlook.com"
+    "@gmail.com", "@hotmail.com", "@windowslive.com", "@gmail.de", "@outlook.com",
+    "@yahoo.com", "@protonmail.com", "@tutanota.com", "@webkusu.com", "@aol.com",
+    "@gmx.com", "@promail.com.tr", "@zoho.com", "@yandex.com", "@outlook.de",
+    "@hotmail.co.uk", "@live.com", "@mail.ru", "@protonmail.ch", "@fastmail.com",
+    "@promail.com.tr", "@hushmail.com", "@promail.com.tr", "@gezginlerindirturkce.com",
+    "@posteo.de", "@promail.com.tr", "@runbox.com"
+];
+
+// Türkçe karakter dönüştürme fonksiyonu
+function turkishToEnglish(text) {
+    const charMap = {
+        'ç': 'c', 'Ç': 'C',
+        'ğ': 'g', 'Ğ': 'G',
+        'ı': 'i', 'İ': 'I',
+        'ö': 'o', 'Ö': 'O',
+        'ş': 's', 'Ş': 'S',
+        'ü': 'u', 'Ü': 'U'
+    };
+    return text.replace(/[çÇğĞıİöÖşŞüÜ]/g, match => charMap[match]);
+}
+
+// Yasaklı kullanıcı adları
+const RESTRICTED_USERNAMES = [
+    'admin', 'administrator', 'root', 'user', 'system', 'superuser', 'supervisor',
+    'moderator', 'mod', 'support', 'helpdesk', 'sysadmin', 'webmaster', 'owner',
+    'admin123', 'administrator123', 'root123', 'user123', 'system123'
 ];
 
 // Rastgele kullanıcı seçme ve bilgileri oluşturma
@@ -496,7 +585,7 @@ function updateUserInterface(user) {
     document.querySelector(".visitor-status").textContent = user.status;
     
     // Sağ panel - ziyaretçi detayları
-    document.querySelector(".detail-value[data-field='email']").textContent = user.email;
+    document.querySelector(".detail-value[data-field='email']").textContent = turkishToEnglish(user.email);
     document.querySelector(".detail-value[data-field='location']").textContent = user.location;
     document.querySelector(".detail-value[data-field='browser']").textContent = user.browser;
 }
@@ -545,16 +634,96 @@ const ChatStorage = {
         const chats = this.getAllChats();
         delete chats[userId];
         sessionStorage.setItem('chatMessages', JSON.stringify(chats));
+    },
+    
+    // Otomatik mesaj durumunu kaydet
+    setAutoMessageStatus(userId, status) {
+        const autoMessageStatus = JSON.parse(sessionStorage.getItem('autoMessageStatus') || '{}');
+        autoMessageStatus[userId] = status;
+        sessionStorage.setItem('autoMessageStatus', JSON.stringify(autoMessageStatus));
+    },
+    
+    // Otomatik mesaj durumunu kontrol et
+    getAutoMessageStatus(userId) {
+        const autoMessageStatus = JSON.parse(sessionStorage.getItem('autoMessageStatus') || '{}');
+        return autoMessageStatus[userId] || false;
+    },
+    
+    // Son mesaj zamanını kaydet
+    setLastMessageTime(userId, time) {
+        const lastMessageTimes = JSON.parse(sessionStorage.getItem('lastMessageTimes') || '{}');
+        lastMessageTimes[userId] = time;
+        sessionStorage.setItem('lastMessageTimes', JSON.stringify(lastMessageTimes));
+    },
+    
+    // Son mesaj zamanını al
+    getLastMessageTime(userId) {
+        const lastMessageTimes = JSON.parse(sessionStorage.getItem('lastMessageTimes') || '{}');
+        return lastMessageTimes[userId] || 0;
     }
 };
+
+// Sayfa yüklendiğinde sessionStorage'ı temizle ve kontrol et
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('chatInterface').classList.add('hidden');
+    
+    // SessionStorage'ı temizle ve yeniden başlat
+    sessionStorage.clear();
+    sessionStorage.setItem('chatMessages', JSON.stringify({}));
+    sessionStorage.setItem('autoMessageStatus', JSON.stringify({}));
+    sessionStorage.setItem('lastMessageTimes', JSON.stringify({}));
+
+    // Kullanıcı adı alanına otomatik odaklan
+    const usernameInput = document.getElementById('username');
+    if (usernameInput) {
+        usernameInput.focus();
+    }
+});
+
+// Login hata yönetimi için yardımcı fonksiyon
+function showLoginError(message) {
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+
+    // Bildirim göster
+    UIManager.showNotification(message, "error");
+
+    // Rastgele bir hata efekti seç
+    const errorEffects = ['error-shake', 'error-bounce', 'error-pulse', 'error-rotate'];
+    const randomEffect = errorEffects[Math.floor(Math.random() * errorEffects.length)];
+
+    // Form arkaplanını değiştir ve animasyonu uygula
+    loginForm.classList.add('error', randomEffect);
+
+    // Input değerlerini temizle
+    usernameInput.value = '';
+    passwordInput.value = '';
+
+    // Kullanıcı adı alanına odaklan
+    usernameInput.focus();
+
+    // Hata efektlerini temizle
+    setTimeout(() => {
+        loginForm.classList.remove('error', randomEffect);
+    }, 800);
+}
 
 // Login fonksiyonunu güncelle
 async function login() {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value;
 
+    // Kullanıcı adı kontrolü
     if (!username || username.length < 5) {
-        alert("Kullanıcı adı en az 5 karakter olmalıdır!");
+        showLoginError("Kullanıcı adı en az 5 karakter olmalıdır!");
+        return;
+    }
+
+    // Yasaklı kullanıcı adı kontrolü
+    const lowerUsername = username.toLowerCase();
+    if (RESTRICTED_USERNAMES.some(restricted => lowerUsername.includes(restricted))) {
+        showLoginError("Bu kullanıcı adı kullanılamaz!");
         return;
     }
 
@@ -596,15 +765,17 @@ async function login() {
                 // Login formunu gizle, chat arayüzünü göster
                 document.getElementById("loginForm").classList.add("hidden");
                 document.getElementById("chatInterface").classList.remove("hidden");
+                
+                UIManager.showNotification("Başarıyla giriş yapıldı!", "success");
             } else {
                 throw new Error('Senaryo atanamadı');
             }
         } catch (error) {
             console.error('Login hatası:', error);
-            alert('Sistem başlatılırken bir hata oluştu. Lütfen tekrar deneyin.');
+            showLoginError('Sistem başlatılırken bir hata oluştu. Lütfen tekrar deneyin.');
         }
     } else {
-        alert("Hatalı şifre!");
+        showLoginError("Hatalı şifre!");
     }
 }
 
@@ -663,44 +834,22 @@ function playMessageSound() {
     }
 }
 
-// Sayfa yüklendiğinde sessionStorage'ı temizle ve kontrol et
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('chatInterface').classList.add('hidden');
-    
-    // SessionStorage'ı temizle ve yeniden başlat
-    sessionStorage.clear();
-    sessionStorage.setItem('chatMessages', JSON.stringify({}));
-});
-
-// Enter tuşu ile gönderme
-document.addEventListener('DOMContentLoaded', function() {
-    const userInput = document.getElementById('userInput');
-    const loginForm = document.getElementById('loginForm');
-
-    userInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            ChatManager.sendMessage();
-        }
-    });
-
-    loginForm.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            login();
-        }
-    });
-});
-
 // Chat listesini oluşturma fonksiyonunu güncelle
 function createChatList() {
     const chatList = document.querySelector(".chat-list");
     chatList.innerHTML = '';
     
+    // Rastgele bir kullanıcıyı otomatik mesaj kullanıcısı olarak seç
+    const autoMessageUserIndex = Math.floor(Math.random() * 5);
+    
     // İlk kullanıcı olarak aktif kullanıcıyı ekle
     const chatItem = document.createElement('div');
     chatItem.className = 'chat-item active';
     const lastMessage = ChatStorage.getLastMessage(activeUser.fullName);
+    
+    if (autoMessageUserIndex === 0) {
+        sessionStorage.setItem('autoMessageUser', activeUser.fullName);
+    }
     
     chatItem.innerHTML = `
         <div class="chat-item-avatar">${activeUser.initials}</div>
@@ -719,6 +868,10 @@ function createChatList() {
         const chatItem = document.createElement('div');
         chatItem.className = 'chat-item';
         const lastMessage = ChatStorage.getLastMessage(user.fullName);
+        
+        if (i + 1 === autoMessageUserIndex) {
+            sessionStorage.setItem('autoMessageUser', user.fullName);
+        }
         
         chatItem.innerHTML = `
             <div class="chat-item-avatar">${user.initials}</div>
@@ -893,4 +1046,35 @@ function initializeChatHeader() {
 
 // Sayfa yüklendiğinde chat header'ı başlat
 document.addEventListener('DOMContentLoaded', initializeChatHeader);
+
+// Enter tuşu ile gönderme
+document.addEventListener('DOMContentLoaded', function() {
+    const userInput = document.getElementById('userInput');
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            ChatManager.sendMessage();
+        }
+    });
+
+    loginForm.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            login();
+        }
+    });
+
+    // Input alanları için event listener'lar
+    usernameInput.addEventListener('input', function() {
+        loginForm.classList.remove('error', 'error-shake', 'error-bounce', 'error-pulse', 'error-rotate');
+    });
+
+    passwordInput.addEventListener('input', function() {
+        loginForm.classList.remove('error', 'error-shake', 'error-bounce', 'error-pulse', 'error-rotate');
+    });
+});
  
