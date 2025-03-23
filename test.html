@@ -103,20 +103,6 @@
             flex-direction: column;
             gap: 8px;
             position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .test-item.active {
-            border-left-color: #2196F3;
-            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
-        }
-
-        .test-item.active .step-list {
-            max-height: 500px !important;
-        }
-
-        .test-item.active .step-details {
-            display: block !important;
         }
 
         .test-item h3 {
@@ -271,13 +257,12 @@
         }
         
         .test-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 2px;
-            background: #2196F3;
-            width: 0;
-            transition: width 0.1s linear;
+            width: 100%;
+            height: 4px;
+            background: #f0f0f0;
+            margin: 10px 0;
+            border-radius: 2px;
+            overflow: hidden;
         }
 
         .test-progress-bar {
@@ -322,8 +307,7 @@
             transition: max-height 0.3s ease;
         }
 
-        .test-item:hover .step-list:not(.active),
-        .test-item.completed:hover .step-list {
+        .test-item:hover .step-list {
             max-height: 500px;
         }
 
@@ -365,27 +349,6 @@
         .pending-steps .step-item {
             background: #FFF8E1;
             color: #F57F17;
-        }
-
-        /* Test yönetimi için yeni stiller */
-        .test-timeout-warning {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 0.7rem;
-            color: #F57F17;
-            display: none;
-        }
-
-        .test-item.warning .test-timeout-warning {
-            display: block;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
         }
     </style>
 </head>
@@ -809,88 +772,23 @@
             }
         };
 
-        // Test yönetimi için yeni fonksiyonlar
-        let currentTest = null;
-        let testTimeout = null;
-
-        async function runTest(testName) {
-            if (currentTest) {
-                console.warn('Başka bir test devam ediyor:', currentTest);
-                return false;
-            }
-
-            currentTest = testName;
-            const testElement = document.createElement('div');
-            testElement.className = 'test-item active';
-            testElement.innerHTML = `
-                <h3>${testName}</h3>
-                <p class="test-description">Test çalıştırılıyor...</p>
-                <div class="test-progress"></div>
-                <div class="test-timeout-warning">Test zaman aşımına yaklaşıyor!</div>
-            `;
-            document.getElementById('test-results').appendChild(testElement);
-
-            // Zaman aşımı kontrolü
-            let timeElapsed = 0;
-            const progressBar = testElement.querySelector('.test-progress');
-            
-            const progressInterval = setInterval(() => {
-                timeElapsed += 100;
-                const progress = (timeElapsed / 10000) * 100;
-                progressBar.style.width = `${Math.min(progress, 100)}%`;
-                
-                if (timeElapsed >= 8000) {
-                    testElement.classList.add('warning');
-                }
-            }, 100);
-
-            testTimeout = setTimeout(() => {
-                clearInterval(progressInterval);
-                testElement.classList.remove('active', 'warning');
-                testElement.classList.add('fail');
-                currentTest = null;
-                console.error(`${testName} zaman aşımına uğradı (10 saniye)`);
-                runNextTest();
-            }, 10000);
-
-            try {
-                await tests[testName]();
-                clearTimeout(testTimeout);
-                clearInterval(progressInterval);
-                testElement.classList.remove('active', 'warning');
-                testElement.classList.add('completed');
-                currentTest = null;
-                return true;
-            } catch (error) {
-                clearTimeout(testTimeout);
-                clearInterval(progressInterval);
-                testElement.classList.remove('active', 'warning');
-                testElement.classList.add('fail');
-                currentTest = null;
-                console.error(`${testName} başarısız oldu:`, error);
-                return false;
-            }
-        }
-
-        async function runNextTest() {
-            const remainingTests = Object.keys(tests).filter(testName => {
-                const testElements = document.querySelectorAll('.test-item');
-                return !Array.from(testElements).some(el => el.querySelector('h3').textContent === testName);
-            });
-
-            if (remainingTests.length > 0) {
-                await runTest(remainingTests[0]);
-            }
-        }
-
+        // Tüm testleri sırayla çalıştır
         async function runAllTests() {
             clearResults();
             const testNames = Object.keys(tests);
             
-            for (const testName of testNames) {
-                const success = await runTest(testName);
-                if (!success) break;
-                await sleep(500); // Testler arası kısa bekleme
+            for (let i = 0; i < testNames.length; i++) {
+                const testName = testNames[i];
+                const testElement = document.createElement('div');
+                testElement.className = 'test-item test-active';
+                testElement.innerHTML = `<h3>${testName}</h3><p>Test çalıştırılıyor...</p>`;
+                document.getElementById('test-results').appendChild(testElement);
+                
+                await tests[testName]();
+                await sleep(1000); // Testler arası bekleme
+                
+                // Test tamamlandıktan sonra aktif göstergeyi kaldır
+                testElement.remove();
             }
         }
 
