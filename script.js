@@ -2,12 +2,12 @@
 const CONFIG = {
     PASSWORD: "xx.123",
     TYPING_DELAY: {
-        MIN: 6000,  // 15 saniye
-        MAX: 10000   // 30 saniye
+        MIN: 2000,  // 2 saniye
+        MAX: 8000   // 8 saniye
     },
     TYPING_DURATION: {
-        MIN: 12000,  // 15 saniye
-        MAX: 20000   // 30 saniye
+        MIN: 9000,  // 9 saniye
+        MAX: 15000   // 15 saniye
     }
 };
 
@@ -16,7 +16,8 @@ const AUTO_MESSAGE = {
     TIMEOUT: 60000, // 60 saniye
     MESSAGES: [
         "Orada mısınız? Biraz acelem var da.",
-        "Biraz fazla beklemedik mi?"
+        "Biraz fazla beklemedik mi?",
+        "Hadi birader işimiz gücümüz var"
     ]
 };
 
