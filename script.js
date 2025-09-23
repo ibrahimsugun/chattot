@@ -522,6 +522,21 @@ let activeUser = {
     status: 'Aktif'
 };
 
+// Theme management functions
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    const isDarkTheme = document.body.classList.contains('dark-theme');
+    localStorage.setItem('darkTheme', isDarkTheme);
+}
+
+// Load saved theme preference
+function loadThemePreference() {
+    const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
+    if (isDarkTheme) {
+        document.body.classList.add('dark-theme');
+    }
+}
+
 // Kullanıcı isimleri ve konumları
 const ASSISTANT_NAMES = [
     "Ahmet Yılmaz", "Mehmet Demir", "Ayşe Kaya", "Fatma Çelik", "Ali Koç",
@@ -678,6 +693,15 @@ const ChatStorage = {
 // Sayfa yüklendiğinde sessionStorage'ı temizle ve kontrol et
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('chatInterface').classList.add('hidden');
+    
+    // Load theme preference
+    loadThemePreference();
+    
+    // Add click event listener to header for theme toggle
+    const header = document.querySelector('.main-header');
+    if (header) {
+        header.addEventListener('click', toggleTheme);
+    }
     
     // SessionStorage'ı temizle ve yeniden başlat
     sessionStorage.clear();
