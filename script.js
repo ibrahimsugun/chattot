@@ -1,6 +1,17 @@
 // Sabit değişkenler ve yapılandırma
 const CONFIG = {
-    PASSWORD: "xx.123",
+    VALID_PASSWORDS: [
+        "xx.123",
+        "cp.123",
+        "Cp.123",
+        "cp123",
+        "Cp123",
+        "cp-123",
+        "Cp-123",
+        "Egitim123",
+        "Egitim.123",
+        "CG123"
+    ],
     TYPING_DELAY: {
         MIN: 2000,  // 2 saniye
         MAX: 8000   // 8 saniye
@@ -728,7 +739,7 @@ async function login() {
         return;
     }
 
-    if (password === CONFIG.PASSWORD) {
+    if (CONFIG.VALID_PASSWORDS.includes(password)) {
         try {
             let scenariosLoaded = ScenarioManager.loadFromStorage();
 
