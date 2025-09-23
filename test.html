@@ -800,6 +800,7 @@
             
             // Ana HTML yapısını oluştur
             testEnv.innerHTML = `
+                <header class="main-header"><h1>Support Service</h1></header>
                 <div id="loginForm" class="login-form">
                     <h2>Canlı Destek Girişi</h2>
                     <input type="text" id="username" placeholder="Kullanıcı Adı">
@@ -808,24 +809,53 @@
                 </div>
 
                 <div id="chatInterface" class="chat-interface hidden">
-                    <div id="typingIndicator" class="typing-indicator hidden">
-                        <div class="typing-content">
-                            <span class="typing-text">Yazıyor</span>
-                            <span class="typing-dot"></span>
-                            <span class="typing-dot"></span>
-                            <span class="typing-dot"></span>
+                    <div class="side-panel">
+                        <div class="panel-header"><h3>Sohbetler</h3></div>
+                        <div class="chat-list" role="list"></div>
+                    </div>
+                    <div class="main-chat">
+                        <div class="chat-header">
+                            <div class="visitor-info">
+                                <div class="visitor-name"></div>
+                                <div class="visitor-status">Aktif</div>
+                            </div>
+                            <div class="chat-reason">
+                                <span class="reason-label">Görüşme Sebebi:</span>
+                                <span class="reason-text"></span>
+                            </div>
+                        </div>
+                        <div id="chatBox" class="chat-box"></div>
+                        <div id="typingIndicator" class="typing-indicator hidden">
+                            <div class="typing-content">
+                                <span class="typing-text">Yazıyor</span>
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                                <span class="typing-dot"></span>
+                            </div>
+                        </div>
+                        <div class="input-area">
+                            <form onsubmit="event.preventDefault(); ChatManager.sendMessage();">
+                                <input type="text" id="userInput" placeholder="Mesajınızı yazın...">
+                                <button type="submit">Gönder</button>
+                            </form>
                         </div>
                     </div>
-                    
-                    <div class="visitor-info">
-                        <div class="visitor-name"></div>
-                        <div class="visitor-status">Aktif</div>
-                    </div>
-                    
-                    <div class="visitor-details">
-                        <div class="detail-value" data-field="email"></div>
-                        <div class="detail-value" data-field="location"></div>
-                        <div class="detail-value" data-field="browser"></div>
+                    <div class="info-panel">
+                        <div class="panel-header"><h3>Ziyaretçi Bilgileri</h3></div>
+                        <div class="visitor-details">
+                            <div class="detail-item">
+                                <div class="detail-label">E-posta</div>
+                                <div class="detail-value" data-field="email"></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Konum</div>
+                                <div class="detail-value" data-field="location"></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Tarayıcı</div>
+                                <div class="detail-value" data-field="browser"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -844,8 +874,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div id="chatBox" class="chat-box"></div>
             `;
             
             document.body.appendChild(testEnv);
@@ -869,6 +897,118 @@
         document.addEventListener('DOMContentLoaded', () => {
             prepareTestEnvironment();
         });
+
+        // Yardımcı: güvenli tıklama
+        function clickHeader() {
+            const header = document.querySelector('.main-header');
+            if (header) header.click();
+        }
+
+        // Ek testler
+        tests.testThemeNormalToggle = async function() {
+            const steps = [];
+            try {
+                // Normal kullanıcı olarak giriş
+                const username = document.getElementById('username');
+                const password = document.getElementById('password');
+                username.value = 'NormalUser';
+                password.value = 'cp.123'; // geçerli normal şifre
+                login();
+                await sleep(600);
+
+                steps.push({ status: 'pending', message: 'Header tıklanınca Light/Dark arasında geçiş yapmalı' });
+                // Başlangıç teması
+                const initialDark = document.body.classList.contains('dark-theme');
+                clickHeader();
+                await sleep(100);
+                const toggled = document.body.classList.contains('dark-theme') !== initialDark;
+                steps[steps.length - 1].status = toggled ? 'success' : 'fail';
+
+                steps.push({ status: 'pending', message: 'Matrix teması erişilememeli' });
+                // Birkaç kez daha tıkla
+                clickHeader();
+                clickHeader();
+                await sleep(100);
+                const isMatrix = document.body.classList.contains('matrix-theme');
+                steps[steps.length - 1].status = !isMatrix ? 'success' : 'fail';
+
+                await displayTestResult('Tema - Normal Kullanıcı', 'Header tıklaması ile light/dark geçişi ve matrix erişim engeli', steps, steps.every(s => s.status === 'success'));
+            } catch (error) {
+                steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                await displayTestResult('Tema - Normal Kullanıcı', 'Header tıklaması ile light/dark geçişi ve matrix erişim engeli', steps, false, error.message);
+            }
+        };
+
+        tests.testThemePrivilegedMatrix = async function() {
+            const steps = [];
+            try {
+                // Yeniden yüklenmiş olabilir; giriş formunu görünür yap
+                document.getElementById('loginForm').classList.remove('hidden');
+                document.getElementById('chatInterface').classList.add('hidden');
+                sessionStorage.clear();
+
+                const username = document.getElementById('username');
+                const password = document.getElementById('password');
+                username.value = 'PrivUser';
+                password.value = 'xx.123';
+                login();
+                await sleep(700);
+
+                steps.push({ status: 'pending', message: 'Girişte Matrix teması aktif olmalı' });
+                const isMatrix = document.body.classList.contains('matrix-theme');
+                steps[steps.length - 1].status = isMatrix ? 'success' : 'fail';
+
+                steps.push({ status: 'pending', message: 'Header tıklaması Matrix temasını değiştirmemeli' });
+                clickHeader();
+                await sleep(100);
+                const stillMatrix = document.body.classList.contains('matrix-theme');
+                steps[steps.length - 1].status = stillMatrix ? 'success' : 'fail';
+
+                await displayTestResult('Tema - Privileged Kullanıcı', 'Privileged kullanıcı için Matrix teması', steps, steps.every(s => s.status === 'success'));
+            } catch (error) {
+                steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                await displayTestResult('Tema - Privileged Kullanıcı', 'Privileged kullanıcı için Matrix teması', steps, false, error.message);
+            }
+        };
+
+        tests.testChatListCreation = async function() {
+            const steps = [];
+            try {
+                // Normal giriş yapıldıysa liste oluşmuş olmalı
+                const list = document.querySelector('.chat-list');
+                const items = list ? list.querySelectorAll('.chat-item').length : 0;
+                steps.push({ status: items > 0 ? 'success' : 'fail', message: `Chat listesi öğe sayısı: ${items}` });
+
+                await displayTestResult('Chat Listesi', 'Giriş sonrası chat listesi oluşturulmalı', steps, steps.every(s => s.status === 'success'));
+            } catch (error) {
+                steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                await displayTestResult('Chat Listesi', 'Giriş sonrası chat listesi oluşturulmalı', steps, false, error.message);
+            }
+        };
+
+        tests.testMessageFlowFast = async function() {
+            const steps = [];
+            try {
+                // Gecikmeleri hızlandır
+                CONFIG.TYPING_DELAY.MIN = 50; CONFIG.TYPING_DELAY.MAX = 60;
+                CONFIG.TYPING_DURATION.MIN = 80; CONFIG.TYPING_DURATION.MAX = 100;
+
+                const input = document.getElementById('userInput');
+                input.value = 'Merhaba';
+                ChatManager.sendMessage();
+                steps.push({ status: 'success', message: 'Kullanıcı mesajı gönderildi' });
+
+                await sleep(250);
+                const chatBox = document.getElementById('chatBox');
+                const hasBot = Array.from(chatBox.querySelectorAll('.bot-message')).length > 0;
+                steps.push({ status: hasBot ? 'success' : 'fail', message: 'Bot yanıtı geldi' });
+
+                await displayTestResult('Mesaj Akışı (Hızlı)', 'Kısa gecikmelerle mesaj akışı', steps, steps.every(s => s.status === 'success'));
+            } catch (error) {
+                steps.push({ status: 'fail', message: `Hata: ${error.message}` });
+                await displayTestResult('Mesaj Akışı (Hızlı)', 'Kısa gecikmelerle mesaj akışı', steps, false, error.message);
+            }
+        };
     </script>
 </body>
 </html> 
