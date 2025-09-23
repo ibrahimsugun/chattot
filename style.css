@@ -63,6 +63,31 @@
     --transition-normal: 0.3s;
 }
 
+/* Matrix Theme Variables */
+.matrix-theme {
+    /* Ana Renkler - Neon Matrix yeşilleri */
+    --primary-color: #00ff7f;
+    --secondary-color: #00e676;
+    --success-color: #00c853;
+    --error-color: #ff5252;
+
+    /* Metin Renkleri */
+    --text-primary: #e0ffe6;
+    --text-secondary: #8de0a8;
+
+    /* Arka Plan ve Kenarlık */
+    --background-color: #0a0f0a;
+    --border-color: #0f2a15;
+    --chat-bg: #0e1410;
+    --message-bg: #0f1a12;
+    --input-bg: #0f1a12;
+    --panel-bg: #0b120d;
+
+    /* Hover ve Active */
+    --hover-bg: rgba(0, 255, 127, 0.08);
+    --active-bg: rgba(0, 255, 127, 0.12);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -80,6 +105,11 @@ body {
     background-color: var(--background-color);
     transition: background-color var(--transition-normal),
                 color var(--transition-normal);
+}
+
+/* Matrix teması için monospace hava katmanı */
+.matrix-theme * {
+    font-family: Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", "Courier New", monospace;
 }
 
 .container {
@@ -234,6 +264,10 @@ body {
     box-shadow: 0 0.25rem 1.25rem rgba(0,0,0,0.2);
 }
 
+.matrix-theme .chat-interface {
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 255, 127, 0.08);
+}
+
 /* Side Panel */
 .side-panel {
     width: var(--panel-width);
@@ -272,6 +306,32 @@ body {
 
 .dark-theme .chat-item.active {
     background-color: var(--active-bg) !important;
+}
+
+/* Matrix theme: chat list readability and states */
+.matrix-theme .chat-item {
+    color: var(--text-primary);
+}
+
+.matrix-theme .chat-item:hover {
+    background-color: var(--hover-bg) !important;
+}
+
+.matrix-theme .chat-item.active {
+    background-color: var(--active-bg) !important;
+}
+
+.matrix-theme .chat-item-name {
+    color: #c9ffd6;
+}
+
+.matrix-theme .chat-item-preview {
+    color: #8de0a8;
+}
+
+.matrix-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #002612;
 }
 
 .dark-theme .chat-item-name {
@@ -377,6 +437,10 @@ body {
     border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
+.matrix-theme .chat-header {
+    border-bottom-color: rgba(0, 255, 127, 0.15);
+}
+
 .visitor-info {
     display: flex;
     align-items: center;
@@ -430,6 +494,16 @@ body {
 }
 
 .dark-theme .action-button:hover {
+    background-color: var(--hover-bg);
+    color: var(--primary-color);
+}
+
+.matrix-theme .action-button {
+    color: var(--text-secondary);
+    background: transparent;
+}
+
+.matrix-theme .action-button:hover {
     background-color: var(--hover-bg);
     color: var(--primary-color);
 }
@@ -524,6 +598,22 @@ body {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+.matrix-theme .message {
+    background-color: var(--message-bg);
+    color: var(--text-primary);
+    box-shadow: 0 1px 3px rgba(0, 255, 127, 0.12);
+}
+
+.matrix-theme .message.bot {
+    background-color: var(--chat-bg);
+    border: 1px solid rgba(0, 255, 127, 0.08);
+}
+
+.matrix-theme .message.user {
+    background-color: var(--primary-color);
+    color: #001a0b;
+}
+
 .dark-theme .typing-indicator {
     background-color: var(--message-bg);
     color: var(--text-primary);
@@ -531,6 +621,16 @@ body {
 }
 
 .dark-theme .typing-dot {
+    background-color: var(--text-secondary);
+}
+
+.matrix-theme .typing-indicator {
+    background-color: var(--message-bg);
+    color: var(--text-primary);
+    box-shadow: 0 2px 6px rgba(0, 255, 127, 0.15);
+}
+
+.matrix-theme .typing-dot {
     background-color: var(--text-secondary);
 }
 
@@ -658,6 +758,15 @@ body {
     background-color: rgba(33, 150, 243, 0.1);
 }
 
+.matrix-theme #userInput {
+    border-color: var(--border-color);
+}
+
+.matrix-theme #userInput:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(0, 255, 127, 0.08);
+}
+
 #userInput:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -711,6 +820,15 @@ body {
     color: var(--text-primary);
 }
 
+/* Matrix theme: stronger text colors for readability */
+.matrix-theme .detail-label {
+    color: #7cd89d;
+}
+
+.matrix-theme .detail-value {
+    color: #c9ffd6;
+}
+
 .dark-theme .detail-label {
     color: #A0A0A0;
 }
@@ -726,6 +844,16 @@ body {
 .dark-theme .info-panel {
     background-color: var(--panel-bg);
     border-left-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Matrix theme: improve contrast in right info panel */
+.matrix-theme .info-panel {
+    background-color: var(--panel-bg);
+    border-left-color: var(--border-color);
+}
+
+.matrix-theme .visitor-details {
+    background-color: var(--chat-bg);
 }
 
 /* Utility Classes */
@@ -887,12 +1015,21 @@ body {
     background: linear-gradient(90deg, #006d5b, #065699);
 }
 
+.matrix-theme .main-header {
+    background: linear-gradient(90deg, #003b1f, #00160a);
+}
+
 .main-header h1 {
     color: #ffffff;
     font-size: 2rem;
     font-weight: 600;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     transition: color var(--transition-normal);
+}
+
+/* Matrix teması için dijital yazı efekti */
+.matrix-theme .main-header h1 {
+    text-shadow: 0 0 8px rgba(0, 255, 127, 0.4);
 }
 
 /* Modal stilleri */

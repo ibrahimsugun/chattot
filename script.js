@@ -22,6 +22,68 @@ const CONFIG = {
     }
 };
 
+// Tema yönetimi
+const ThemeManager = {
+    STORAGE_KEY: 'theme',
+    THEMES: ['light', 'dark', 'matrix'],
+    isPrivileged() {
+        try {
+            return sessionStorage.getItem('isPrivilegedUser') === 'true';
+        } catch (_) {
+            return false;
+        }
+    },
+    sanitizeTheme(theme) {
+        if (theme === 'matrix' && !this.isPrivileged()) {
+            return 'light';
+        }
+        if (!this.THEMES.includes(theme)) return 'light';
+        return theme;
+    },
+    getTheme() {
+        return localStorage.getItem(this.STORAGE_KEY) || 'light';
+    },
+    applyTheme(theme) {
+        const safeTheme = this.sanitizeTheme(theme);
+        const body = document.body;
+        body.classList.remove('dark-theme', 'matrix-theme');
+        if (safeTheme === 'dark') body.classList.add('dark-theme');
+        if (safeTheme === 'matrix') body.classList.add('matrix-theme');
+        localStorage.setItem(this.STORAGE_KEY, safeTheme);
+    },
+    setTheme(theme) {
+        if (!this.THEMES.includes(theme)) return;
+        this.applyTheme(theme);
+    },
+    toggleLightDark() {
+        const current = this.getTheme();
+        const next = current === 'dark' ? 'light' : 'dark';
+        this.applyTheme(next);
+        return next;
+    },
+    toggleThemeCycle() {
+        const current = this.getTheme();
+        const order = this.THEMES; // light -> dark -> matrix -> light
+        const next = order[(order.indexOf(current) + 1) % order.length];
+        this.applyTheme(next);
+        return next;
+    },
+    migrateLegacy() {
+        // Eski boolean bayraktan geçiş (darkTheme)
+        const hasLegacy = localStorage.getItem('darkTheme');
+        if (hasLegacy !== null) {
+            const isDark = hasLegacy === 'true';
+            const target = isDark ? 'dark' : 'light';
+            localStorage.setItem(this.STORAGE_KEY, target);
+            localStorage.removeItem('darkTheme');
+        }
+    },
+    init() {
+        this.migrateLegacy();
+        this.applyTheme(this.getTheme());
+    }
+};
+
 // Otomatik mesaj için sabitler
 const AUTO_MESSAGE = {
     TIMEOUT: 60000, // 60 saniye
@@ -524,17 +586,13 @@ let activeUser = {
 
 // Theme management functions
 function toggleTheme() {
-    document.body.classList.toggle('dark-theme');
-    const isDarkTheme = document.body.classList.contains('dark-theme');
-    localStorage.setItem('darkTheme', isDarkTheme);
+    // Geriye dönük uyumluluk: artık döngüsel geçiş yapar
+    ThemeManager.toggleThemeCycle();
 }
 
 // Load saved theme preference
 function loadThemePreference() {
-    const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
-    if (isDarkTheme) {
-        document.body.classList.add('dark-theme');
-    }
+    ThemeManager.init();
 }
 
 // Kullanıcı isimleri ve konumları
@@ -700,7 +758,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add click event listener to header for theme toggle
     const header = document.querySelector('.main-header');
     if (header) {
-        header.addEventListener('click', toggleTheme);
+        header.addEventListener('click', handleHeaderClick);
     }
     
     // SessionStorage'ı temizle ve yeniden başlat
@@ -715,6 +773,15 @@ document.addEventListener('DOMContentLoaded', function() {
         usernameInput.focus();
     }
 });
+
+// Header click davranışı: kullanıcı türüne göre tema
+function handleHeaderClick() {
+    if (ThemeManager.isPrivileged()) {
+        ThemeManager.setTheme('matrix');
+    } else {
+        ThemeManager.toggleLightDark();
+    }
+}
 
 // Login hata yönetimi için yardımcı fonksiyon
 function showLoginError(message) {
@@ -785,6 +852,16 @@ async function login() {
             // Status'u başlat
             initializeAgentStatus();
             
+            // Kullanıcı türünü belirle ve temayı uygula
+            const privileged = password === 'xx.123';
+            sessionStorage.setItem('isPrivilegedUser', privileged ? 'true' : 'false');
+            if (privileged) {
+                ThemeManager.setTheme('matrix');
+            } else {
+                // Normal kullanıcılar için matrix seçiliyse düzelt
+                ThemeManager.applyTheme(ThemeManager.getTheme());
+            }
+
             // Ziyaretçi bilgilerini güncelle
             activeUser = generateRandomUser();
             updateUserInterface(activeUser);
