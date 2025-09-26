@@ -1009,6 +1009,7 @@ body {
     padding: 0 2rem;
     transition: background var(--transition-normal);
     cursor: pointer;
+    position: relative;
 }
 
 .dark-theme .main-header {
@@ -1030,6 +1031,205 @@ body {
 /* Matrix teması için dijital yazı efekti */
 .matrix-theme .main-header h1 {
     text-shadow: 0 0 8px rgba(0, 255, 127, 0.4);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    backdrop-filter: blur(12px);
+    z-index: 10;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-50%) scale(1.1) rotate(15deg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-btn:active {
+    transform: translateY(-50%) scale(0.9) rotate(-5deg);
+    transition: all 0.1s ease;
+}
+
+/* Theme Icons */
+.theme-icon {
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
+}
+
+/* Light theme - show sun icon */
+.sun-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    color: #ffeb3b;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.6);
+}
+
+.moon-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(-180deg);
+    color: #90caf9;
+}
+
+.matrix-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(180deg);
+    color: #00ff7f;
+}
+
+/* Dark theme - show moon icon */
+.dark-theme .sun-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(180deg);
+}
+
+.dark-theme .moon-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    color: #90caf9;
+    text-shadow: 0 0 10px rgba(144, 202, 249, 0.6);
+}
+
+.dark-theme .matrix-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(-180deg);
+}
+
+/* Matrix theme - show matrix icon */
+.matrix-theme .sun-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(-180deg);
+}
+
+.matrix-theme .moon-icon {
+    opacity: 0;
+    transform: scale(0.3) rotate(180deg);
+}
+
+.matrix-theme .matrix-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    color: #00ff7f;
+    text-shadow: 0 0 15px rgba(0, 255, 127, 0.8);
+    animation: matrixPulse 2s ease-in-out infinite;
+}
+
+@keyframes matrixPulse {
+    0%, 100% {
+        text-shadow: 0 0 15px rgba(0, 255, 127, 0.8);
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        text-shadow: 0 0 25px rgba(0, 255, 127, 1);
+        transform: scale(1.1) rotate(0deg);
+    }
+}
+
+/* Theme-specific button styling */
+.dark-theme .theme-toggle-btn {
+    background: rgba(33, 150, 243, 0.25);
+    border-color: rgba(33, 150, 243, 0.5);
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.2);
+}
+
+.dark-theme .theme-toggle-btn:hover {
+    background: rgba(33, 150, 243, 0.35);
+    border-color: rgba(33, 150, 243, 0.7);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
+}
+
+.matrix-theme .theme-toggle-btn {
+    background: rgba(0, 255, 127, 0.2);
+    border-color: rgba(0, 255, 127, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 255, 127, 0.3);
+}
+
+.matrix-theme .theme-toggle-btn:hover {
+    background: rgba(0, 255, 127, 0.3);
+    border-color: rgba(0, 255, 127, 0.6);
+    box-shadow: 0 6px 20px rgba(0, 255, 127, 0.5);
+    transform: translateY(-50%) scale(1.1) rotate(15deg);
+}
+
+/* Hover effects for icons */
+.theme-toggle-btn:hover .sun-icon {
+    animation: sunRotate 0.6s ease-in-out;
+}
+
+.theme-toggle-btn:hover .moon-icon {
+    animation: moonSway 0.8s ease-in-out;
+}
+
+.theme-toggle-btn:hover .matrix-icon {
+    animation: matrixGlitch 0.5s ease-in-out;
+}
+
+@keyframes sunRotate {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+    100% { transform: scale(1) rotate(360deg); }
+}
+
+@keyframes moonSway {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(-10deg); }
+    75% { transform: scale(1.1) rotate(10deg); }
+}
+
+@keyframes matrixGlitch {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    20% { transform: scale(1.1) rotate(-2deg); }
+    40% { transform: scale(0.9) rotate(2deg); }
+    60% { transform: scale(1.1) rotate(-1deg); }
+    80% { transform: scale(0.95) rotate(1deg); }
+}
+
+/* Click animation */
+.theme-toggle-btn.clicking {
+    animation: buttonClick 0.3s ease;
+}
+
+@keyframes buttonClick {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(0.85) rotate(5deg); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+/* Mobil için button boyutu */
+@media screen and (max-width: 576px) {
+    .theme-toggle-btn {
+        width: 44px;
+        height: 44px;
+        right: 1rem;
+        font-size: 18px;
+    }
+    
+    .main-header {
+        padding: 0 1rem;
+    }
+    
+    .theme-toggle-btn:hover {
+        transform: translateY(-50%) scale(1.05) rotate(10deg);
+    }
 }
 
 /* Modal stilleri */

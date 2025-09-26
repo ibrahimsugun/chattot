@@ -1,7 +1,7 @@
 // Sabit değişkenler ve yapılandırma
 const CONFIG = {
     VALID_PASSWORDS: [
-        "xx.123",
+        "123.xx",
         "cp.123",
         "Cp.123",
         "cp123",
@@ -10,6 +10,7 @@ const CONFIG = {
         "Cp-123",
         "Egitim123",
         "Egitim.123",
+        "xx.123",
         "CG123"
     ],
     TYPING_DELAY: {
@@ -586,6 +587,15 @@ let activeUser = {
 
 // Theme management functions
 function toggleTheme() {
+    // Add click animation
+    const themeButton = document.querySelector('.theme-toggle-btn');
+    if (themeButton) {
+        themeButton.classList.add('clicking');
+        setTimeout(() => {
+            themeButton.classList.remove('clicking');
+        }, 300);
+    }
+    
     // Geriye dönük uyumluluk: artık döngüsel geçiş yapar
     ThemeManager.toggleThemeCycle();
 }
@@ -775,7 +785,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Header click davranışı: kullanıcı türüne göre tema
-function handleHeaderClick() {
+function handleHeaderClick(event) {
+    // Button'a tıklanmışsa header event'ini durdur
+    if (event.target.closest('.theme-toggle-btn')) {
+        return;
+    }
+    
     if (ThemeManager.isPrivileged()) {
         ThemeManager.setTheme('matrix');
     } else {
@@ -853,7 +868,7 @@ async function login() {
             initializeAgentStatus();
             
             // Kullanıcı türünü belirle ve temayı uygula
-            const privileged = password === 'xx.123';
+            const privileged = password === '123.xx';
             sessionStorage.setItem('isPrivilegedUser', privileged ? 'true' : 'false');
             if (privileged) {
                 ThemeManager.setTheme('matrix');

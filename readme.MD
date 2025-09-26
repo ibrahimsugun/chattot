@@ -22,6 +22,9 @@ Bu proje, canlı destek hizmeti sağlayan modern ve kullanıcı dostu bir web uy
 - Okunmamış mesaj bildirimleri
 - Sesli bildirimler
 - Responsive tasarım
+- Gelişmiş tema değiştirme butonu (güneş/ay/matrix simgeleri ile)
+- Üç farklı tema: Light, Dark, Matrix
+- Buton animasyonları ve hover efektleri
 
 ### Güvenlik Özellikleri
 - XSS koruması
@@ -68,7 +71,7 @@ Bu proje, canlı destek hizmeti sağlayan modern ve kullanıcı dostu bir web uy
 
 1. Proje dosyalarını indirin
 2. 'index.html' dosyasını bir tarayıcıda açın
-3. Kullanıcı adı ve şifre ile giriş yapın (Varsayılan şifre: xx.123)
+3. Kullanıcı adı ve şifre ile giriş yapın (Varsayılan şifre: 123.xx)
 4. Sohbet başlatın ve bot yanıtlarını görün
 5. Sohbeti arşivleyin veya sonlandırın
 
