@@ -71,7 +71,7 @@ Bu proje, canlı destek hizmeti sağlayan modern ve kullanıcı dostu bir web uy
 
 1. Proje dosyalarını indirin
 2. 'index.html' dosyasını bir tarayıcıda açın
-3. Kullanıcı adı ve şifre ile giriş yapın (Varsayılan şifre: 123.xx)
+3. Kullanıcı adı ve şifre ile giriş yapın (Varsayılan şifre: d72f804b4594611ede24bb42d8904f6ef12ef5ba0d0dc537c49ea00fea531350)
 4. Sohbet başlatın ve bot yanıtlarını görün
 5. Sohbeti arşivleyin veya sonlandırın
 

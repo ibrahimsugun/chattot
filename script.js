@@ -1,18 +1,55 @@
+// SHA-256 Hash Fonksiyonu
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
 // Sabit değişkenler ve yapılandırma
 const CONFIG = {
-    VALID_PASSWORDS: [
-        "123.xx",
-        "cp.123",
-        "Cp.123",
-        "cp123",
-        "Cp123",
-        "cp-123",
-        "Cp-123",
-        "Egitim123",
-        "Egitim.123",
-        "xx.123",
-        "CG123"
-    ],
+    // Rol Bazlı Kullanıcı Yapılandırması
+    USER_ROLES: {
+        // Standart Kullanıcılar - Sadece public temalara erişim
+        standard_user: {
+            passwords: [
+                "026cb81be3d27ea4bfb335963902492780c8a257081eef78916ea215994fca4a",
+                "3de5f893b3049abc820aab214a659052822bfe577d6d36c6aa55563a6bea1ecb",
+                "e73f0a16bd4cc7c02dbfebc6f85d013897235c461e23567ef4faecf86998fb1c",
+                "ae340d8a3c66e9469448eb2aab5f2ba7b33cbf92ff1c1a49b717b2553e873e9f",
+                "3f9d448fdfe99ddf32d642dab25bbe3a4e3ce4e77697536a23dbd583e1ba8937",
+                "ff6e67ebab05cd86d4e4bb01137c8bf5ea79c2581a05d5581bf432950cd49e01",
+                "0776ecf06c3973ac615854914d3320784a0abfa2d514e8c32202b15716f122f8",
+                "7de3d69c4b295f7480a37f3ed5c7ad1d97ce7e3205cdbe86a9361923ddaffe23",
+                "dd06fdcd75377e3fbdcdc6eb4f2e49d28255c4ad2da2dbdadd8e86be7dae4592",
+                "b993d4fc84fcc45674abbcf602559e4bba08261f68b8bee92a39ce5aa693a19a"
+            ],
+            allowedThemes: ['light', 'dark']
+        },
+        // Özel Temalı Kullanıcılar
+        custom_theme_users: [
+            {
+                password: "96a1ddbb014d36e8f07963959cdec25b4a0bb70a149609fcbce0453ffddb45ea",
+                userId: "custom_user_red",
+                customTheme: "red",
+                allowedThemes: ['light', 'dark', 'red']
+            },
+            {
+                password: "3d06b7902cde70d31c08de678c47d57cef9f42545e56507f97f70d6d6a23598f",
+                userId: "custom_user_blue",
+                customTheme: "blue",
+                allowedThemes: ['light', 'dark', 'blue']
+            }
+        ],
+        // Kök Yönetici - Tüm temalara erişim
+        root_admin: {
+            password: "d72f804b4594611ede24bb42d8904f6ef12ef5ba0d0dc537c49ea00fea531350",
+            userId: "root_admin",
+            customTheme: "matrix",
+            allowedThemes: ['light', 'dark', 'matrix', 'red', 'blue'] // Tüm temalar
+        }
+    },
     TYPING_DELAY: {
         MIN: 2000,  // 2 saniye
         MAX: 8000   // 8 saniye
@@ -23,52 +60,169 @@ const CONFIG = {
     }
 };
 
+// Kullanıcı Rolü Yöneticisi
+const UserRoleManager = {
+    // Mevcut kullanıcı bilgilerini döndür
+    getCurrentUser() {
+        try {
+            const userDataStr = sessionStorage.getItem('currentUserData');
+            return userDataStr ? JSON.parse(userDataStr) : null;
+        } catch (_) {
+            return null;
+        }
+    },
+    
+    // Kullanıcıyı sessionStorage'a kaydet
+    setCurrentUser(userData) {
+        try {
+            sessionStorage.setItem('currentUserData', JSON.stringify(userData));
+        } catch (error) {
+            console.error('Kullanıcı verisi kaydedilemedi:', error);
+        }
+    },
+    
+    // Şifreye göre kullanıcı rolünü ve bilgilerini bul
+    async authenticateUser(password) {
+        // Şifreyi SHA-256 ile hashle
+        const hashedPassword = await sha256(password);
+        
+        // Root Admin kontrolü
+        if (hashedPassword === CONFIG.USER_ROLES.root_admin.password) {
+            return {
+                role: 'root_admin',
+                userId: CONFIG.USER_ROLES.root_admin.userId,
+                customTheme: CONFIG.USER_ROLES.root_admin.customTheme,
+                allowedThemes: CONFIG.USER_ROLES.root_admin.allowedThemes
+            };
+        }
+        
+        // Custom Theme User kontrolü
+        for (const customUser of CONFIG.USER_ROLES.custom_theme_users) {
+            if (hashedPassword === customUser.password) {
+                return {
+                    role: 'custom_theme_user',
+                    userId: customUser.userId,
+                    customTheme: customUser.customTheme,
+                    allowedThemes: customUser.allowedThemes
+                };
+            }
+        }
+        
+        // Standard User kontrolü
+        if (CONFIG.USER_ROLES.standard_user.passwords.includes(hashedPassword)) {
+            return {
+                role: 'standard_user',
+                userId: 'standard_user',
+                customTheme: null,
+                allowedThemes: CONFIG.USER_ROLES.standard_user.allowedThemes
+            };
+        }
+        
+        return null; // Geçersiz şifre
+    },
+    
+    // Kullanıcının belirli bir temaya erişim izni var mı?
+    canAccessTheme(theme) {
+        const user = this.getCurrentUser();
+        if (!user) return false;
+        return user.allowedThemes.includes(theme);
+    },
+    
+    // Kullanıcının tüm erişilebilir temalarını getir
+    getAllowedThemes() {
+        const user = this.getCurrentUser();
+        return user ? user.allowedThemes : ['light', 'dark'];
+    },
+    
+    // Kullanıcının rolünü kontrol et
+    hasRole(role) {
+        const user = this.getCurrentUser();
+        return user ? user.role === role : false;
+    },
+    
+    // Kullanıcıyı çıkış yaptır
+    logout() {
+        sessionStorage.removeItem('currentUserData');
+    }
+};
+
 // Tema yönetimi
 const ThemeManager = {
     STORAGE_KEY: 'theme',
-    THEMES: ['light', 'dark', 'matrix'],
-    isPrivileged() {
-        try {
-            return sessionStorage.getItem('isPrivilegedUser') === 'true';
-        } catch (_) {
-            return false;
-        }
+    THEMES: ['light', 'dark', 'matrix', 'red', 'blue'],
+    
+    // Kullanıcının erişebildiği temaları getir
+    getAvailableThemes() {
+        return UserRoleManager.getAllowedThemes();
     },
+    
+    // Temayı sanitize et - kullanıcı erişimine göre
     sanitizeTheme(theme) {
-        if (theme === 'matrix' && !this.isPrivileged()) {
+        // Kullanıcı bu temaya erişebilir mi?
+        if (!UserRoleManager.canAccessTheme(theme)) {
+            return 'light'; // Varsayılan temaya dön
+        }
+        
+        // Tema listesinde var mı?
+        if (!this.THEMES.includes(theme)) {
             return 'light';
         }
-        if (!this.THEMES.includes(theme)) return 'light';
+        
         return theme;
     },
+    
     getTheme() {
         return localStorage.getItem(this.STORAGE_KEY) || 'light';
     },
+    
     applyTheme(theme) {
         const safeTheme = this.sanitizeTheme(theme);
         const body = document.body;
-        body.classList.remove('dark-theme', 'matrix-theme');
+        
+        // Tüm tema sınıflarını kaldır
+        body.classList.remove('dark-theme', 'matrix-theme', 'red-theme', 'blue-theme');
+        
+        // Yeni temayı uygula
         if (safeTheme === 'dark') body.classList.add('dark-theme');
         if (safeTheme === 'matrix') body.classList.add('matrix-theme');
+        if (safeTheme === 'red') body.classList.add('red-theme');
+        if (safeTheme === 'blue') body.classList.add('blue-theme');
+        
         localStorage.setItem(this.STORAGE_KEY, safeTheme);
     },
+    
     setTheme(theme) {
         if (!this.THEMES.includes(theme)) return;
         this.applyTheme(theme);
     },
+    
     toggleLightDark() {
         const current = this.getTheme();
         const next = current === 'dark' ? 'light' : 'dark';
         this.applyTheme(next);
         return next;
     },
+    
     toggleThemeCycle() {
         const current = this.getTheme();
-        const order = this.THEMES; // light -> dark -> matrix -> light
-        const next = order[(order.indexOf(current) + 1) % order.length];
+        const availableThemes = this.getAvailableThemes();
+        
+        // Mevcut temayı kullanıcının erişebildiği temalar içinde bul
+        let currentIndex = availableThemes.indexOf(current);
+        
+        // Eğer mevcut tema listede yoksa, baştan başla
+        if (currentIndex === -1) {
+            currentIndex = -1;
+        }
+        
+        // Sonraki temaya geç
+        const nextIndex = (currentIndex + 1) % availableThemes.length;
+        const next = availableThemes[nextIndex];
+        
         this.applyTheme(next);
         return next;
     },
+    
     migrateLegacy() {
         // Eski boolean bayraktan geçiş (darkTheme)
         const hasLegacy = localStorage.getItem('darkTheme');
@@ -79,6 +233,7 @@ const ThemeManager = {
             localStorage.removeItem('darkTheme');
         }
     },
+    
     init() {
         this.migrateLegacy();
         this.applyTheme(this.getTheme());
@@ -784,16 +939,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Header click davranışı: kullanıcı türüne göre tema
+// Header click davranışı: rol bazlı tema seçimi
 function handleHeaderClick(event) {
     // Button'a tıklanmışsa header event'ini durdur
     if (event.target.closest('.theme-toggle-btn')) {
         return;
     }
     
-    if (ThemeManager.isPrivileged()) {
-        ThemeManager.setTheme('matrix');
-    } else {
+    const user = UserRoleManager.getCurrentUser();
+    if (!user) {
+        ThemeManager.toggleLightDark();
+        return;
+    }
+    
+    // Root admin ise custom theme'ini uygula
+    if (user.role === 'root_admin' && user.customTheme) {
+        ThemeManager.setTheme(user.customTheme);
+    } 
+    // Custom theme user ise custom theme'ini uygula
+    else if (user.role === 'custom_theme_user' && user.customTheme) {
+        ThemeManager.setTheme(user.customTheme);
+    } 
+    // Standart kullanıcı ise light/dark arasında geçiş
+    else {
         ThemeManager.toggleLightDark();
     }
 }
@@ -845,7 +1013,10 @@ async function login() {
         return;
     }
 
-    if (CONFIG.VALID_PASSWORDS.includes(password)) {
+    // Rol bazlı kimlik doğrulama
+    const userData = await UserRoleManager.authenticateUser(password);
+    
+    if (userData) {
         try {
             let scenariosLoaded = ScenarioManager.loadFromStorage();
 
@@ -867,13 +1038,15 @@ async function login() {
             // Status'u başlat
             initializeAgentStatus();
             
-            // Kullanıcı türünü belirle ve temayı uygula
-            const privileged = password === '123.xx';
-            sessionStorage.setItem('isPrivilegedUser', privileged ? 'true' : 'false');
-            if (privileged) {
-                ThemeManager.setTheme('matrix');
+            // Kullanıcı verilerini kaydet
+            UserRoleManager.setCurrentUser(userData);
+            
+            // Rol bazlı tema uygulama
+            if (userData.customTheme) {
+                // Eğer kullanıcının özel bir teması varsa onu uygula
+                ThemeManager.setTheme(userData.customTheme);
             } else {
-                // Normal kullanıcılar için matrix seçiliyse düzelt
+                // Aksi halde mevcut temayı sanitize et
                 ThemeManager.applyTheme(ThemeManager.getTheme());
             }
 
@@ -894,7 +1067,15 @@ async function login() {
                 document.getElementById("loginForm").classList.add("hidden");
                 document.getElementById("chatInterface").classList.remove("hidden");
                 
-                UIManager.showNotification("Başarıyla giriş yapıldı!", "success");
+                // Rol bazlı bildirim mesajı
+                let roleMessage = "Başarıyla giriş yapıldı!";
+                if (userData.role === 'root_admin') {
+                    roleMessage = "Root Admin olarak giriş yapıldı! Tüm temalara erişiminiz var.";
+                } else if (userData.role === 'custom_theme_user') {
+                    roleMessage = `Özel tema kullanıcısı olarak giriş yapıldı! '${userData.customTheme}' teması aktif.`;
+                }
+                
+                UIManager.showNotification(roleMessage, "success");
             } else {
                 throw new Error('Senaryo atanamadı');
             }
