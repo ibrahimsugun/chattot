@@ -22,8 +22,7 @@ const CONFIG = {
                 "ff6e67ebab05cd86d4e4bb01137c8bf5ea79c2581a05d5581bf432950cd49e01",
                 "0776ecf06c3973ac615854914d3320784a0abfa2d514e8c32202b15716f122f8",
                 "7de3d69c4b295f7480a37f3ed5c7ad1d97ce7e3205cdbe86a9361923ddaffe23",
-                "dd06fdcd75377e3fbdcdc6eb4f2e49d28255c4ad2da2dbdadd8e86be7dae4592",
-                "b993d4fc84fcc45674abbcf602559e4bba08261f68b8bee92a39ce5aa693a19a"
+                "dd06fdcd75377e3fbdcdc6eb4f2e49d28255c4ad2da2dbdadd8e86be7dae4592"
             ],
             allowedThemes: ['light', 'dark']
         },
@@ -37,7 +36,13 @@ const CONFIG = {
             },
             {
                 password: "3d06b7902cde70d31c08de678c47d57cef9f42545e56507f97f70d6d6a23598f",
-                userId: "custom_user_blue",
+                userId: "custom_user_blue_1",
+                customTheme: "blue",
+                allowedThemes: ['light', 'dark', 'blue']
+            },
+            {
+                password: "b993d4fc84fcc45674abbcf602559e4bba08261f68b8bee92a39ce5aa693a19a",
+                userId: "custom_user_blue_2",
                 customTheme: "blue",
                 allowedThemes: ['light', 'dark', 'blue']
             }
