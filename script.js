@@ -157,10 +157,13 @@ const ThemeManager = {
     },
     
     // Temayı sanitize et - kullanıcı erişimine göre
-    sanitizeTheme(theme) {
-        // Kullanıcı bu temaya erişebilir mi?
-        if (!UserRoleManager.canAccessTheme(theme)) {
-            return 'light'; // Varsayılan temaya dön
+    sanitizeTheme(theme, skipUserCheck = false) {
+        // İlk yükleme sırasında kullanıcı kontrolünü atla
+        if (!skipUserCheck) {
+            // Kullanıcı bu temaya erişebilir mi?
+            if (!UserRoleManager.canAccessTheme(theme)) {
+                return 'light'; // Varsayılan temaya dön
+            }
         }
         
         // Tema listesinde var mı?
@@ -172,11 +175,20 @@ const ThemeManager = {
     },
     
     getTheme() {
-        return localStorage.getItem(this.STORAGE_KEY) || 'light';
+        const savedTheme = localStorage.getItem(this.STORAGE_KEY);
+        
+        // If no saved theme exists, determine default based on time
+        if (!savedTheme) {
+            const currentHour = new Date().getHours();
+            // If time is 15:00 (3 PM) or later, default to dark theme
+            return currentHour >= 15 ? 'dark' : 'light';
+        }
+        
+        return savedTheme;
     },
     
-    applyTheme(theme) {
-        const safeTheme = this.sanitizeTheme(theme);
+    applyTheme(theme, skipUserCheck = false) {
+        const safeTheme = this.sanitizeTheme(theme, skipUserCheck);
         const body = document.body;
         
         // Tüm tema sınıflarını kaldır
@@ -236,7 +248,10 @@ const ThemeManager = {
     
     init() {
         this.migrateLegacy();
-        this.applyTheme(this.getTheme());
+        const theme = this.getTheme();
+        console.log('Initial theme check - Current hour:', new Date().getHours(), 'Selected theme:', theme);
+        // Skip user check during initial load (before login)
+        this.applyTheme(theme, true);
     }
 };
 
@@ -1386,4 +1401,74 @@ document.addEventListener('DOMContentLoaded', function() {
         loginForm.classList.remove('error', 'error-shake', 'error-bounce', 'error-pulse', 'error-rotate');
     });
 });
- 
+
+// Right-click prevention with random messages
+document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+    
+    const mesajlar = [
+        "No right clicks :)",
+        "Don't do again.",
+        "What are you looking for?",
+        "Right-clicking won't work here.",
+        "Sorry, no right-clicking allowed.",
+        "This is a no right-click zone."
+    ];
+    
+    const randomIndex = Math.floor(Math.random() * mesajlar.length);
+    const randomMesaj = mesajlar[randomIndex];
+    
+    alert(randomMesaj);
+    return false;
+});
+
+// Keyboard shortcuts prevention
+document.addEventListener('keydown', function(e) {
+    // F12 - Developer Tools
+    if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // CTRL+SHIFT+I - Developer Tools
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // CTRL+SHIFT+J - Console
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // CTRL+S - Save Page
+    if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // CTRL+U - View Source
+    if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // CMD+OPTION+I - Developer Tools (Mac)
+    if (e.metaKey && e.altKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // CMD+OPTION+J - Console (Mac)
+    if (e.metaKey && e.altKey && e.keyCode === 74) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // CMD+OPTION+C - Inspect Element (Mac)
+    if (e.metaKey && e.altKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+    }
+}); 
