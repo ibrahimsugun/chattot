@@ -138,6 +138,384 @@
     --active-bg: rgba(30, 144, 255, 0.25); /* Mavi %25 */
 }
 
+/* Purple Theme - Modern Mor Tema */
+.purple-theme {
+    --primary-color: #AB47BC; /* Vibrant Purple */
+    --secondary-color: #8E24AA; /* Deep Purple */
+    --success-color: #66BB6A; /* Light Green */
+    --error-color: #EF5350; /* Red */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #E1BEE7; /* Light Purple */
+
+    --background-color: #1A0A28; /* Dark Purple-Black */
+    --border-color: #4A2C5E; /* Purple Border */
+    --chat-bg: #2D1B3D; /* Dark Purple */
+    --message-bg: #3D2554; /* Message Purple */
+    --input-bg: #4A2C5E; /* Input Purple */
+    --panel-bg: #251836; /* Panel Purple */
+
+    --hover-bg: rgba(171, 71, 188, 0.15);
+    --active-bg: rgba(171, 71, 188, 0.25);
+}
+
+/* Ocean Theme - Okyanus Mavisi Gradient Tema */
+.ocean-theme {
+    --primary-color: #00BCD4; /* Cyan */
+    --secondary-color: #0097A7; /* Dark Cyan */
+    --success-color: #26A69A; /* Teal */
+    --error-color: #FF7043; /* Deep Orange */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #B2EBF2; /* Light Cyan */
+
+    --background-color: #0A1F28; /* Deep Ocean */
+    --border-color: #1E4D5C; /* Ocean Border */
+    --chat-bg: #0F2A35; /* Ocean Blue */
+    --message-bg: #1A3F4D; /* Message Ocean */
+    --input-bg: #1E4D5C; /* Input Ocean */
+    --panel-bg: #0C242E; /* Panel Ocean */
+
+    --hover-bg: rgba(0, 188, 212, 0.15);
+    --active-bg: rgba(0, 188, 212, 0.25);
+}
+
+/* Sunset Theme - Gün Batımı Gradient Tema */
+.sunset-theme {
+    --primary-color: #FF7043; /* Coral Orange */
+    --secondary-color: #F4511E; /* Deep Orange */
+    --success-color: #FFB74D; /* Light Orange */
+    --error-color: #E53935; /* Red */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #FFCCBC; /* Light Orange */
+
+    --background-color: #1F0F0A; /* Dark Brown */
+    --border-color: #4D2A1F; /* Brown Border */
+    --chat-bg: #2A1612; /* Dark Sunset */
+    --message-bg: #3D2419; /* Message Sunset */
+    --input-bg: #4D2A1F; /* Input Sunset */
+    --panel-bg: #25130F; /* Panel Sunset */
+
+    --hover-bg: rgba(255, 112, 67, 0.15);
+    --active-bg: rgba(255, 112, 67, 0.25);
+}
+
+/* Forest Theme - Orman Yeşili Tema */
+.forest-theme {
+    --primary-color: #4CAF50; /* Green */
+    --secondary-color: #388E3C; /* Dark Green */
+    --success-color: #66BB6A; /* Light Green */
+    --error-color: #EF5350; /* Red */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #C8E6C9; /* Light Green */
+
+    --background-color: #0A1F0A; /* Dark Forest */
+    --border-color: #1E4D1E; /* Forest Border */
+    --chat-bg: #0F2A0F; /* Forest Green */
+    --message-bg: #1A3F1A; /* Message Forest */
+    --input-bg: #1E4D1E; /* Input Forest */
+    --panel-bg: #0C240C; /* Panel Forest */
+
+    --hover-bg: rgba(76, 175, 80, 0.15);
+    --active-bg: rgba(76, 175, 80, 0.25);
+}
+
+/* Cyberpunk Theme - Neon Pembe-Mor Tema */
+.cyberpunk-theme {
+    --primary-color: #E91E63; /* Pink */
+    --secondary-color: #C2185B; /* Dark Pink */
+    --success-color: #00E5FF; /* Cyan */
+    --error-color: #FF1744; /* Red */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #F8BBD0; /* Light Pink */
+
+    --background-color: #0D0020; /* Deep Purple-Black */
+    --border-color: #3D1F5C; /* Purple Border */
+    --chat-bg: #1A0A35; /* Dark Purple */
+    --message-bg: #2D1550; /* Message Purple */
+    --input-bg: #3D1F5C; /* Input Purple */
+    --panel-bg: #15062A; /* Panel Purple */
+
+    --hover-bg: rgba(233, 30, 99, 0.15);
+    --active-bg: rgba(233, 30, 99, 0.25);
+}
+
+/* Amber Theme - Altın Sarısı Tema */
+.amber-theme {
+    --primary-color: #FFB300; /* Amber */
+    --secondary-color: #FF8F00; /* Dark Amber */
+    --success-color: #7CB342; /* Light Green */
+    --error-color: #E53935; /* Red */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #FFE082; /* Light Amber */
+
+    --background-color: #1F1A0A; /* Dark Brown */
+    --border-color: #4D3D20; /* Brown Border */
+    --chat-bg: #2A2215; /* Dark Amber */
+    --message-bg: #3D2F1A; /* Message Amber */
+    --input-bg: #4D3D20; /* Input Amber */
+    --panel-bg: #251D10; /* Panel Amber */
+
+    --hover-bg: rgba(255, 179, 0, 0.15);
+    --active-bg: rgba(255, 179, 0, 0.25);
+}
+
+/* Lavender Theme - Lavanta Mor Tema */
+.lavender-theme {
+    --primary-color: #9575CD; /* Light Purple */
+    --secondary-color: #7E57C2; /* Medium Purple */
+    --success-color: #81C784; /* Light Green */
+    --error-color: #EF5350; /* Red */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #D1C4E9; /* Lavender */
+
+    --background-color: #1A0F28; /* Dark Lavender */
+    --border-color: #4A3D5E; /* Lavender Border */
+    --chat-bg: #2D1F45; /* Dark Lavender */
+    --message-bg: #3D2B5C; /* Message Lavender */
+    --input-bg: #4A3D5E; /* Input Lavender */
+    --panel-bg: #251836; /* Panel Lavender */
+
+    --hover-bg: rgba(149, 117, 205, 0.15);
+    --active-bg: rgba(149, 117, 205, 0.25);
+}
+
+/* Mint Theme - Nane Yeşili Tema */
+.mint-theme {
+    --primary-color: #26A69A; /* Teal */
+    --secondary-color: #00897B; /* Dark Teal */
+    --success-color: #66BB6A; /* Light Green */
+    --error-color: #EF5350; /* Red */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #B2DFDB; /* Light Mint */
+
+    --background-color: #0A1F1A; /* Dark Mint */
+    --border-color: #1E4D47; /* Mint Border */
+    --chat-bg: #0F2A25; /* Dark Mint */
+    --message-bg: #1A3F38; /* Message Mint */
+    --input-bg: #1E4D47; /* Input Mint */
+    --panel-bg: #0C2420; /* Panel Mint */
+
+    --hover-bg: rgba(38, 166, 154, 0.15);
+    --active-bg: rgba(38, 166, 154, 0.25);
+}
+
+/* Rose Theme - Gül Pembesi Tema */
+.rose-theme {
+    --primary-color: #F06292; /* Pink */
+    --secondary-color: #E91E63; /* Dark Pink */
+    --success-color: #66BB6A; /* Light Green */
+    --error-color: #EF5350; /* Red */
+
+    --text-primary: #FFFFFF; /* White */
+    --text-secondary: #F8BBD0; /* Light Pink */
+
+    --background-color: #1F0A15; /* Dark Pink */
+    --border-color: #4D2A3A; /* Pink Border */
+    --chat-bg: #2A1020; /* Dark Rose */
+    --message-bg: #3D1A30; /* Message Rose */
+    --input-bg: #4D2A3A; /* Input Rose */
+    --panel-bg: #250D1A; /* Panel Rose */
+
+    --hover-bg: rgba(240, 98, 146, 0.15);
+    --active-bg: rgba(240, 98, 146, 0.25);
+}
+
+/* Light Peach Theme - Açık Şeftali Tema */
+.peach-theme {
+    --primary-color: #FF7043;
+    --secondary-color: #F4511E;
+    --success-color: #66BB6A;
+    --error-color: #E53935;
+
+    --text-primary: #37474F;
+    --text-secondary: #546E7A;
+
+    --background-color: #FFF3E0;
+    --border-color: #FFE0B2;
+    --chat-bg: #FFFFFF;
+    --message-bg: #FFF8F0;
+    --input-bg: #FFFFFF;
+    --panel-bg: #FFFAF5;
+
+    --hover-bg: rgba(255, 112, 67, 0.1);
+    --active-bg: rgba(255, 112, 67, 0.15);
+}
+
+/* Light Sky Theme - Açık Gökyüzü Tema */
+.sky-theme {
+    --primary-color: #42A5F5;
+    --secondary-color: #1E88E5;
+    --success-color: #66BB6A;
+    --error-color: #EF5350;
+
+    --text-primary: #263238;
+    --text-secondary: #455A64;
+
+    --background-color: #E1F5FE;
+    --border-color: #B3E5FC;
+    --chat-bg: #FFFFFF;
+    --message-bg: #F0F9FF;
+    --input-bg: #FFFFFF;
+    --panel-bg: #F5FCFF;
+
+    --hover-bg: rgba(66, 165, 245, 0.1);
+    --active-bg: rgba(66, 165, 245, 0.15);
+}
+
+/* Light Coral Theme - Açık Mercan Tema */
+.coral-theme {
+    --primary-color: #FF6B9D;
+    --secondary-color: #E91E63;
+    --success-color: #66BB6A;
+    --error-color: #E53935;
+
+    --text-primary: #4A1942;
+    --text-secondary: #6A1B5A;
+
+    --background-color: #FCE4EC;
+    --border-color: #F8BBD0;
+    --chat-bg: #FFFFFF;
+    --message-bg: #FFF0F5;
+    --input-bg: #FFFFFF;
+    --panel-bg: #FFF5F8;
+
+    --hover-bg: rgba(255, 107, 157, 0.1);
+    --active-bg: rgba(255, 107, 157, 0.15);
+}
+
+/* Light Lime Theme - Açık Limon Yeşili Tema */
+.lime-theme {
+    --primary-color: #9CCC65;
+    --secondary-color: #7CB342;
+    --success-color: #66BB6A;
+    --error-color: #EF5350;
+
+    --text-primary: #33691E;
+    --text-secondary: #558B2F;
+
+    --background-color: #F1F8E9;
+    --border-color: #DCEDC8;
+    --chat-bg: #FFFFFF;
+    --message-bg: #F9FBF5;
+    --input-bg: #FFFFFF;
+    --panel-bg: #FCFDF9;
+
+    --hover-bg: rgba(156, 204, 101, 0.1);
+    --active-bg: rgba(156, 204, 101, 0.15);
+}
+
+/* Light Teal Theme - Açık Deniz Mavisi Tema */
+.teal-theme {
+    --primary-color: #26A69A;
+    --secondary-color: #00897B;
+    --success-color: #66BB6A;
+    --error-color: #EF5350;
+
+    --text-primary: #004D40;
+    --text-secondary: #00695C;
+
+    --background-color: #E0F2F1;
+    --border-color: #B2DFDB;
+    --chat-bg: #FFFFFF;
+    --message-bg: #F0F9F8;
+    --input-bg: #FFFFFF;
+    --panel-bg: #F5FBFA;
+
+    --hover-bg: rgba(38, 166, 154, 0.1);
+    --active-bg: rgba(38, 166, 154, 0.15);
+}
+
+/* Light Indigo Theme - Açık Çivit Mavisi Tema */
+.indigo-theme {
+    --primary-color: #5C6BC0;
+    --secondary-color: #3949AB;
+    --success-color: #66BB6A;
+    --error-color: #EF5350;
+
+    --text-primary: #1A237E;
+    --text-secondary: #283593;
+
+    --background-color: #E8EAF6;
+    --border-color: #C5CAE9;
+    --chat-bg: #FFFFFF;
+    --message-bg: #F3F4FB;
+    --input-bg: #FFFFFF;
+    --panel-bg: #F8F9FD;
+
+    --hover-bg: rgba(92, 107, 192, 0.1);
+    --active-bg: rgba(92, 107, 192, 0.15);
+}
+
+/* Light Gold Theme - Açık Altın Tema */
+.gold-theme {
+    --primary-color: #FFB74D;
+    --secondary-color: #FFA726;
+    --success-color: #66BB6A;
+    --error-color: #E53935;
+
+    --text-primary: #E65100;
+    --text-secondary: #EF6C00;
+
+    --background-color: #FFF8E1;
+    --border-color: #FFECB3;
+    --chat-bg: #FFFFFF;
+    --message-bg: #FFFBF0;
+    --input-bg: #FFFFFF;
+    --panel-bg: #FFFDF5;
+
+    --hover-bg: rgba(255, 183, 77, 0.1);
+    --active-bg: rgba(255, 183, 77, 0.15);
+}
+
+/* Light Orchid Theme - Açık Orkide Tema */
+.orchid-theme {
+    --primary-color: #BA68C8;
+    --secondary-color: #AB47BC;
+    --success-color: #66BB6A;
+    --error-color: #EF5350;
+
+    --text-primary: #4A148C;
+    --text-secondary: #6A1B9A;
+
+    --background-color: #F3E5F5;
+    --border-color: #E1BEE7;
+    --chat-bg: #FFFFFF;
+    --message-bg: #F9F3FB;
+    --input-bg: #FFFFFF;
+    --panel-bg: #FCF8FD;
+
+    --hover-bg: rgba(186, 104, 200, 0.1);
+    --active-bg: rgba(186, 104, 200, 0.15);
+}
+
+/* Light Sand Theme - Açık Kum Tema */
+.sand-theme {
+    --primary-color: #A1887F;
+    --secondary-color: #8D6E63;
+    --success-color: #66BB6A;
+    --error-color: #EF5350;
+
+    --text-primary: #3E2723;
+    --text-secondary: #4E342E;
+
+    --background-color: #EFEBE9;
+    --border-color: #D7CCC8;
+    --chat-bg: #FFFFFF;
+    --message-bg: #F7F5F4;
+    --input-bg: #FFFFFF;
+    --panel-bg: #FAF9F8;
+
+    --hover-bg: rgba(161, 136, 127, 0.1);
+    --active-bg: rgba(161, 136, 127, 0.15);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -500,6 +878,258 @@ body {
 }
 
 .blue-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Purple Theme Chat Item Styling */
+.purple-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.purple-theme .chat-item-preview {
+    color: #E1BEE7;
+}
+
+.purple-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Ocean Theme Chat Item Styling */
+.ocean-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.ocean-theme .chat-item-preview {
+    color: #B2EBF2;
+}
+
+.ocean-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Sunset Theme Chat Item Styling */
+.sunset-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.sunset-theme .chat-item-preview {
+    color: #FFCCBC;
+}
+
+.sunset-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Forest Theme Chat Item Styling */
+.forest-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.forest-theme .chat-item-preview {
+    color: #C8E6C9;
+}
+
+.forest-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Cyberpunk Theme Chat Item Styling */
+.cyberpunk-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.cyberpunk-theme .chat-item-preview {
+    color: #F8BBD0;
+}
+
+.cyberpunk-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Amber Theme Chat Item Styling */
+.amber-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.amber-theme .chat-item-preview {
+    color: #FFE082;
+}
+
+.amber-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Lavender Theme Chat Item Styling */
+.lavender-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.lavender-theme .chat-item-preview {
+    color: #D1C4E9;
+}
+
+.lavender-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Mint Theme Chat Item Styling */
+.mint-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.mint-theme .chat-item-preview {
+    color: #B2DFDB;
+}
+
+.mint-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Rose Theme Chat Item Styling */
+.rose-theme .chat-item-name {
+    color: #FFFFFF;
+}
+
+.rose-theme .chat-item-preview {
+    color: #F8BBD0;
+}
+
+.rose-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Peach Theme Chat Item Styling */
+.peach-theme .chat-item-name {
+    color: #37474F;
+}
+
+.peach-theme .chat-item-preview {
+    color: #546E7A;
+}
+
+.peach-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Sky Theme Chat Item Styling */
+.sky-theme .chat-item-name {
+    color: #263238;
+}
+
+.sky-theme .chat-item-preview {
+    color: #455A64;
+}
+
+.sky-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Coral Theme Chat Item Styling */
+.coral-theme .chat-item-name {
+    color: #4A1942;
+}
+
+.coral-theme .chat-item-preview {
+    color: #6A1B5A;
+}
+
+.coral-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Lime Theme Chat Item Styling */
+.lime-theme .chat-item-name {
+    color: #33691E;
+}
+
+.lime-theme .chat-item-preview {
+    color: #558B2F;
+}
+
+.lime-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Teal Theme Chat Item Styling */
+.teal-theme .chat-item-name {
+    color: #004D40;
+}
+
+.teal-theme .chat-item-preview {
+    color: #00695C;
+}
+
+.teal-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Indigo Theme Chat Item Styling */
+.indigo-theme .chat-item-name {
+    color: #1A237E;
+}
+
+.indigo-theme .chat-item-preview {
+    color: #283593;
+}
+
+.indigo-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Gold Theme Chat Item Styling */
+.gold-theme .chat-item-name {
+    color: #E65100;
+}
+
+.gold-theme .chat-item-preview {
+    color: #EF6C00;
+}
+
+.gold-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Orchid Theme Chat Item Styling */
+.orchid-theme .chat-item-name {
+    color: #4A148C;
+}
+
+.orchid-theme .chat-item-preview {
+    color: #6A1B9A;
+}
+
+.orchid-theme .chat-item-avatar {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+}
+
+/* Sand Theme Chat Item Styling */
+.sand-theme .chat-item-name {
+    color: #3E2723;
+}
+
+.sand-theme .chat-item-preview {
+    color: #4E342E;
+}
+
+.sand-theme .chat-item-avatar {
     background-color: var(--primary-color);
     color: #FFFFFF;
 }
@@ -977,6 +1607,132 @@ body {
     background: white;
     color: var(--text-primary);
     border-bottom-left-radius: 4px;
+}
+
+/* Purple Theme - Bot Message High Contrast */
+.purple-theme .bot-message {
+    background: #1A0A28;
+    color: #FFFFFF;
+    border: 1px solid #4A2C5E;
+}
+
+/* Ocean Theme - Bot Message High Contrast */
+.ocean-theme .bot-message {
+    background: #0A1F28;
+    color: #FFFFFF;
+    border: 1px solid #1E4D5C;
+}
+
+/* Sunset Theme - Bot Message High Contrast */
+.sunset-theme .bot-message {
+    background: #1F0F0A;
+    color: #FFFFFF;
+    border: 1px solid #4D2A1F;
+}
+
+/* Forest Theme - Bot Message High Contrast */
+.forest-theme .bot-message {
+    background: #0A1F0A;
+    color: #FFFFFF;
+    border: 1px solid #1E4D1E;
+}
+
+/* Cyberpunk Theme - Bot Message High Contrast */
+.cyberpunk-theme .bot-message {
+    background: #0D0020;
+    color: #FFFFFF;
+    border: 1px solid #3D1F5C;
+}
+
+/* Amber Theme - Bot Message High Contrast */
+.amber-theme .bot-message {
+    background: #1F1A0A;
+    color: #FFFFFF;
+    border: 1px solid #4D3D20;
+}
+
+/* Lavender Theme - Bot Message High Contrast */
+.lavender-theme .bot-message {
+    background: #1A0F28;
+    color: #FFFFFF;
+    border: 1px solid #4A3D5E;
+}
+
+/* Mint Theme - Bot Message High Contrast */
+.mint-theme .bot-message {
+    background: #0A1F1A;
+    color: #FFFFFF;
+    border: 1px solid #1E4D47;
+}
+
+/* Rose Theme - Bot Message High Contrast */
+.rose-theme .bot-message {
+    background: #1F0A15;
+    color: #FFFFFF;
+    border: 1px solid #4D2A3A;
+}
+
+/* Peach Theme - Bot Message */
+.peach-theme .bot-message {
+    background: #FFF8F0;
+    color: #37474F;
+    border: 1px solid #FFE0B2;
+}
+
+/* Sky Theme - Bot Message */
+.sky-theme .bot-message {
+    background: #F0F9FF;
+    color: #263238;
+    border: 1px solid #B3E5FC;
+}
+
+/* Coral Theme - Bot Message */
+.coral-theme .bot-message {
+    background: #FFF0F5;
+    color: #4A1942;
+    border: 1px solid #F8BBD0;
+}
+
+/* Lime Theme - Bot Message */
+.lime-theme .bot-message {
+    background: #F9FBF5;
+    color: #33691E;
+    border: 1px solid #DCEDC8;
+}
+
+/* Teal Theme - Bot Message */
+.teal-theme .bot-message {
+    background: #F0F9F8;
+    color: #004D40;
+    border: 1px solid #B2DFDB;
+}
+
+/* Indigo Theme - Bot Message */
+.indigo-theme .bot-message {
+    background: #F3F4FB;
+    color: #1A237E;
+    border: 1px solid #C5CAE9;
+}
+
+/* Gold Theme - Bot Message */
+.gold-theme .bot-message {
+    background: #FFFBF0;
+    color: #E65100;
+    border: 1px solid #FFECB3;
+}
+
+/* Orchid Theme - Bot Message */
+.orchid-theme .bot-message {
+    background: #F9F3FB;
+    color: #4A148C;
+    border: 1px solid #E1BEE7;
+}
+
+/* Sand Theme - Bot Message */
+.sand-theme .bot-message {
+    background: #F7F5F4;
+    color: #3E2723;
+    border: 1px solid #D7CCC8;
 }
 
 .input-area {

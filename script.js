@@ -120,7 +120,7 @@ const UserRoleManager = {
 // Tema yönetimi
 const ThemeManager = {
     STORAGE_KEY: 'theme',
-    THEMES: ['light', 'dark', 'matrix', 'red', 'blue'],
+    THEMES: ['light', 'dark', 'matrix', 'red', 'blue', 'purple', 'ocean', 'sunset', 'forest', 'cyberpunk', 'amber', 'lavender', 'mint', 'rose', 'peach', 'sky', 'coral', 'lime', 'teal', 'indigo', 'gold', 'orchid', 'sand'],
     
     // Kullanıcının erişebildiği temaları getir
     getAvailableThemes() {
@@ -163,13 +163,35 @@ const ThemeManager = {
         const body = document.body;
         
         // Tüm tema sınıflarını kaldır
-        body.classList.remove('dark-theme', 'matrix-theme', 'red-theme', 'blue-theme');
+        body.classList.remove('dark-theme', 'matrix-theme', 'red-theme', 'blue-theme', 
+            'purple-theme', 'ocean-theme', 'sunset-theme', 'forest-theme', 
+            'cyberpunk-theme', 'amber-theme', 'lavender-theme', 'mint-theme', 'rose-theme',
+            'peach-theme', 'sky-theme', 'coral-theme', 'lime-theme', 'teal-theme',
+            'indigo-theme', 'gold-theme', 'orchid-theme', 'sand-theme');
         
         // Yeni temayı uygula
         if (safeTheme === 'dark') body.classList.add('dark-theme');
         if (safeTheme === 'matrix') body.classList.add('matrix-theme');
         if (safeTheme === 'red') body.classList.add('red-theme');
         if (safeTheme === 'blue') body.classList.add('blue-theme');
+        if (safeTheme === 'purple') body.classList.add('purple-theme');
+        if (safeTheme === 'ocean') body.classList.add('ocean-theme');
+        if (safeTheme === 'sunset') body.classList.add('sunset-theme');
+        if (safeTheme === 'forest') body.classList.add('forest-theme');
+        if (safeTheme === 'cyberpunk') body.classList.add('cyberpunk-theme');
+        if (safeTheme === 'amber') body.classList.add('amber-theme');
+        if (safeTheme === 'lavender') body.classList.add('lavender-theme');
+        if (safeTheme === 'mint') body.classList.add('mint-theme');
+        if (safeTheme === 'rose') body.classList.add('rose-theme');
+        if (safeTheme === 'peach') body.classList.add('peach-theme');
+        if (safeTheme === 'sky') body.classList.add('sky-theme');
+        if (safeTheme === 'coral') body.classList.add('coral-theme');
+        if (safeTheme === 'lime') body.classList.add('lime-theme');
+        if (safeTheme === 'teal') body.classList.add('teal-theme');
+        if (safeTheme === 'indigo') body.classList.add('indigo-theme');
+        if (safeTheme === 'gold') body.classList.add('gold-theme');
+        if (safeTheme === 'orchid') body.classList.add('orchid-theme');
+        if (safeTheme === 'sand') body.classList.add('sand-theme');
         
         localStorage.setItem(this.STORAGE_KEY, safeTheme);
     },
