@@ -25,6 +25,7 @@ Müşteri: Ürün açılmışsa yine de iade kabul ediliyor mu? Biraz kullandım
 Destek: Evet, ancak ürünün hasar görmemiş ve kullanılmamış olması gerekiyor.
 Müşteri: Çok teşekkürler, hemen hazırlayıp göndereyim o zaman. Bilgi verdiğiniz için sağ olun!
 Destek: Yardımcı olabildiysek ne mutlu, sağlıklı günler.
+
 Senaryo: Kampanya ve İndirimler
 Müşteri: Güncel kampanyalarınızı öğrenebilir miyim? Sitede birkaç indirim gördüm ama hepsini kapsayan bir liste var mı, yoksa sadece belirli kategorilerde mi geçerli? Bir de yeni kampanya gelecek mi yakın zamanda?
 Destek: Merhaba, aktif kampanyalarımızı ana sayfamızdaki “Kampanyalar” bölümünden görebilirsiniz.
@@ -106,6 +107,7 @@ Müşteri: Harika, bir de kutuya küçük bir not ekleyebilir misiniz? Mesela �
 Destek: Tabii, notunuzu sipariş notu kısmına yazarsanız ekleriz.
 Müşteri: Çok teşekkür ederim, hemen siparişi tamamlayayım o zaman!
 Destek: Keyifli alışverişler dileriz!
+
 Senaryo: Fatura Sorunu
 Müşteri: Siparişimle birlikte fatura gelmedi, ne yapmalıyım? MaxFit Spor Çantası (Kod: MF-600) aldım, kargo dün ulaştı ama içinde fatura yoktu. İş yerim için lazım, o yüzden acil gerekiyor. Niye gelmemiş olabilir?
 Destek: Merhaba, faturanız e-posta ile gönderilmiş olabilir, kontrol edebilir misiniz?
@@ -115,7 +117,6 @@ Müşteri: Tekrar gönderirseniz ne zaman ulaşır? Çünkü muhasebeye teslim e
 Destek: Hemen e-posta adresinize gönderiyoruz, bilgilerinizi de teyit ettik, doğru görünüyor.
 Müşteri: Teşekkürler, hızlıca çözdünüz. Gelen maili kontrol edip dönerim!
 Destek: Rica ederiz, her zaman yardımcı oluruz.
-
 
 Senaryo: Ürün Teslimat Süresi
 Müşteri: Merhaba, AirFlow Sessiz Vantilatör (Kod: AF-200) siparişi vermek istiyorum ama teslimat süresi hakkında bilgi alabilir miyim? Yazın sıcağında kullanmak için acilen ihtiyacım var, bu hafta içinde elimde olur mu?
@@ -294,3 +295,208 @@ Müşteri: Şubeye bırakılması iyiymiş, gerekirse gider alırım. Bir şey d
 Destek: Anlaşmalı firmalarımız güvenilirdir, genellikle X Kargo ile gönderiyoruz.
 Müşteri: Tamam, o zaman içim rahatladı. Hızlıca çözdünüz, çok teşekkür ederim, sağ olun!
 Destek: Rica ederiz, serin günler dileriz!
+
+Senaryo: Ürün Önerisi
+Müşteri: Merhaba, evim için bir kahve makinesi arıyorum ama hangisini alsam bilemiyorum. Bütçem 500-800 TL arası, günlük 2-3 fincan kahve içiyorum, filtre kahve mi yoksa kapsüllü mü daha iyi olur? Sitede çok seçenek var, bana öneri yapabilir misiniz?
+Destek: Merhaba, bütçenize göre filtre kahveli BrewMaster Kahve Makinesi (Kod: BM-400) önerebilirim, günlük kullanım için ideal.
+Müşteri: BrewMaster'ı inceledim, güzel görünüyor ama kapsüllü olanlar daha pratik mi? Temizliği zor mu, çünkü daha önce bir makine aldım ve temizlemek eziyet olmuştu. Bir de ses seviyesi nasıl, sabah erken saatte kullanacağım.
+Destek: Kapsüllü modeller daha pratik ama maliyeti yüksek olabilir; BrewMaster'ın temizliği kolay ve sessiz çalışıyor.
+Müşteri: Anladım, o zaman BrewMaster alayım. Başka bir aksesuar önerir misiniz, mesela filtre kağıdı falan? Set halinde mi satsanız daha iyi olurdu.
+Destek: Evet, filtre kağıtlarını ekstra olarak sepete ekleyebilirsiniz, stokta mevcut.
+Müşteri: Harika, hemen ekliyorum. Öneriniz için teşekkür ederim, çok yardımcı oldunuz!
+Destek: Rica ederiz, lezzetli kahveler dileriz!
+
+Senaryo: Hesap Güvenliği
+Müşteri: Merhaba, hesabımda şüpheli bir hareket fark ettim. Geçen hafta bir sipariş vermiştim ama şimdi bakınca tanımadığım bir adres eklenmiş gibi görünüyor. Şifremi değiştirdim ama emin olamıyorum, hesap güvenliğim tehlike altında mı? Ne yapmalıyım?
+Destek: Merhaba, hesabınızı kontrol edelim, e-posta adresinizi paylaşabilir misiniz?
+Müşteri: Tabii, mehmet.kaya@email.com. Bir de son girişleri görebiliyor musunuz? Başka bir cihazdan mı girilmiş, çünkü telefonumu kaybettim geçen hafta, belki ondan kaynaklıdır.
+Destek: Kontrol ettim, son giriş sizin cihazınızdan, ama iki faktörlü doğrulamayı aktif etmenizi öneririm.
+Müşteri: İki faktörlü doğrulama nasıl yapılır? Sitede nerede bulurum, adım adım anlatır mısınız? Bir de eğer hack'lenmişse siparişlerim etkilenir mi?
+Destek: Hesap ayarlarından "Güvenlik" bölümüne girin, telefon numaranızı ekleyin; mevcut siparişleriniz güvende.
+Müşteri: Tamam, hemen yapıyorum. Teşekkür ederim, içim rahatladı!
+Destek: Rica ederiz, güvenli alışverişler dileriz.
+
+Senaryo: İndirim Kuponu Uygulaması
+Müşteri: Merhaba, bana gönderilen indirim kuponunu kullanmaya çalıştım ama sepette uygulanmıyor. Kod "WINTER15", %15 indirim yazıyordu ama "geçersiz" diyor. E-posta ile geldi, neden böyle oluyor? Kampanya hala aktif mi?
+Destek: Merhaba, kupon kodunun kullanım koşullarını kontrol edebilir misiniz? Minimum sepet tutarı var mı?
+Müşteri: E-postada minimum 300 TL yazıyor, sepetim 250 TL, o yüzdenmiş. Peki, bir ürün daha eklesem çalışır mı? Bir de kupon süresi ne zamana kadar, acele etmeli miyim?
+Destek: Evet, 300 TL'yi aşınca otomatik uygulanır; kupon 15 Nisan'a kadar geçerli.
+Müşteri: Tamam, hemen bir şey ekliyorum. Kupon sadece belirli kategorilerde mi geçerli, yoksa her şeyde mi? Kitaplar dahil mi mesela?
+Destek: Tüm kategorilerde geçerli, kitaplar da dahil.
+Müşteri: Süper, teşekkür ederim, şimdi çalışıyor. Yardımınız için sağ olun!
+Destek: Rica ederiz, keyifli alışverişler!
+
+Senaryo: Yurtdışı Gönderim
+Müşteri: Merhaba, siteden bir ürün almak istiyorum ama yurtdışına gönderim yapıyor musunuz? Almanya'da yaşayan bir arkadaşıma hediye olarak EcoBag Çanta (Kod: EB-500) göndermek istiyorum. Ücret ne kadar olur, gümrük sorunu çıkar mı?
+Destek: Merhaba, yurtdışı gönderim seçeneğimiz var, ancak ülke bazında ücretler değişiyor.
+Müşteri: Almanya için ne kadar kargo ücreti? Bir de teslimat süresi ne kadar sürer, çünkü doğum günü yaklaşıyor, geç kalmasın istiyorum. Ürün hediye paketiyle gönderilebilir mi?
+Destek: Almanya için 150 TL kargo ücreti, teslimat 7-10 iş günü sürer; hediye paketi eklenebilir.
+Müşteri: 150 TL biraz yüksek ama olsun. Gümrük vergisi benden mi alınır, yoksa siz mi karşılıyorsunuz? Daha önce yurtdışı siparişte vergi sürprizi yaşamıştım.
+Destek: Gümrük vergileri alıcıya aittir, biz sadece kargo gönderiyoruz.
+Müşteri: Anladım, o zaman sipariş veriyorum. Teşekkürler!
+Destek: Rica ederiz, iyi hediyeler dileriz.
+
+Senaryo: Ürün Kişiselleştirme
+Müşteri: Merhaba, sitede gördüğüm CustomPrint T-Shirt (Kod: CP-200) için kişiselleştirme yapabiliyor musunuz? Üzerine isim yazdırmak istiyorum, nasıl oluyor? Ekstra ücret alır mısınız, tasarım seçenekleri neler?
+Destek: Merhaba, evet, kişiselleştirme seçeneğimiz var, sipariş sırasında tasarım yükleyebilirsiniz.
+Müşteri: Tasarımı nasıl yükleyeceğim? Sitede bir araç mı var, yoksa e-posta mı göndereyim? Bir de isim dışında logo ekleyebilir miyim, renk seçenekleri sınırlı mı?
+Destek: Sipariş sayfasında yükleme aracı var, logo da eklenebilir; tüm renkler mevcut.
+Müşteri: Harika, logo için dosya formatı ne olmalı? PNG mi yoksa JPG mi? Daha önce başka sitede format sorunu yaşamıştım.
+Destek: PNG veya JPG kabul ediyoruz, boyut 5MB'ı aşmasın.
+Müşteri: Tamam, hemen tasarlıyorum. Teşekkür ederim!
+Destek: Rica ederiz, güzel tasarımlar dileriz!
+
+Senaryo: Fiyat Eşitleme
+Müşteri: Merhaba, sizden aldığım SoundWave Hoparlör (Kod: SW-350) başka bir sitede daha ucuza satılıyor. Sizde 600 TL'ye aldım ama orada 550 TL, fiyat eşitleme politikanız var mı? İade mi edeyim yoksa indirim mi alayım?
+Destek: Merhaba, fiyat eşitleme politikamız var, ancak alım sonrası 7 gün içinde geçerli.
+Müşteri: Alalı 3 gün oldu, tam zamanı. Diğer sitenin linkini göndersem kontrol eder misiniz? Bir de nasıl iade alacaksınız, farkı mı yatıracaksınız?
+Destek: Linki paylaşın, kontrol edelim; farkı hesabınıza iade ederiz.
+Müşteri: Link şu: [örneklink.com]. Fark 50 TL, doğru mu? Bir de bu politika her ürün için mi geçerli?
+Destek: Evet, doğru; tüm ürünler için geçerli.
+Müşteri: Süper, teşekkür ederim, işlem yapıyorum!
+Destek: Rica ederiz, memnuniyetiniz önemli.
+Senaryo: Stok Bildirimi
+Müşteri: Merhaba, sitede tükenmiş görünen ZenGarden Bitki Seti (Kod: ZG-100) için stok bildirimi alabilir miyim? Ne zaman yenilenir, bana e-posta gelir mi? Daha önce beklediğim bir ürün için bildirim gelmemişti.
+Destek: Merhaba, ürün sayfasına gidip "Stok Bildirimi" butonuna tıklayarak abone olabilirsiniz.
+Müşteri: Butonu tıkladım ama e-posta adresimi girdikten sonra hata verdi. Sistemde mi sorun var, yoksa ben mi yanlış yapıyorum? Bir de tahmini yenilenme süresi nedir?
+Destek: Teknik bir hata olabilir, sizin için manuel abone yapalım; genellikle 2 hafta içinde yenilenir.
+Müşteri: Manuel yaparsanız süper olur, adresim fatma.oz@email.com. Bildirim gelince indirim olur mu, yoksa normal fiyat mı?
+Destek: Abonelik yapıldı; yenilenince normal fiyat olur, ama kampanya olursa bildiririz.
+Müşteri: Teşekkürler, bekleyeceğim!
+Destek: Rica ederiz, iyi günler.
+
+Senaryo: Hesap Bilgileri Güncelleme
+Müşteri: Merhaba, hesap bilgilerimi güncellemek istiyorum. Adresimi değiştirdim ama sitede eski adres görünüyor, nasıl yapacağım? Bir de telefon numaramı eklemek istiyorum, zorunlu mu?
+Destek: Merhaba, hesap ayarlarından "Profil" bölümüne girerek güncelleyebilirsiniz.
+Müşteri: Denedim ama "kaydet" butonu çalışmıyor, sayfa yenilenmiyor. Tarayıcı mı değiştireyim, yoksa mobil app'ten mi yapayım? Acil, çünkü sipariş vereceğim.
+Destek: Mobil app'ten deneyin; çalışmazsa sizin için biz güncelleyelim, yeni bilgileri paylaşın.
+Müşteri: Yeni adres: "Gül Sokak, No: 7, Beşiktaş, İstanbul". Telefon: 555-987-6543. Güncellediğinizi teyit eder misiniz?
+Destek: Güncellendi, kontrol edebilirsiniz.
+Müşteri: Harika, teşekkür ederim!
+Destek: Rica ederiz, güncel alışverişler dileriz.
+
+Senaryo: Şikayet Kaydı
+Müşteri: Merhaba, son siparişimle ilgili bir şikayetim var. LightBeam Lamba (Kod: LB-450) geldi ama ambalajı hasarlı, ürün çizik. Fotoğrafını göndersem inceler misiniz? İade mi yoksa değişim mi yapayım?
+Destek: Merhaba, özür dileriz. Şikayetinizi kaydedelim, fotoğrafı e-posta ile gönderebilirsiniz.
+Müşteri: Fotoğrafı gönderdim, adres destek@site.com. Bu nasıl oldu ki, kargo mu hasar verdi? Daha önce böyle bir şey yaşamamıştım, güvenim sarsıldı biraz.
+Destek: Kargo kaynaklı olabilir, inceledik; değişim yapacağız.
+Müşteri: Değişim ne kadar sürer? Yeni ürün hasarsız gelir mi, yoksa aynı sorunu yaşar mıyım?
+Destek: 3-5 iş günü sürer, yeni ambalajla göndeririz.
+Müşteri: Tamam, teşekkürler, takipte kalacağım.
+Destek: Rica ederiz, memnuniyetiniz için çalışıyoruz.
+
+Senaryo: Sadakat Programı
+Müşteri: Merhaba, sadakat programınız hakkında bilgi alabilir miyim? Ne kadar alışveriş yaparsam puan kazanırım, puanlar ne işe yarıyor? Sitede bir bölüm gördüm ama detaylı değil, nasıl katılacağım?
+Destek: Merhaba, her 100 TL alışverişte 10 puan kazanırsınız, puanlar indirim olarak kullanılır.
+Müşteri: Katılmak için ne yapmam lazım? Otomatik mi, yoksa kayıt mı gerekiyor? Bir de puanlar ne kadar süre geçerli, sonradan silinmesin istiyorum.
+Destek: Hesabınıza giriş yapın, "Sadakat" bölümünden aktif edin; puanlar 1 yıl geçerli.
+Müşteri: Aktif ettim, teşekkürler. Puanları nasıl kullanacağım, sepette mi görünür? Mesela 50 puanım varsa ne kadar indirim olur?
+Destek: Sepette otomatik görünür, 1 puan 1 TL indirim sağlar.
+Müşteri: Harika, hemen alışverişe başlıyorum. Bilgi için sağ olun!
+Destek: Rica ederiz, bol puanlar dileriz!
+
+Senaryo: Hesap Güvenliği
+
+Müşteri: Merhaba, hesabıma dün gece giriş yapılmış gibi bir bildirim aldım ama o saatte çevrimde değildim. Giriş yapılan cihaz bana ait değil, o yüzden endişelendim. Hesabımın güvenliği için neler yapmam gerekiyor, bilgi verebilir misiniz?
+Destek: Merhaba, öncelikle şifrenizi hemen değiştirmenizi öneririm.
+Müşteri: Tamam, değiştiririm. Peki geçmiş oturumları da kapatabiliyor muyum? Çünkü emin olmak istiyorum ki başka kimse erişim sağlayamasın.
+Destek: Evet, “Hesap Güvenliği” kısmından aktif oturumları sonlandırabilirsiniz.
+Müşteri: Çok iyi, bir de iki aşamalı doğrulama özelliğiniz varsa onu da açmak istiyorum, bu şekilde daha güvende olurum.
+Destek: Evet, aynı bölümden aktif edebilirsiniz.
+
+
+
+Senaryo: Hediye Çeki Kullanımı
+
+Müşteri: Geçen hafta arkadaşım bana doğum günü hediyesi olarak bir hediye çeki gönderdi ama sitede nerede kullanacağımı bulamadım. Sepet sayfasında bir kutucuk gördüm ama emin olamadım, acaba yanlış yerde mi deniyorum?
+Destek: Kod kısmına girerek ödeme sayfasında kullanabilirsiniz.
+Müşteri: Anladım, peki tutar ürünün tamamını karşılamazsa kalan kısmı kartla tamamlamak mümkün mü?
+Destek: Evet, kalan kısmı kredi kartınızla ödeyebilirsiniz.
+Müşteri: Peki çeki kısmen kullanıp kalan bakiyeyi daha sonra değerlendirebilir miyim, yoksa tek seferde mi harcamam gerekiyor?
+Destek: Tek seferde kullanılabiliyor.
+
+
+
+Senaryo: Siteye Erişim Sorunu
+
+Müşteri: Merhaba, sitede birkaç dakikadır gezemiyorum, sayfalar yüklenmiyor ve “bakım çalışması yapılıyor” uyarısı çıkıyor. Bu genel bir bakım mı, yoksa sadece benim bağlantımla ilgili bir problem olabilir mi?
+Destek: Şu anda planlı bakım çalışmamız var, kısa sürede tamamlanacak.
+Müşteri: Anladım, tahmini ne kadar sürer? Çünkü sepetime birkaç ürün eklemiştim ve kaybolmasından endişeliyim.
+Destek: Sepetiniz kayıtlıdır, bakım bitince kaldığınız yerden devam edebilirsiniz.
+Müşteri: Çok iyi, o zaman bekleyeyim. Uygulama üzerinden denesem sorun olur mu?
+Destek: Hayır, uygulama erişime açık, oradan giriş yapabilirsiniz.
+
+
+
+Senaryo: Ürün Renk Değişimi
+
+Müşteri: Merhaba, dün gece sipariş verdiğim montta yanlışlıkla siyah renk seçmişim. Bu sabah fark ettim ama sipariş durumu “hazırlanıyor” olarak görünüyor. Henüz kargoya verilmediyse rengi bej olarak güncelleme şansım var mı?
+Destek: Henüz kargoya verilmemiş, değişiklik yapabiliriz.
+Müşteri: Harika! Peki bu değişiklik siparişin gönderilme süresini etkiler mi? Çünkü ürünü hafta sonu için almıştım.
+Destek: Hayır, aynı gün kargoya verilir.
+Müşteri: Çok güzel, o zaman bej olarak değiştirin lütfen. İlgilendiğiniz için teşekkür ederim.
+Destek: Güncellendi, iyi günler dileriz.
+
+
+
+Senaryo: Sesli Asistan Uyumluluğu
+
+Müşteri: SmartHome Akıllı Lamba satın aldım ama evde Alexa kullanıyorum, cihazın onunla uyumlu olup olmadığını tam olarak anlamadım. Ürün açıklamasında “akıllı ev desteği” yazıyor ama bu tüm asistanlar için geçerli midir?
+Destek: Alexa ve Google Home ile uyumludur.
+Müşteri: Peki Siri desteği yok mu? Çünkü bazen iPhone’umdan da kontrol etmek istiyorum.
+Destek: Şu anda Siri desteği bulunmuyor.
+Müşteri: Anladım, peki bağlantıyı yapmak için ek bir uygulama gerekiyor mu yoksa direkt Alexa üzerinden tanımlayabiliyor muyum?
+Destek: SmartLife uygulaması üzerinden tanımlayabilirsiniz.
+
+
+
+Senaryo: Fatura Bilgisi Düzeltme
+
+Müşteri: Siparişimle birlikte gelen e-faturada isim soyisim kısmı yanlış yazılmış. Muhtemelen otomatik doldurma hatası oldu. Muhasebeye teslim etmem gerekiyor, bunu düzeltme şansımız var mı?
+Destek: Elbette, doğru bilgiyi iletirseniz güncelleyebiliriz.
+Müşteri: Çok iyi. Yeni fatura ne kadar sürede elime ulaşır? Çünkü yarına kadar teslim etmem gerekiyor.
+Destek: Aynı gün içinde e-posta adresinize gönderilir.
+Müşteri: Harika, o zaman doğru bilgileri hemen paylaşıyorum. Teşekkür ederim hızlı yanıt için.
+Destek: Rica ederiz, hemen işleme alıyoruz.
+
+
+
+Senaryo: Ürün Yazılım Güncellemesi
+
+Müşteri: Geçen yıl sizden aldığım akıllı bileklik birkaç gündür telefona bağlanmıyor. Bir arkadaşım, eski yazılım yüzünden olabileceğini söyledi. Bu ürünler için yazılım güncellemesi yapabiliyor muyuz?
+Destek: Evet, mobil uygulama üzerinden güncelleme yapılabilir.
+Müşteri: Güncelleme sırasında cihazın şarjı tam dolu olmalı mı, yoksa düşük olsa da olur mu?
+Destek: En az %50 şarj öneriyoruz.
+Müşteri: Peki güncelleme sırasında verilerim silinir mi? Çünkü adım ve kalori geçmişimi kaybetmek istemem.
+Destek: Hayır, verileriniz korunur.
+
+
+
+Senaryo: Teslimat Saatini Değiştirme
+
+Müşteri: Kargo şirketi bugün teslimat yapacak ama gün içinde evde olamayacağım. Teslimat saatini değiştirme veya akşam teslimi talep etme şansım var mı? Çünkü gün içinde sürekli dışarıdayım.
+Destek: Teslimat saatini kargo firması belirliyor, ancak not bırakabiliriz.
+Müşteri: Anladım, o zaman akşam 18.00 sonrası uygun olur. Bu notu sisteme ekleyebilir misiniz?
+Destek: Tabii, ekliyorum.
+Müşteri: Teşekkür ederim, umarım dikkate alınır çünkü paketi acilen almam gerekiyor.
+Destek: İletildi, takipte kalabilirsiniz.
+
+
+
+Senaryo: Ürün Kokusu Hakkında Şikayet
+
+Müşteri: Geçen hafta satın aldığım yoga matını kutusundan çıkardığımda yoğun bir plastik kokusu fark ettim. Ürünü birkaç gündür havalandırıyorum ama koku hala geçmedi. Bu durum normal mi, yoksa hatalı bir üretim olabilir mi?
+Destek: Üretimden kaynaklı yeni ürün kokusu olabilir, kısa sürede geçer.
+Müşteri: Peki sağlığa zararlı bir durum söz konusu mu? Çünkü spor sırasında uzun süre nefes alıyorum, endişelendim açıkçası.
+Destek: Hayır, tüm ürünlerimiz sertifikalı ve zararsız malzemeden üretilmiştir.
+Müşteri: Tamam, içim rahatladı. Birkaç gün daha bekleyip tekrar denerim.
+Destek: Evet, havalandırmaya devam edin.
+
+Senaryo: Uygulama Bildirimleri Gelmiyor
+
+Müşteri: Mobil uygulamanızı kullanıyorum ama kampanya bildirimleri bana hiç gelmiyor. Bildirim izinlerini kontrol ettim, hepsi açık. Ancak birkaç arkadaşım aynı kampanyaları anında almış. Acaba hesabıma özel bir ayar mı eksik?
+Destek: Bildirim servisini sıfırlamak için uygulamayı güncelleyip yeniden giriş yapabilirsiniz.
+Müşteri: Güncelleme yapınca bildirim geçmişim silinir mi? Önceden gelenleri de görmek istiyordum.
+Destek: Hayır, sadece sistem yenilenir.
+Müşteri: Tamam, denerim. Eğer yine olmazsa size tekrar yazayım mı?
+Destek: Evet, o zaman birlikte kontrol ederiz.

@@ -13,47 +13,13 @@ const CONFIG = {
     USER_ROLES: {
         // Standart Kullanıcılar - Sadece public temalara erişim
         standard_user: {
-            passwords: [
-                "026cb81be3d27ea4bfb335963902492780c8a257081eef78916ea215994fca4a",
-                "3de5f893b3049abc820aab214a659052822bfe577d6d36c6aa55563a6bea1ecb",
-                "e73f0a16bd4cc7c02dbfebc6f85d013897235c461e23567ef4faecf86998fb1c",
-                "ae340d8a3c66e9469448eb2aab5f2ba7b33cbf92ff1c1a49b717b2553e873e9f",
-                "3f9d448fdfe99ddf32d642dab25bbe3a4e3ce4e77697536a23dbd583e1ba8937",
-                "ff6e67ebab05cd86d4e4bb01137c8bf5ea79c2581a05d5581bf432950cd49e01",
-                "0776ecf06c3973ac615854914d3320784a0abfa2d514e8c32202b15716f122f8",
-                "7de3d69c4b295f7480a37f3ed5c7ad1d97ce7e3205cdbe86a9361923ddaffe23",
-                "dd06fdcd75377e3fbdcdc6eb4f2e49d28255c4ad2da2dbdadd8e86be7dae4592"
-            ],
+            passwords: PASSWORD_CONFIG.standard_user,
             allowedThemes: ['light', 'dark']
         },
         // Özel Temalı Kullanıcılar
-        custom_theme_users: [
-            {
-                password: "96a1ddbb014d36e8f07963959cdec25b4a0bb70a149609fcbce0453ffddb45ea",
-                userId: "custom_user_red",
-                customTheme: "red",
-                allowedThemes: ['light', 'dark', 'red']
-            },
-            {
-                password: "3d06b7902cde70d31c08de678c47d57cef9f42545e56507f97f70d6d6a23598f",
-                userId: "custom_user_blue_1",
-                customTheme: "blue",
-                allowedThemes: ['light', 'dark', 'blue']
-            },
-            {
-                password: "b993d4fc84fcc45674abbcf602559e4bba08261f68b8bee92a39ce5aa693a19a",
-                userId: "custom_user_blue_2",
-                customTheme: "blue",
-                allowedThemes: ['light', 'dark', 'blue']
-            }
-        ],
+        custom_theme_users: PASSWORD_CONFIG.custom_theme_users,
         // Kök Yönetici - Tüm temalara erişim
-        root_admin: {
-            password: "d72f804b4594611ede24bb42d8904f6ef12ef5ba0d0dc537c49ea00fea531350",
-            userId: "root_admin",
-            customTheme: "matrix",
-            allowedThemes: ['light', 'dark', 'matrix', 'red', 'blue'] // Tüm temalar
-        }
+        root_admin: PASSWORD_CONFIG.root_admin
     },
     TYPING_DELAY: {
         MIN: 2000,  // 2 saniye
@@ -264,9 +230,30 @@ const ThemeManager = {
 const AUTO_MESSAGE = {
     TIMEOUT: 60000, // 60 saniye
     MESSAGES: [
-        "Orada mısınız? Biraz acelem var da.",
-        "Biraz fazla beklemedik mi?",
-        "Hadi birader işimiz gücümüz var"
+    "Orada mısınız? Biraz acelem var da.",
+    "Biraz fazla beklemedik mi?",
+    "Hadi birader işimiz gücümüz var",
+    "Yahu cevap verseniz ya, ne bu sessizlik?",
+    "30 saniye geçti, hâlâ yazmıyorsunuz, sisteminiz mi çöktü?",
+    "Bu kadar yavaş olmanız normal mi, yoksa sadece benimle mi dalga geçiyorsunuz?",
+    "İki dakikadır bekliyorum, hâlâ ‘yazıyor…’ diyor ama bir şey yok!",
+    "Başka bir siteye geçeyim mi artık, yoksa siz mi düzelteceksiniz bu rezaleti?",
+    "Müşteri temsilcisi nerede, uyuyor mu herkes?",
+    "Bir ‘merhaba’ bile yazmadınız, bu ne biçim hizmet anlayışı?",
+    "Kredi kartı bilgimi girdim, ödeme alınmadı, şimdi de cevap yok – dolandırıcı mısınız siz?",
+    "Hemen iade istiyorum, yoksa şikayetvar’a yazarım, haberiniz olsun!",
+    "Bu siteden alışveriş yapan var mı hâlâ, ben pişman oldum!",
+    "Yarın sabah 9’da ürün elimde olacak dediniz, hâlâ kargoya vermediniz, yalan mı söylüyorsunuz?",
+    "Kargo takip numarası dediniz, attığınız link çalışmıyor, ne bu saçmalık?",
+    "Şimdi de ‘teknik sorun’ diyeceksiniz değil mi, klasik bahane!",
+    "Ürün fotoğrafları ile gelen ürün aynı değil, beni kandırdınız resmen!",
+    "İade formu nerede, 3 gündür arıyorum bulamıyorum, kör müyüm ben?",
+    "Destek hattı da kapalı, canlı destek de yok, bu ne biçim firma?",
+    "Son çare buraya yazıyorum, yoksa paramı faiziyle geri alacağım!",
+    "Yazıklar olsun, bir daha adımımı atmam bu siteye!",
+    "Hadi bakalım, 1 dakika içinde cevap vermezseniz ekran görüntüsü alıp sosyal medyada paylaşırım!",
+    "Bu kadar müşteriyi nasıl kaybediyorsunuz anlamıyorum, yazık!"
+
     ]
 };
 
@@ -684,71 +671,6 @@ const ChatManager = {
     }
 };
 
-// Soru yönetimi modülü
-const QuestionManager = {
-    QUESTIONS: [
-        "Hayatınızda sizi en çok etkileyen olay nedir ve bu olayın size kattığı en önemli ders ne oldu?",
-        "Gelecekte kendinizi nasıl bir yaşam sürerken hayal ediyorsunuz? Kariyeriniz, yaşadığınız yer ve sosyal hayatınız nasıl olacak?",
-        "En unutulmaz tatil anınızı anlatır mısınız? O anın sizin için özel olmasının nedeni nedir?",
-        "Size göre başarının tanımı nedir ve başarılı bir insan olmak için hangi adımları atıyorsunuz?",
-        "Hayatta en çok değer verdiğiniz şey nedir ve bunun sizin yaşamınıza nasıl bir etkisi var?",
-        "Şimdiye kadar ziyaret ettiğiniz en etkileyici yer neresiydi ve orada yaşadığınız en özel anı nedir?",
-        "En sevdiğiniz çocukluk anınız nedir ve o an size ne hissettirdi?",
-        "Hayatınızda değiştirmek istediğiniz bir şey olsaydı, bu ne olurdu ve neden?",
-        "Size ilham veren kişi kimdir ve bu kişinin hangi özellikleri sizi etkiliyor?",
-        "En büyük hayaliniz nedir? Gerçekleştirmek için ne gibi adımlar atıyorsunuz?",
-        "Kendinizi üç kelime ile nasıl tanımlarsınız ve neden bu kelimeleri seçtiniz?",
-        "Şu ana kadar aldığınız en iyi tavsiye nedir ve bu tavsiyeyi hangi durumlarda uyguluyorsunuz?",
-        "Bir süper gücünüz olsaydı, bu ne olurdu ve bu gücü nasıl kullanırdınız?",
-        "Sizce mutluluğun sırrı nedir? İnsanlar neden bazen mutluluğu bulmakta zorlanır?",
-        "En son okuduğunuz ve sizi derinden etkileyen kitap hangisi? Kitabın size kazandırdığı en önemli şey neydi?",
-        "Gelecek nesillere nasıl bir dünya bırakmak istersiniz ve bu konuda hangi adımları atmalıyız?",
-        "Hayatta öğrendiğiniz en önemli ders nedir ve bu dersi hangi olaydan çıkardınız?",
-        "Sizi en çok motive eden şey nedir ve kendinizi motive etmek için hangi yöntemleri kullanıyorsunuz?",
-        "Başkalarına nasıl ilham vermeye çalışıyorsunuz ve insanların sizden ilham almasını sağlayacak en güçlü yanınız nedir?",
-        "Yaşamınızda iz bırakan en önemli karar neydi ve bu kararın hayatınıza etkisi nasıl oldu?",
-        "Kendinizle ilgili değiştirmek istediğiniz en büyük özellik nedir ve bunu değiştirmek için ne yapıyorsunuz?",
-        "Hayatta en çok gurur duyduğunuz başarınız nedir ve bu başarıyı elde ederken hangi zorluklarla karşılaştınız?",
-        "Hayatınızda sizi en çok zorlayan an neydi ve bu anın üstesinden nasıl geldiniz?",
-        "Eğer geçmişe dönüp kendinize bir tavsiye verebilseydiniz, ne söylerdiniz?",
-        "Şu an sahip olduğunuz bilgi ve tecrübeyle 10 yıl önceki halinize ne öğretmek isterdiniz?",
-        "İnsan ilişkilerinde en çok dikkat ettiğiniz şey nedir ve sizi en çok rahatsız eden davranışlar nelerdir?",
-        "Bir gün boyunca herhangi bir tarihi figürle vakit geçirebilseydiniz, kimi seçerdiniz ve neden?",
-        "Hayatta risk almak hakkında ne düşünüyorsunuz? En büyük riskiniz neydi ve sonucunda ne öğrendiniz?",
-        "Eğer dünyanın herhangi bir yerinde yaşayabilseydiniz, nerede yaşamak isterdiniz ve neden?",
-        "Günlük hayatınızdaki en büyük alışkanlığınız nedir ve bu alışkanlık sizi nasıl etkiliyor?",
-        "Kendi hayatınızı bir film olarak düşünecek olsanız, türü ne olurdu ve başrolü kim oynardı?",
-        "Hayatınızdaki en değerli insan kim ve onun sizin üzerinizde nasıl bir etkisi var?",
-        "Hayatınızın geri kalanında sadece bir hobiyle uğraşmak zorunda kalsaydınız, hangi hobiyi seçerdiniz?",
-        "Bir insanın karakterini belirleyen en önemli özellikler nelerdir sizce?",
-        "Bugüne kadar karşılaştığınız en büyük zorluk neydi ve bu zorluktan nasıl dersler çıkardınız?",
-        "Geriye dönüp baktığınızda, keşke daha önce yapsaydım dediğiniz bir şey var mı?",
-        "Hayatınızdaki en büyük şans olarak gördüğünüz olay nedir ve bu olayın hayatınıza etkisi ne oldu?",
-        "Eğer bir konuda tamamen uzmanlaşma şansınız olsaydı, hangi konuda uzman olmak isterdiniz?",
-        "Hangi alışkanlıklarınızı bırakmak veya değiştirmek isterdiniz ve bunun için bir adım attınız mı?",
-        "Eğer bir ay boyunca hiçbir sorumluluğunuz olmasaydı, bu zamanı nasıl değerlendirirdiniz?",
-        "En sevdiğiniz sanat dalı nedir ve sizi bu alana çeken şey ne oldu?",
-        "Bugüne kadar aldığınız en anlamlı hediye neydi ve sizin için neden özeldi?",
-        "Hayatınız boyunca karşılaştığınız en ilginç insan kimdi ve onunla yaşadığınız en unutulmaz an nedir?",
-        "Eğer bir gün boyunca istediğiniz herhangi bir mesleği yapabilseydiniz, ne yapardınız?",
-        "Sizi en çok rahatlatan aktivite nedir ve bunu ne sıklıkla yapıyorsunuz?",
-        "Eğer bir saat boyunca dünyanın herhangi bir yerine ışınlanabilseydiniz, nereye giderdiniz ve neden?",
-        "Zamanı geri alma şansınız olsaydı, hayatınızdaki hangi anı yeniden yaşamak isterdiniz?",
-        "Eğer kendinize ait bir felsefeniz veya hayat mottosu olsaydı, ne olurdu?",
-        "Hayatta en çok hayranlık duyduğunuz insan kim ve onun hangi özellikleri sizi etkiliyor?",
-        "Sonsuz bir kaynağınız olsaydı, hangi hayır işini yapmak isterdiniz?",
-        "İnsanların sizin hakkınızda en çok neyi hatırlamasını isterdiniz?"
-    ],
-    shuffledQuestions: [],
-
-    shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
-};
 
 // Kullanıcı bilgilerini tutacak nesne
 let activeUser = {
@@ -780,37 +702,6 @@ function loadThemePreference() {
     ThemeManager.init();
 }
 
-// Kullanıcı isimleri ve konumları
-const ASSISTANT_NAMES = [
-    "Ahmet Yılmaz", "Mehmet Demir", "Ayşe Kaya", "Fatma Çelik", "Ali Koç",
-    "Zeynep Arslan", "Emre Polat", "Elif Aydın", "Mustafa Şahin", "Seda Yurt",
-    "Canan Özdemir", "Burak Korkmaz", "Derya Yıldız", "Oğuzhan Tekin", "Cemre Akman",
-    "Ege Yalçın", "Sibel Acar", "Merve Kılıç", "Serkan Uysal", "Berkay Çetin",
-    "Gizem Yılmaz", "Deniz Aydın", "Hüseyin Yılmaz", "Süleyman Çetin", "Ebru Korkmaz",
-    "Aylin Yıldırım", "Cem Yılmaz", "Gökhan Demirtaş", "Pınar Yılmaz", "Seda Korkmaz",
-    "Oğuz Yılmaz", "Büşra Çelik", "İsmail Aydın", "Sinem Yıldız", "Tugay Koç",
-    "Seda Arslan", "Murat Yılmaz", "Zeynep Demir", "Ali Yıldız", "Ece Çetin",
-    "Cemre Yılmaz", "Mert Koç", "Seda Yıldırım", "Emre Çelik", "Burcu Aydın",
-    "Serap Yılmaz", "Hakan Demir", "Duygu Yıldız", "Ekin Koç", "Seda Yılmaz"
-];
-const LOCATIONS = [
-    "İstanbul", "Ankara", "İzmir", "Bursa", "Adana", "Gaziantep", "Konya", "Antalya", "Kayseri", "Mersin",
-    "Sakarya", "Kocaeli", "Eskişehir", "Trabzon", "Aydın", "Tekirdağ", "Manisa", "Samsun", "Hatay", "Diyarbakır",
-    "Malatya", "Elazığ", "Kahramanmaraş", "Aksaray", "Çorum", "Zonguldak", "Bolu", "Kastamonu", "Artvin", "Rize",
-    "Sinop", "Tokat", "Ordu", "Giresun", "Sivas", "Nevşehir", "Niğde", "Uşak", "Kütahya", "Bartın", "Karabük",
-    "Düzce", "Bilecik", "Yalova", "Amasya", "Bayburt", "Gümüşhane", "Kırıkkale", "Kırşehir", "Çankırı", "Burdur",
-    "Hong Kong", "New York", "London", "Tokyo", "Berlin", "Paris", "Madrid", "Rome", "Moscow", "Sydney" 
-];
-// E-posta domainleri
-const EMAIL_DOMAINS = [
-    "@gmail.com", "@hotmail.com", "@windowslive.com", "@gmail.de", "@outlook.com",
-    "@yahoo.com", "@protonmail.com", "@tutanota.com", "@webkusu.com", "@aol.com",
-    "@gmx.com", "@promail.com.tr", "@zoho.com", "@yandex.com", "@outlook.de",
-    "@hotmail.co.uk", "@live.com", "@mail.ru", "@protonmail.ch", "@fastmail.com",
-    "@promail.com.tr", "@hushmail.com", "@promail.com.tr", "@gezginlerindirturkce.com",
-    "@posteo.de", "@promail.com.tr", "@runbox.com"
-];
-
 // Türkçe karakter dönüştürme fonksiyonu
 function turkishToEnglish(text) {
     const charMap = {
@@ -823,13 +714,6 @@ function turkishToEnglish(text) {
     };
     return text.replace(/[çÇğĞıİöÖşŞüÜ]/g, match => charMap[match]);
 }
-
-// Yasaklı kullanıcı adları
-const RESTRICTED_USERNAMES = [
-    'admin', 'administrator', 'root', 'user', 'system', 'superuser', 'supervisor',
-    'moderator', 'mod', 'support', 'helpdesk', 'sysadmin', 'webmaster', 'owner',
-    'admin123', 'administrator123', 'root123', 'user123', 'system123'
-];
 
 // Rastgele kullanıcı seçme ve bilgileri oluşturma
 function generateRandomUser() {
